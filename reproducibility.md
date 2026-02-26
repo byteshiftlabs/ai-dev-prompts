@@ -24,17 +24,6 @@ Ensure:
 
 ## Variations
 
-### ML experiment reproducibility
-```
-Ensure [EXPERIMENT] is reproducible:
-- Pin random seeds: numpy, torch/tensorflow, python random
-- Log all hyperparameters
-- Record dataset version/hash
-- Save model checkpoints with metadata
-- Document hardware (GPU model, CUDA version)
-- Use deterministic algorithms where available
-```
-
 ### Environment setup
 ```
 Create reproducible environment setup for [PROJECT]:
