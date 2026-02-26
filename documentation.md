@@ -87,3 +87,4 @@ Every comment must describe what the code actually does, not what it should do.
 - Mark uncertain or incomplete sections with TODO
 - Include "why" explanations for non-obvious design choices
 - Always keep documentation adjacent to code when possible
+- Keep sections focused: testing goes in tests, architecture in architecture, etc. — do not mix concerns
