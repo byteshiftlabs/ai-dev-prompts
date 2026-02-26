@@ -18,13 +18,22 @@ Verify with: git config --list
 
 ```
 Use past participle for all commit messages. Be brief, clear, and concise.
+List each change with a hyphen.
 
 Examples:
 - Added user authentication module
+  - Added login and logout functions
+  - Added session token management
+  - Added password hashing
+
 - Fixed null pointer exception in parser
+  - Added null check before dereferencing
+  - Added unit test for edge case
+
 - Renamed ambiguous variables, removed magic numbers
-- Updated API documentation
-- Added unit tests for validation module
+  - Renamed `ns` to `premise_module`
+  - Replaced hardcoded 10 with MIN_RESULTS_PER_TERM
+  - Replaced hardcoded 2026 with CURRENT_YEAR
 ```
 
 ## Branch Naming

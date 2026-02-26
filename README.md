@@ -14,16 +14,12 @@ Reusable prompt patterns for AI-assisted software development at byteshiftlabs.
 | [git-workflow.md](git-workflow.md) | Commits, branches, and PRs |
 | [documentation.md](documentation.md) | Generate thorough code documentation |
 | [error-handling.md](error-handling.md) | Exception patterns and logging |
-| [content-integrity.md](content-integrity.md) | Constraint to prevent fabricated content |
-
-## Usage
-
-### Basic Usage
-
-Copy the relevant prompt and adapt placeholders (marked with `[brackets]`) to your specific project.
-
-### Efficient Loading
-
+| [incremental-development.md](incremental-development.md) | Build in small, verified steps |
+| [reproducibility.md](reproducibility.md) | Ensure reproducible results |
+| [scope-control.md](scope-control.md) | Stay focused, avoid scope creep |
+| [chain-of-thought.md](chain-of-thought.md) | Step-by-step reasoning |
+| [context-management.md](context-management.md) | Control session context |
+| [task-decomposition.md](task-decomposition.md) | Break complex tasks into steps |
 Don't load all prompts at once. Use selective loading based on the task:
 
 **Always active (system prompt or conversation start):**
@@ -40,13 +36,22 @@ Don't load all prompts at once. Use selective loading based on the task:
 | Write docs | `documentation.md` |
 | Design error handling | `error-handling.md` |
 | Start new ML project | `ml-project-bootstrap.md` |
+| Complex problem solving | `chain-of-thought.md` |
+| Break down large task | `task-decomposition.md` |
+| Build feature step-by-step | `incremental-development.md` |
+| Ensure reproducibility | `reproducibility.md` |
+| Keep focus | `scope-control.md` |
+| Manage session context | `context-management.md` |
 
 ### Example Workflow
 
 ```
 1. Start session with content-integrity.md as context
-2. "Review this code" → load code-review.md
-3. "Fix the issues" → (already have context)
-4. "Commit changes" → load git-workflow.md
-5. "Create PR" → (git-workflow.md still active)
+2. "I need to add feature X" → load task-decomposition.md, break it down
+3. "Let's start" → load incremental-development.md, build step by step
+4. "Review this code" → load code-review.md
+5. "Fix the issues" → (already have context)
+6. "Write tests" → load test-generation.md
+7. "Commit changes" → load git-workflow.md
+8. "Create PR" → (git-workflow.md still active)
 ```
