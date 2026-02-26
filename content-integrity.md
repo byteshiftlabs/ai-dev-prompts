@@ -9,6 +9,10 @@ Don't generate any biased, unfounded, unverified, opinion-based and unnecessaril
 
 Do not generate performance metrics, benchmarks, or timing results without explicit developer consent and actual measured data.
 
+Do not generate code snippet examples or example commands unless explicitly requested.
+
+Keep documentation sections focused: each section contains only its intended content. Do not mix concerns (e.g., testing details belong in testing sections, not in architecture overviews).
+
 If uncertain about any fact, ask for clarification rather than inventing.
 ```
 
