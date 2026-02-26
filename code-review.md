@@ -1,85 +1,99 @@
 # Code Review
 
-Comprehensive code quality audit with specific checks.
+Audit code quality with emphasis on readability and maintainability.
 
-## Prompt (Python)
+## Core Principle
+
+**Code is read far more often than it is written.** Prioritize clarity over cleverness. Every piece of code should be immediately understandable to a new developer.
+
+---
+
+## Python
 
 ```
-Make sure the following apply to [PROJECT_NAME]:
+Review [PROJECT_NAME] for code quality.
 
 [content-integrity constraint]
 
+Check for:
 1. PEP8 compliance (except line length)
-2. No ambiguous naming neither in classes nor functions nor variables (clear, descriptive identifiers)
-3. No monolithic modules (proper separation of concerns)
-4. No magic numbers (use named constants)
+2. Imports at the top of each file, properly organized (stdlib → third-party → local)
+3. Clear, descriptive naming for classes, functions, and variables
+4. No monolithic modules — proper separation of concerns
+5. No magic numbers — use named constants
+6. Readable code structure — logical flow, consistent formatting
 
-For each issue found:
-- Identify the file and location
-- Explain the problem
-- Apply the fix
+For each issue:
+- File and location
+- Problem description
+- Applied fix
 
-After all fixes, commit with a descriptive message following the existing commit style.
+After fixes, commit following git-workflow.md.
 ```
 
-## Prompt (C)
+---
+
+## C
 
 ```
-Make sure the following apply to [PROJECT_NAME]:
+Review [PROJECT_NAME] for code quality.
 
 [content-integrity constraint]
 
+Check for:
 1. GNU coding standards compliance (https://www.gnu.org/prep/standards/)
-2. No ambiguous naming neither in structs nor functions nor variables
-3. No magic numbers (use #define or const)
+2. Clear, descriptive naming for structs, functions, and variables
+3. No magic numbers — use #define or const
+4. Readable code structure — consistent indentation, logical grouping
 
-For each issue found:
-- Identify the file and location
-- Explain the problem
-- Apply the fix
+For each issue:
+- File and location
+- Problem description
+- Applied fix
 
-After all fixes, commit with a descriptive message following the existing commit style.
+After fixes, commit following git-workflow.md.
 ```
 
-## Prompt (C++)
+---
+
+## C++
 
 ```
-Make sure the following apply to [PROJECT_NAME]:
+Review [PROJECT_NAME] for code quality.
 
 [content-integrity constraint]
 
+Check for:
 1. C++ Core Guidelines compliance (https://isocpp.github.io/CppCoreGuidelines/)
-2. No ambiguous naming neither in classes nor methods nor variables
-3. No magic numbers (use constexpr or const)
+2. Clear, descriptive naming for classes, methods, and variables
+3. No magic numbers — use constexpr or const
+4. Readable code structure — consistent style, logical organization
 
-For each issue found:
-- Identify the file and location
-- Explain the problem
-- Apply the fix
+For each issue:
+- File and location
+- Problem description
+- Applied fix
 
-After all fixes, commit with a descriptive message following the existing commit style.
+After fixes, commit following git-workflow.md.
 ```
+
+---
 
 ## Placeholders
 
-- `[PROJECT_NAME]`: Target project or directory to review
+- `[PROJECT_NAME]`: Target project or directory
 - `[content-integrity constraint]`: See [content-integrity.md](content-integrity.md)
 
-## Variations
+## Quick Variations
 
-### Quick syntax check
-```
-Check [FILE] for PEP8 compliance and magic numbers only.
-```
-
-### Naming audit
-```
-Review all variable, function, and class names in [PROJECT] for clarity.
-Rename any ambiguous identifiers (single letters, abbreviations, generic names).
-```
+| Use case | Prompt |
+|----------|--------|
+| Quick check | `Check [FILE] for PEP8 and magic numbers only.` |
+| Naming audit | `Review all identifiers in [PROJECT] for clarity. Rename ambiguous names.` |
+| Imports only | `Organize imports in [FILE]: stdlib → third-party → local, at file top.` |
 
 ## Tips
 
-- Run after every kind of addition (whether major or minor)
-- Combine with git commit for atomic changes
-- Specify "except line length" if your project tolerates longer lines
+- Run after every change, major or minor
+- Readable code reduces bugs and speeds up onboarding
+- When in doubt, choose the more explicit option
