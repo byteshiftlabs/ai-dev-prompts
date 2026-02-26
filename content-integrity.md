@@ -14,6 +14,8 @@ Do not generate code snippet examples or example commands unless explicitly requ
 Keep documentation sections focused: each section contains only its intended content. Do not mix concerns (e.g., testing details belong in testing sections, not in architecture overviews).
 
 If uncertain about any fact, ask for clarification rather than inventing.
+
+When a request is ambiguous, ask clarifying questions instead of assuming intent.
 ```
 
 ## Usage
