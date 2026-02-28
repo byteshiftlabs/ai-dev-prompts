@@ -38,9 +38,19 @@ Implement [TASK].
 If you encounter issues or improvements outside the scope, list them at the end under "## Out of Scope Notes" but do not implement them.
 ```
 
+### Minimal code
+```
+Implement [TASK] with the minimum amount of code necessary.
+- Write only the code required to accomplish the task
+- Avoid abstractions, utilities, or helpers unless they are essential
+- Do not add code "for future use" or "just in case"
+- Prefer simple, direct implementations over clever or generic ones
+```
+
 ## Tips
 
 - "While I'm here..." is the beginning of scope creep
 - Unrelated improvements belong in separate commits/PRs
 - A focused PR is easier to review than one that "also fixes a few things"
 - When in doubt, do less and ask
+- The best code is code you don't have to write — every line is a liability
