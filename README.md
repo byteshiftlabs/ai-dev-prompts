@@ -56,6 +56,11 @@ Load what you need from the categories below.
 |--------|-------------|
 | [ml-project-bootstrap.md](ml-project-bootstrap.md) | Initialize new ML/research projects |
 
+### 📦 Release Preparation
+| Prompt | When to use |
+|--------|-------------|
+| [production-ready-check.md](production-ready-check.md) | Comprehensive checklist before going public |
+
 ---
 
 ## Example Session
@@ -75,6 +80,9 @@ Load what you need from the categories below.
 
 "Commit and PR"
 └── Load git-workflow.md → commit, push, PR
+
+"Prepare for public release"
+└── Load production-ready-check.md → full checklist
 ```
 
 ---

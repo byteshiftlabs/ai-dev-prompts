@@ -21,7 +21,8 @@ Check for:
 3. Clear, descriptive naming for classes, functions, and variables
 4. No monolithic modules — proper separation of concerns
 5. No magic numbers — use named constants
-6. Readable code structure — logical flow, consistent formatting
+6. Prefer string methods over regular expressions where possible
+7. Readable code structure — logical flow, consistent formatting
 
 For each issue:
 - File and location
@@ -44,7 +45,8 @@ Check for:
 1. GNU coding standards compliance (https://www.gnu.org/prep/standards/)
 2. Clear, descriptive naming for structs, functions, and variables
 3. No magic numbers — use #define or const
-4. Readable code structure — consistent indentation, logical grouping
+4. Prefer string functions over regex where possible
+5. Readable code structure — consistent indentation, logical grouping
 
 For each issue:
 - File and location
@@ -67,7 +69,8 @@ Check for:
 1. C++ Core Guidelines compliance (https://isocpp.github.io/CppCoreGuidelines/)
 2. Clear, descriptive naming for classes, methods, and variables
 3. No magic numbers — use constexpr or const
-4. Readable code structure — consistent style, logical organization
+4. Prefer string methods over regex where possible
+5. Readable code structure — consistent style, logical organization
 
 For each issue:
 - File and location
