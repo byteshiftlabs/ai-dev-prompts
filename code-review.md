@@ -45,8 +45,11 @@ Check for:
 1. GNU coding standards compliance (https://www.gnu.org/prep/standards/)
 2. Clear, descriptive naming for structs, functions, and variables
 3. No magic numbers — use #define or const
-4. Prefer string functions over regex where possible
-5. Readable code structure — consistent indentation, logical grouping
+4. No uninitialized variables — initialize at declaration
+5. Declare variables at point of first use — not at the top of the function
+6. Forward declarations only for mutual recursion or top-down file organization of static helpers — never to duplicate extern signatures from headers
+7. Prefer string functions over regex where possible
+8. Readable code structure — consistent indentation, logical grouping
 
 For each issue:
 - File and location
@@ -69,8 +72,11 @@ Check for:
 1. C++ Core Guidelines compliance (https://isocpp.github.io/CppCoreGuidelines/)
 2. Clear, descriptive naming for classes, methods, and variables
 3. No magic numbers — use constexpr or const
-4. Prefer string methods over regex where possible
-5. Readable code structure — consistent style, logical organization
+4. No uninitialized variables — initialize at declaration
+5. Declare variables at point of first use — not at the top of the function
+6. Forward declarations only for mutual recursion or top-down file organization of static helpers — never to duplicate extern signatures from headers
+7. Prefer string methods over regex where possible
+8. Readable code structure — consistent style, logical organization
 
 For each issue:
 - File and location

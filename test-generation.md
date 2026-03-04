@@ -49,3 +49,38 @@ Generate tests for [MODULE] that verify behavior on real hardware across [PLATFO
 - Provide sample input/output when testing domain-specific logic
 - Specify mocking requirements for external dependencies
 - Ask for parameterized tests when testing multiple similar cases
+
+## Verification (Python)
+
+After generating tests, always run them and fix any errors or warnings:
+
+```bash
+# Run tests with verbose output and warnings enabled
+pytest tests/ -v -W default --tb=short
+
+# Or with unittest
+python -m unittest discover -v tests/
+```
+
+### Common Issues to Fix
+
+1. **Tests assume non-existent API**: Read the actual source code to verify method signatures and return types before writing tests
+2. **ResourceWarning (unclosed files)**: Ensure file handlers are closed in teardown or use context managers
+3. **DeprecationWarning**: Update code to use current APIs; add `filterwarnings` in pytest.ini if third-party
+4. **Flaky tests**: Avoid time-dependent assertions, use mocks for external resources
+5. **Missing test fixtures**: Configure git user in temp repos, ensure proper cleanup in teardown
+
+### pytest.ini Example
+
+```ini
+[pytest]
+testpaths = tests
+python_files = test_*.py
+python_classes = Test*
+python_functions = test_*
+addopts = -v --tb=short
+filterwarnings =
+    ignore::DeprecationWarning
+```
+
+Tests must pass with zero warnings before considering them complete.

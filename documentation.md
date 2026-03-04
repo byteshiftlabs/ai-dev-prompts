@@ -88,3 +88,4 @@ Every comment must describe what the code actually does, not what it should do.
 - Include "why" explanations for non-obvious design choices
 - Always keep documentation adjacent to code when possible
 - Keep sections focused: testing goes in tests, architecture in architecture, etc. — do not mix concerns
+- **Platform-specific documentation:** Only include installation commands and instructions for platforms where the software has been tested. Do NOT include sections or commands for other operating systems (e.g., if tested on Ubuntu, do not include macOS, Windows, Fedora/dnf, or other platform instructions)
