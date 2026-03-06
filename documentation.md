@@ -89,3 +89,12 @@ Every comment must describe what the code actually does, not what it should do.
 - Always keep documentation adjacent to code when possible
 - Keep sections focused: testing goes in tests, architecture in architecture, etc. — do not mix concerns
 - **Platform-specific documentation:** Only include installation commands and instructions for platforms where the software has been tested. Do NOT include sections or commands for other operating systems (e.g., if tested on Ubuntu, do not include macOS, Windows, Fedora/dnf, or other platform instructions)
+
+## Keeping README.md and ROADMAP.md in Sync
+
+After implementing changes to source code or documentation, always check whether **README.md** and **ROADMAP.md** need updating:
+
+- **README.md**: Update if the change affects features, requirements, build instructions, project structure, usage examples, or any section that describes current capabilities.
+- **ROADMAP.md**: Update if the change completes a planned item (mark as done), adds new planned work, or changes project direction. If the repository does not have a ROADMAP.md, raise a GitHub issue to track its creation.
+
+This check should happen as part of every commit that introduces functional or documentation changes — not as a separate task after the fact.

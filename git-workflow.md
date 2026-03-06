@@ -72,3 +72,4 @@ Keep all sections brief and factual.
 - One logical change per commit
 - Reference issue numbers when applicable (e.g., "Fixed #123")
 - Apply this format consistently across all byteshiftlabs repositories
+- **Before committing**, check whether README.md or ROADMAP.md need updating to reflect the change (see [documentation.md](documentation.md#keeping-readmemd-and-roadmapmd-in-sync))
