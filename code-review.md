@@ -71,12 +71,18 @@ Review [PROJECT_NAME] for code quality.
 Check for:
 1. C++ Core Guidelines compliance (https://isocpp.github.io/CppCoreGuidelines/)
 2. Clear, descriptive naming for classes, methods, and variables
-3. No magic numbers — use constexpr or const
+3. No magic numbers — use constexpr or const (fix immediately, never defer)
 4. No uninitialized variables — initialize at declaration
 5. Declare variables at point of first use — not at the top of the function
 6. Forward declarations only for mutual recursion or top-down file organization of static helpers — never to duplicate extern signatures from headers
 7. Prefer string methods over regex where possible
 8. Readable code structure — consistent style, logical organization
+9. No shadow variables — local variables must not shadow member functions, outer variables, or parameters
+10. Prefer STL algorithms (std::copy, std::find_if, std::fill) over raw loops where the intent is clearer
+11. Const correctness — references and pointers to read-only data must be const-qualified
+12. Copyright years must be current — update ranges when working in a new calendar year
+13. Prefer `resize()` over `substr(0, n)` for in-place string truncation — avoids unnecessary copy
+14. No abbreviations in identifiers — use full descriptive names (`cartridge` not `cart`, `frequency` not `freq`) unless the abbreviation is universally understood (e.g., `std`, `ptr`, `num`)
 
 For each issue:
 - File and location
@@ -101,8 +107,29 @@ After fixes, commit following git-workflow.md.
 | Naming audit | `Review all identifiers in [PROJECT] for clarity. Rename ambiguous names.` |
 | Imports only | `Organize imports in [FILE]: stdlib → third-party → local, at file top.` |
 
+## Static Analysis (C/C++)
+
+Run static analysis tools as part of every code review, not just at release time:
+```
+cppcheck --inline-suppr --enable=all --suppress=missingIncludeSystem --suppress=unusedFunction -I src/ src/
+```
+
+Common findings to watch for:
+- **shadowVariable / shadowFunction**: Local variable shadows a member function, parameter, or outer variable. Rename the local.
+- **useStlAlgorithm**: Raw loop can be replaced with std::copy, std::find_if, std::fill, etc. Convert when the STL version is clearer.
+- **knownConditionTrueFalse**: Redundant condition (e.g., `x >= 0x10` after a prior block that returns for `x <= 0x0F`). Simplify the condition.
+- **constVariableReference**: Reference to non-modified data should be const.
+- **unusedPrivateFunction**: Dead code — remove it.
+- **performance (substr)**: `str.substr(0, n)` creates a copy — use `str.resize(n)` for in-place truncation.
+
+When a cppcheck finding cannot be cleanly fixed (e.g., loop with side-effect index), use inline suppression with justification:
+```cpp
+// cppcheck-suppress useStlAlgorithm  // offset++ side effect not expressible in std::copy
+```
+
 ## Tips
 
 - Run after every change, major or minor
 - Readable code reduces bugs and speeds up onboarding
 - When in doubt, choose the more explicit option
+- **Fix magic numbers on the go** — never leave bare numeric literals for later. Name them immediately when writing or reviewing code.
