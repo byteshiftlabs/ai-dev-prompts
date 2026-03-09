@@ -41,6 +41,20 @@ Investigate the root cause, explain the issue, and apply the fix.
 Works on [ENV_A] but fails on [ENV_B]. Compare dependencies, configs, and identify the difference.
 ```
 
+### Static analysis findings
+```
+Run static analysis on [PROJECT_NAME] and fix all findings:
+
+cppcheck --inline-suppr --enable=all -I src/ src/
+
+For each finding:
+1. Understand the root cause (shadow variable, redundant condition, const-correctness, etc.)
+2. Fix it properly — do not blindly suppress
+3. If suppression is necessary (e.g., loop with side-effect index), add inline suppression with justification
+4. Rebuild and re-run analysis until zero findings remain
+5. Watch for cascading findings — fixing one condition may reveal the next one is also redundant
+```
+
 ## Tips
 
 - Always include actual error output - don't summarize

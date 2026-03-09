@@ -54,3 +54,11 @@ Implement [TASK] with the minimum amount of code necessary.
 - A focused PR is easier to review than one that "also fixes a few things"
 - When in doubt, do less and ask
 - The best code is code you don't have to write — every line is a liability
+
+## Exceptions: Fix on the Go
+
+Some issues must be fixed immediately when encountered, regardless of current scope:
+
+- **Magic numbers**: Never leave a bare numeric literal for later. Name it with constexpr/const/define at the point of discovery. Accumulating magic numbers creates a cleanup task that grows exponentially harder.
+- **Shadow variables**: Rename immediately — they cause subtle bugs that are hard to trace later.
+- **Copyright years**: Update when you touch a file in a new calendar year.

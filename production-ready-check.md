@@ -308,14 +308,20 @@ Before publishing, verify all items:
 
 ### Code Quality
 - [ ] Passes language-specific linting
+- [ ] Passes static analysis with zero findings (cppcheck, clang-tidy, pylint)
 - [ ] No magic numbers or hardcoded values in function calls
 - [ ] All constants are named and centralized
 - [ ] No ambiguous naming (classes, functions, variables)
+- [ ] No shadow variables (locals must not shadow members, parameters, or outer variables)
 - [ ] Prefer string methods over regex
+- [ ] Prefer STL algorithms over raw loops where intent is clearer
+- [ ] Const-correct: read-only references and pointers are const-qualified
 - [ ] No dead code or unused imports
+- [ ] No dead stub files (TODO-only placeholders with no real logic)
 - [ ] No code duplication (3+ occurrences extracted)
 - [ ] Monolithic modules split (<500 lines each)
 - [ ] Complex logic has comments explaining "why"
+- [ ] Copyright years are current
 
 ### Robustness
 - [ ] Custom exceptions for domain errors
@@ -384,6 +390,12 @@ Build [PROJECT_NAME] under ALL supported configurations and flag combinations:
 - Every conditional compilation path (#ifdef DEBUG, #ifdef TESTING, etc.)
   MUST be compiled and verified — not just the default configuration
 - Build with static analyzer (cppcheck, clang-tidy, pylint, etc.)
+- For C++: run cppcheck --enable=all --inline-suppr and resolve every finding:
+  - Shadow variables (shadowVariable, shadowFunction) — rename locals
+  - Const correctness (constVariableReference) — add const to read-only refs
+  - STL algorithm preference (useStlAlgorithm) — convert or suppress with reason
+  - Redundant conditions (knownConditionTrueFalse) — simplify cascading if-chains
+  - Unused private functions (unusedPrivateFunction) — remove dead code
 - Count: warnings MUST be exactly zero in ALL configurations
 - Count: static analysis findings MUST be exactly zero
   (suppress intentional patterns in a suppressions file with justification)
@@ -408,6 +420,12 @@ Perform a mechanical grep sweep of [PROJECT_NAME] source code:
    - Every write loop MUST have a bounds check preventing overflow.
    - Every strncpy/snprintf MUST clamp length to buffer_size - 1.
    - Every strdup MUST be wrapped in a null-checked helper (e.g., safe_strdup).
+
+3b. VARIABLE SCOPE: Search for variables declared at a wider scope than
+    necessary. Every variable MUST be declared in the narrowest enclosing
+    block where it is used — not hoisted to the function or outer block level.
+    Move loop-body-only variables inside the loop, branch-only variables
+    inside the branch.
 
 4. RETURN VALUE CHECKING: Search for every function call that returns an error
    code or status (e.g., strtol, strtoi, fopen, malloc, strdup). Every call
@@ -440,6 +458,9 @@ Perform a mechanical grep sweep of [PROJECT_NAME] source code:
        or equivalent). Remove or justify each one.
     c. Search for unreachable code paths: if a function always calls exit() or
        returns before reaching a code path, that path is dead.
+    d. Search for stub files that contain only TODO placeholders and no real
+       implementation. Either implement them or remove them entirely —
+       including from ALL build targets (CMakeLists.txt, Makefile, test builds).
 
 11. STALE COMMENTS: Search for comments referencing moved, renamed, or deleted
     functions, files, parameters, or patterns. Cross-reference every comment
@@ -519,8 +540,10 @@ Cross-reference [PROJECT_NAME] documentation against actual code:
 5. LINKS AND URLS: Check every URL, cross-reference, and relative link in all
    documentation files. Dead links are errors.
 
-6. YEAR AND ATTRIBUTION: Verify copyright years are current. Verify author/org
-   names are consistent across LICENSE, README, docs/conf.py, and any headers.
+6. YEAR AND ATTRIBUTION: Verify copyright years are current (e.g., if project
+   started in 2025 and current year is 2026, use "2025-2026"). Verify
+   author/org names are consistent across LICENSE, README, docs/conf.py,
+   and any source file headers. Update all occurrences in a single pass.
 
 7. PATH REFERENCES: Search docs and scripts for hardcoded file paths or location
    comments (e.g., "Location: tools/old/path/"). Verify each matches reality.

@@ -63,6 +63,17 @@ Simplify complex conditional logic in [FILE]:
 - Replace nested if/else with early returns
 - Extract condition checks into named functions
 - Consider lookup tables or polymorphism for switch-like patterns
+- In sequential if-blocks where each block returns, remove redundant lower-bound checks
+  (e.g., if prior block handles x <= 0x07 and returns, the next block's x >= 0x08 is always true)
+```
+
+### Remove dead stubs
+```
+Find and remove dead stub files/code in [PROJECT_OR_MODULE]:
+- Search for files containing only TODO placeholders and no real logic
+- Search for private/static functions never called from anywhere
+- Verify no build targets (CMakeLists.txt, Makefile) reference removed files
+- When removing source files, update ALL build targets (main build AND test builds)
 ```
 
 ### Dependency injection
