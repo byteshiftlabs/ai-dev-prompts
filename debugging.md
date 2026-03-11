@@ -55,6 +55,48 @@ For each finding:
 5. Watch for cascading findings — fixing one condition may reveal the next one is also redundant
 ```
 
+### Memory leak audit (Valgrind)
+```
+Audit [PROJECT_NAME] for memory leaks using Valgrind:
+
+valgrind --leak-check=full --show-leak-kinds=all --error-exitcode=1 ./[BINARY] [ARGS]
+
+For each leak:
+1. Read the allocation stack trace — identify which function allocated and which path failed to free
+2. Fix the leak at the earliest error return that skips cleanup
+3. Re-run Valgrind until "All heap blocks were freed" on both valid and malformed inputs
+4. Test error paths explicitly — most leaks hide in early returns after partial allocation
+
+Test with multiple input classes:
+- Valid inputs (happy path)
+- Malformed inputs (parser/validation error paths)
+- Edge cases (empty files, oversized inputs)
+```
+
+### Memory errors (AddressSanitizer)
+```
+Build [PROJECT_NAME] with AddressSanitizer to detect memory errors at runtime:
+
+cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_C_FLAGS="-fsanitize=address -fno-omit-frame-pointer" -DCMAKE_EXE_LINKER_FLAGS="-fsanitize=address" ..
+
+Or for direct compilation:
+gcc -fsanitize=address -fno-omit-frame-pointer -g -o [BINARY] [SOURCES]
+
+Run the instrumented binary normally — ASan reports errors to stderr on detection:
+./[BINARY] [ARGS]
+
+ASan catches issues Valgrind may miss and vice versa:
+- Heap/stack/global buffer overflows
+- Use-after-free and double-free
+- Stack use after return
+- Memory leaks (with ASAN_OPTIONS=detect_leaks=1)
+
+For each ASan finding:
+1. Read the error type and allocation/deallocation stack traces
+2. Fix the root cause — do not suppress without justification
+3. Rebuild and re-run until zero ASan errors on all input classes
+```
+
 ## Tips
 
 - Always include actual error output - don't summarize
