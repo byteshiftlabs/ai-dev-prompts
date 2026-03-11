@@ -50,6 +50,7 @@ Load what you need from the categories below.
 |--------|-------------|
 | [chain-of-thought.md](chain-of-thought.md) | Step-by-step reasoning for complex problems |
 | [context-management.md](context-management.md) | Control what the AI remembers |
+| [personas.md](personas.md) | Role-based prompts (Linus reviewer, meta-prompting) |
 
 ### 🤖 Project Setup
 | Prompt | When to use |
