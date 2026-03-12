@@ -24,6 +24,9 @@ Load what you need from the categories below.
 | [refactoring.md](refactoring.md) | Restructure without changing behavior |
 | [error-handling.md](error-handling.md) | Design exception patterns and logging |
 | [architecture.md](architecture.md) | Review system structure and dependencies |
+| [data-structure-design.md](data-structure-design.md) | Design structures that eliminate special cases |
+| [api-design.md](api-design.md) | Stable interfaces, backward compatibility |
+| [performance.md](performance.md) | Efficiency guidelines without premature optimization |
 
 ### 🧪 Testing & Debugging
 | Prompt | When to use |
