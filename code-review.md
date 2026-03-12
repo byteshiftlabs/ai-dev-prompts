@@ -99,6 +99,32 @@ After fixes, commit following git-workflow.md.
 - `[PROJECT_NAME]`: Target project or directory
 - `[content-integrity constraint]`: See [content-integrity.md](content-integrity.md)
 
+## Severity Classification
+
+Tag every finding with a severity prefix so fixes can be prioritized:
+
+| Prefix | Severity | Meaning |
+|--------|----------|---------|
+| **B***n* | **Blocker** | Incorrect behavior, data loss, crash, or documentation that actively misleads users. Must be fixed before release. |
+| **S***n* | **Serious** | Won't crash but degrades quality: uninitialized state, dead code paths, missing error propagation, portability hazards. Should be fixed before release. |
+| **M***n* | **Minor** | Style, naming, stale comments, missing docs. Fix when touching the area; acceptable to defer if on a deadline. |
+
+Number findings sequentially within each severity (B1, B2, ..., S1, S2, ..., M1, M2, ...).
+
+**Fix order**: All blockers first (B1 → B*n*), then serious (S1 → S*n*), then minor (M1 → M*n*).
+
+When presenting review results, group findings by severity with a summary table:
+
+```
+| ID | File | Issue | Severity |
+|----|------|-------|----------|
+| B1 | src/core/memory.cpp | Off-by-one in bank switch | Blocker |
+| S1 | src/audio/apu.h | Uninitialized channel members | Serious |
+| M1 | docs/api/index.rst | Stale method name in example | Minor |
+```
+
+This convention ensures reviewers and authors share a common vocabulary and nothing ships with unresolved blockers.
+
 ## Quick Variations
 
 | Use case | Prompt |
