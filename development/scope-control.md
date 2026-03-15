@@ -59,6 +59,6 @@ Implement [TASK] with the minimum amount of code necessary.
 
 Some issues must be fixed immediately when encountered, regardless of current scope:
 
-- **Magic numbers**: Never leave a bare numeric literal for later. Name it with constexpr/const/define at the point of discovery. Accumulating magic numbers creates a cleanup task that grows exponentially harder.
-- **Shadow variables**: Rename immediately — they cause subtle bugs that are hard to trace later.
+- **Magic numbers**: Fix immediately per [code-review.md](code-review.md) — never leave bare literals for later.
+- **Shadow variables**: Rename immediately per [code-review.md](code-review.md) — they cause subtle bugs.
 - **Copyright years**: Update when you touch a file in a new calendar year.

@@ -63,3 +63,65 @@ Review [CODE] and explain:
 - Explicitly asking for reasoning prevents jumping to conclusions
 - Useful for debugging, architecture, and any non-trivial decision
 - "Explain your thinking" catches errors before they become code
+
+---
+
+## Meta-Prompting
+
+Force explicit reasoning before implementation. Catches misunderstandings before wasted effort and surfaces hidden assumptions.
+
+### Prompt
+
+```
+Before writing any code, respond with:
+
+## Understanding
+What I understood from this request:
+
+## Assumptions
+What I'm assuming (that wasn't explicitly stated):
+
+## Questions
+Clarifications I need (if any):
+
+## Approach
+How I plan to implement this:
+
+Wait for my confirmation before proceeding.
+
+---
+
+[TASK]
+```
+
+### Variations
+
+#### Quick meta-check
+```
+[TASK]
+
+Before implementing: What's your interpretation? What could go wrong?
+```
+
+#### Assumption surfacing
+```
+[TASK]
+
+List every assumption you're making. I'll correct any that are wrong before you start.
+```
+
+#### Risk identification
+```
+[TASK]
+
+Before coding, identify:
+1. The trickiest part of this task
+2. Where bugs are most likely to hide
+3. What you're least certain about
+```
+
+### Tips
+
+- Especially valuable for ambiguous or complex requests
+- The 2-minute pause saves hours of rework
+- Combine with a [persona](personas.md) for structured expert reviews

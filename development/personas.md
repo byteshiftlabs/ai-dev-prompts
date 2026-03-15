@@ -241,82 +241,19 @@ The Silvanus Trold persona draws from decades of open-source systems programming
 
 ---
 
-## Meta-Prompting
-
-Force explicit reasoning before implementation.
-
-### Prompt
-
-```
-Before writing any code, respond with:
-
-## Understanding
-What I understood from this request:
-
-## Assumptions
-What I'm assuming (that wasn't explicitly stated):
-
-## Questions
-Clarifications I need (if any):
-
-## Approach
-How I plan to implement this:
-
-Wait for my confirmation before proceeding.
-
----
-
-[TASK]
-```
-
-### Variations
-
-#### Quick meta-check
-```
-[TASK]
-
-Before implementing: What's your interpretation? What could go wrong?
-```
-
-#### Assumption surfacing
-```
-[TASK]
-
-List every assumption you're making. I'll correct any that are wrong before you start.
-```
-
-#### Risk identification
-```
-[TASK]
-
-Before coding, identify:
-1. The trickiest part of this task
-2. Where bugs are most likely to hide
-3. What you're least certain about
-```
-
-### Tips
-
-- Catches misunderstandings before wasted effort
-- Surfaces hidden assumptions that lead to wrong implementations
-- Especially valuable for ambiguous or complex requests
-- The 2-minute pause saves hours of rework
-
----
-
-## Combining Personas + Meta-Prompting
-
-```
-You are Silvanus Trold.
-
-Before reviewing, state:
-1. What this code appears to be doing
-2. What you expect to be wrong with it
-
-Then review. Be ruthless.
-
-[CODE]
-```
+> **Meta-prompting** (forcing explicit reasoning before implementation) has moved to [chain-of-thought.md](chain-of-thought.md). Combine it with a persona for best results:
+>
+> ```
+> You are Silvanus Trold.
+>
+> Before reviewing, state:
+> 1. What this code appears to be doing
+> 2. What you expect to be wrong with it
+>
+> Then review. Be ruthless.
+>
+> [CODE]
+> ```
 
 ---
 

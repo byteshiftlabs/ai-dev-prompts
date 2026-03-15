@@ -41,7 +41,7 @@ Before implementation, sketch:
 With requirements and design in place:
 
 - Follow the design, adapt when reality differs (document why)
-- Build incrementally (see [incremental-development.md](incremental-development.md))
+- Build incrementally (see [incremental-development.md](../development/incremental-development.md))
 - Validate against requirements continuously
 - Refactor design if implementation reveals flaws
 
@@ -128,7 +128,7 @@ Design for testability:
 
 ## Placeholders
 
-- `[content-integrity constraint]`: See [content-integrity.md](content-integrity.md)
+- `[content-integrity constraint]`: See [content-integrity.md](../development/content-integrity.md)
 
 ## Prompt
 
