@@ -12,58 +12,35 @@ Load what you need from the categories below.
 
 ## Prompts by Category
 
-### 🛡️ Foundational Constraints
+### � `setup/` — Project Initialization
 | Prompt | When to use |
 |--------|-------------|
-| [content-integrity.md](content-integrity.md) | Load when factual accuracy matters — recommended for documentation and research tasks |
+| [architecture.md](setup/architecture.md) | Review system structure and dependencies |
+| [dev-principles.md](setup/dev-principles.md) | Establish guiding principles before writing code |
+| [documentation.md](setup/documentation.md) | Generate code documentation and READMEs |
+| [ml-project-bootstrap.md](setup/ml-project-bootstrap.md) | Initialize new ML/research projects |
+| [production-ready-check.md](setup/production-ready-check.md) | Comprehensive checklist before going public |
+| [reproducibility.md](setup/reproducibility.md) | Ensure consistent, reproducible results |
 
-### 🔧 Code Quality
+### 📁 `development/` — During Development
 | Prompt | When to use |
 |--------|-------------|
-| [code-review.md](code-review.md) | Audit code for style, bugs, maintainability |
-| [refactoring.md](refactoring.md) | Restructure without changing behavior |
-| [error-handling.md](error-handling.md) | Design exception patterns and logging |
-| [architecture.md](architecture.md) | Review system structure and dependencies |
-| [data-structure-design.md](data-structure-design.md) | Design structures that eliminate special cases |
-| [api-design.md](api-design.md) | Stable interfaces, backward compatibility |
-| [performance.md](performance.md) | Efficiency guidelines without premature optimization |
-
-### 🧪 Testing & Debugging
-| Prompt | When to use |
-|--------|-------------|
-| [test-generation.md](test-generation.md) | Generate comprehensive test suites |
-| [debugging.md](debugging.md) | Diagnose and fix issues |
-| [reproducibility.md](reproducibility.md) | Ensure consistent, reproducible results |
-
-### 📝 Documentation & Workflow
-| Prompt | When to use |
-|--------|-------------|
-| [documentation.md](documentation.md) | Generate code documentation |
-| [git-workflow.md](git-workflow.md) | Commits, branches, PRs |
-
-### 🚀 Development Process
-| Prompt | When to use |
-|--------|-------------|
-| [task-decomposition.md](task-decomposition.md) | Break complex tasks into steps |
-| [incremental-development.md](incremental-development.md) | Build in small, verified steps |
-| [scope-control.md](scope-control.md) | Stay focused, avoid scope creep |
-
-### 🧠 Reasoning & Context
-| Prompt | When to use |
-|--------|-------------|
-| [chain-of-thought.md](chain-of-thought.md) | Step-by-step reasoning for complex problems |
-| [context-management.md](context-management.md) | Control what the AI remembers |
-| [personas.md](personas.md) | Role-based prompts (Linus reviewer, meta-prompting) |
-
-### 🤖 Project Setup
-| Prompt | When to use |
-|--------|-------------|
-| [ml-project-bootstrap.md](ml-project-bootstrap.md) | Initialize new ML/research projects |
-
-### 📦 Release Preparation
-| Prompt | When to use |
-|--------|-------------|
-| [production-ready-check.md](production-ready-check.md) | Comprehensive checklist before going public |
+| [api-design.md](development/api-design.md) | Stable interfaces, backward compatibility |
+| [chain-of-thought.md](development/chain-of-thought.md) | Step-by-step reasoning and meta-prompting |
+| [code-review.md](development/code-review.md) | Audit code for style, bugs, maintainability |
+| [content-integrity.md](development/content-integrity.md) | Load when factual accuracy matters |
+| [context-management.md](development/context-management.md) | Control what the AI remembers |
+| [data-structure-design.md](development/data-structure-design.md) | Design structures that eliminate special cases |
+| [debugging.md](development/debugging.md) | Diagnose and fix issues |
+| [error-handling.md](development/error-handling.md) | Design exception patterns and logging |
+| [git-workflow.md](development/git-workflow.md) | Commits, branches, PRs |
+| [incremental-development.md](development/incremental-development.md) | Build in small, verified steps |
+| [performance.md](development/performance.md) | Efficiency guidelines without premature optimization |
+| [personas.md](development/personas.md) | Role-based prompts (Linus reviewer, etc.) |
+| [refactoring.md](development/refactoring.md) | Restructure without changing behavior |
+| [scope-control.md](development/scope-control.md) | Stay focused, avoid scope creep |
+| [task-decomposition.md](development/task-decomposition.md) | Break complex tasks into steps |
+| [test-generation.md](development/test-generation.md) | Generate comprehensive test suites |
 
 ---
 
@@ -71,22 +48,22 @@ Load what you need from the categories below.
 
 ```
 "Add feature X"
-└── Load task-decomposition.md → break it down
+└── Load development/task-decomposition.md → break it down
 
 "Let's build it"
-└── Load incremental-development.md → step by step
+└── Load development/incremental-development.md → step by step
 
 "Review this code"
-└── Load code-review.md → audit
+└── Load development/code-review.md → audit
 
 "Write tests"
-└── Load test-generation.md → generate tests
+└── Load development/test-generation.md → generate tests
 
 "Commit and PR"
-└── Load git-workflow.md → commit, push, PR
+└── Load development/git-workflow.md → commit, push, PR
 
 "Prepare for public release"
-└── Load production-ready-check.md → full checklist
+└── Load setup/production-ready-check.md → full checklist
 ```
 
 ---

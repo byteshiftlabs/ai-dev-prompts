@@ -20,7 +20,7 @@ Ensure:
 ## Placeholders
 
 - `[PROJECT_NAME]`: Project to make reproducible
-- `[content-integrity constraint]`: See [content-integrity.md](content-integrity.md)
+- `[content-integrity constraint]`: See [content-integrity.md](../development/content-integrity.md)
 
 ## Variations
 

@@ -65,29 +65,9 @@ Don't optimize a bubble sort. Use the right algorithm.
 
 **Data structure choice determines performance characteristics.**
 
-```
-Access pattern analysis:
+Match data structures to access patterns: sequential → array, keyed lookup → hash table, sorted iteration → tree, priority → heap, FIFO/LIFO → queue/stack.
 
-Sequential access?
-→ Array (cache-friendly, simple)
-
-Random access by key?
-→ Hash table (O(1) average)
-
-Sorted iteration?
-→ Tree or sorted array
-
-Priority-based access?
-→ Heap
-
-FIFO/LIFO?
-→ Queue/Stack
-
-Don't use a linked list when you need random access.
-Don't use an array when you need O(1) insertion in the middle.
-```
-
-See [data-structure-design.md](data-structure-design.md) for detailed guidance.
+See [data-structure-design.md](data-structure-design.md) for detailed guidance on access pattern analysis and the "good taste" design principle.
 
 ### 3. Don't Do Obviously Stupid Things
 
@@ -438,6 +418,6 @@ If you're **not** in one of these domains, optimize for **clarity and correctnes
 ## Related Guides
 
 - [data-structure-design.md](data-structure-design.md) — choosing structures for performance
-- [architecture.md](architecture.md) — system-level performance considerations
+- [architecture.md](../setup/architecture.md) — system-level performance considerations
 - [code-review.md](code-review.md) — reviewing for performance issues
 - [debugging.md](debugging.md) — diagnosing performance problems
