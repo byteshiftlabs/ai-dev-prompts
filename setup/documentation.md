@@ -28,7 +28,7 @@ Be thorough enough that a new developer can understand every aspect of the code.
 
 - `[FILE_OR_MODULE]`: Target code to document
 - `[PROJECT_NAME]`: Project context
-- `[content-integrity constraint]`: See [content-integrity.md](content-integrity.md)
+- `[content-integrity constraint]`: See [content-integrity.md](../development/content-integrity.md)
 
 ## Variations
 
@@ -87,7 +87,7 @@ Every comment must describe what the code actually does, not what it should do.
 - Mark uncertain or incomplete sections with TODO
 - Include "why" explanations for non-obvious design choices
 - Always keep documentation adjacent to code when possible
-- Keep sections focused: testing goes in tests, architecture in architecture, etc. — do not mix concerns
+- Keep sections focused: testing goes in tests, architecture in architecture, etc. — do not mix concerns (see [content-integrity.md](../development/content-integrity.md))
 - **Platform-specific documentation:** Only include installation commands and instructions for platforms where the software has been tested. Do NOT include sections or commands for other operating systems (e.g., if tested on Ubuntu, do not include macOS, Windows, Fedora/dnf, or other platform instructions)
 
 ## Keeping README.md and ROADMAP.md in Sync

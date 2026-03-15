@@ -29,7 +29,7 @@ Create a to-do list and get on with it.
 - `[public/private]`: Repository visibility
 - `[PAPER_TITLE, DOI/URL]`: Reference paper for methodology
 - `[Python X.X, PyTorch/TensorFlow, etc.]`: Preferred tech stack
-- `[content-integrity constraint]`: See [content-integrity.md](content-integrity.md)
+- `[content-integrity constraint]`: See [content-integrity.md](../development/content-integrity.md)
 
 ## Tips
 
