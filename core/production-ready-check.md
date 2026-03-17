@@ -6,7 +6,9 @@ Comprehensive checklist to prepare a software project for public release.
 
 This guide consolidates checks from all development guides before making a project public. Work through each phase sequentially — later phases depend on earlier ones being complete.
 
-**Related guides**: [architecture.md](architecture.md) | [code-review.md](../development/code-review.md) | [error-handling.md](../development/error-handling.md) | [reproducibility.md](reproducibility.md) | [documentation.md](documentation.md) | [test-generation.md](../development/test-generation.md) | [git-workflow.md](../development/git-workflow.md)
+**Related guides**: [architecture.md](../setup/architecture.md) | [code-review.md](../development/code-review.md) | [error-handling.md](../development/error-handling.md) | [reproducibility.md](../setup/reproducibility.md) | [documentation.md](../setup/documentation.md) | [test-generation.md](../development/test-generation.md) | [git-workflow.md](../development/git-workflow.md)
+
+When an AI agent runs this release check, use [exhaustive-review.md](../development/exhaustive-review.md) to create and maintain the findings artifact. This document is the release gate, not the audit protocol.
 
 ---
 
@@ -22,7 +24,7 @@ separation of concerns, fail-fast validation, state minimization,
 module size limits, and clear interfaces.
 ```
 
-See [architecture.md](architecture.md) for the full principle list and prompts.
+See [architecture.md](../setup/architecture.md) for the full principle list and prompts.
 
 ---
 
@@ -37,7 +39,7 @@ Apply structural improvements per refactoring.md.
 Verify separation of concerns per architecture.md §6.
 ```
 
-See [code-review.md](../development/code-review.md) | [refactoring.md](../development/refactoring.md) | [architecture.md](architecture.md)
+See [code-review.md](../development/code-review.md) | [refactoring.md](../development/refactoring.md) | [architecture.md](../setup/architecture.md)
 
 ---
 
@@ -56,7 +58,7 @@ See [error-handling.md](../development/error-handling.md) for custom exceptions,
 ### Fail Fast
 ```
 Verify [PROJECT_NAME] validates early at system boundaries
-per architecture.md §7.
+per ../setup/architecture.md §7.
 ```
 
 ### Edge Cases
@@ -109,7 +111,7 @@ Ensure reproducibility for [PROJECT_NAME] per reproducibility.md.
 Verify all items on its checklist.
 ```
 
-See [reproducibility.md](reproducibility.md) for dependency pinning, environment documentation, and ML seed management.
+See [reproducibility.md](../setup/reproducibility.md) for dependency pinning, environment documentation, and ML seed management.
 
 ---
 
@@ -123,7 +125,7 @@ Generate a production README for [PROJECT_NAME]
 following the template in documentation.md.
 ```
 
-See [documentation.md](documentation.md) for the full README template and inline comment guidelines.
+See [documentation.md](../setup/documentation.md) for the full README template and inline comment guidelines.
 
 ### Content Integrity
 ```
