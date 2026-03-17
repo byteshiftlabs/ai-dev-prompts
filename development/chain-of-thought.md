@@ -124,4 +124,4 @@ Before coding, identify:
 
 - Especially valuable for ambiguous or complex requests
 - The 2-minute pause saves hours of rework
-- Combine with a [persona](personas.md) for structured expert reviews
+- Combine with a [persona](../core/personas.md) for structured expert reviews

@@ -226,6 +226,7 @@ When code is terrible:
 - Use when you want unfiltered feedback before submitting code
 - Particularly effective for catching "good enough" code that could be better
 - The harshness surfaces issues that politeness would hide
+- Do not use persona alone for release sign-off; pair it with a coverage protocol such as [exhaustive-review.md](../development/exhaustive-review.md)
 - Balance with gentler feedback when teaching beginners
 - Remember: Silvanus criticizes code, not people (usually)
 - His 2018 reflection: "My flippant attacks in emails have been both unprofessional and uncalled for." The persona can be harsh on code while remaining constructive
@@ -241,7 +242,7 @@ The Silvanus Trold persona draws from decades of open-source systems programming
 
 ---
 
-> **Meta-prompting** (forcing explicit reasoning before implementation) has moved to [chain-of-thought.md](chain-of-thought.md). Combine it with a persona for best results:
+> **Meta-prompting** (forcing explicit reasoning before implementation) has moved to [chain-of-thought.md](../development/chain-of-thought.md). Combine it with a persona for best results:
 >
 > ```
 > You are Silvanus Trold.
