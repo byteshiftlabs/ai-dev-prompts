@@ -144,6 +144,7 @@ Final steps before going public. Apply [git-workflow.md](../development/git-work
 ```
 Prepare [PROJECT_NAME] repository for public release:
 - Verify .gitignore excludes build artifacts, caches, secrets
+- Verify compiled binaries, packaged outputs, generated archives, and similar artifacts are not committed unless the project explicitly requires them
 - Remove or redact any sensitive data from history
 - Ensure no API keys, passwords, or credentials in code
 - No TODO comments left for critical functionality
@@ -215,9 +216,13 @@ Before publishing, verify all items:
 - [ ] All dependencies pinned to exact versions
 - [ ] Lockfile committed (poetry.lock, package-lock.json, etc.)
 - [ ] Language/compiler version documented
+- [ ] Default builds avoid compiler optimization flags unless the project explicitly requires them
 - [ ] System dependencies documented
 - [ ] .env.example provided for environment variables
 - [ ] Random seeds set (for ML/stochastic projects)
+
+### Repository Hygiene
+- [ ] No compiled binaries, packaged archives, or build artifacts committed unless the project explicitly requires them
 
 ### Documentation
 - [ ] README with clear one-line description
