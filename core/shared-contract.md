@@ -40,6 +40,8 @@ If a rule affects correctness, safety, verification, or repository policy, it be
 For this task, keep the following rules invariant across model families:
 
 - Obey repository constraints and coding standards.
+- Do not add compiler optimization flags unless the project explicitly requires them.
+- Do not commit binaries, build artifacts, generated archives, or similar machine-generated outputs.
 - Use the permitted tools deliberately and verify claims with evidence.
 - Stay within scope unless the user explicitly expands it.
 - Do not claim completion until the requested work and relevant verification are done.
