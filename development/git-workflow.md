@@ -1,6 +1,6 @@
 # Git Workflow
 
-Conventions for commits, branches, and pull requests.
+Conventions for commits, branches, pull requests, and releases.
 
 ## Setup (Required)
 
@@ -65,6 +65,28 @@ Description must include:
 - Testing: How the changes were verified
 
 Keep all sections brief and factual.
+```
+
+## Releases
+
+```
+Use semantic versioning for all tags and GitHub Releases:
+
+- vX.Y.Z for final releases
+- vX.Y.Z-alpha.N, vX.Y.Z-beta.N, or vX.Y.Z-rc.N for pre-releases when needed
+
+Bump rules:
+- Patch (Z): backward-compatible bug fixes, release hardening, CI/tooling fixes, test-only coverage, and documentation corrections
+- Minor (Y): backward-compatible feature additions or meaningful supported-scope expansion
+- Major (X): breaking changes or compatibility resets
+
+Release names and annotated git tags must match exactly.
+Create releases from the merged default branch unless the repository documents a maintenance-branch workflow.
+
+Release notes must include:
+- Summary: what changed and why this version exists
+- Changes: bullet list of user-visible fixes/features
+- Verification: how the release was tested or validated
 ```
 
 ## Tips

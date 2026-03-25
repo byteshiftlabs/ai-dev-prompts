@@ -167,6 +167,19 @@ Prepare release v[X.Y.Z] for [PROJECT_NAME]:
 - Write release notes summarizing changes
 ```
 
+Apply semantic versioning when choosing `X.Y.Z`:
+
+- Patch release (`vX.Y.Z+1`) for backward-compatible bug fixes, release hardening, CI updates, documentation corrections, and test-only coverage improvements
+- Minor release (`vX.Y+1.0`) for backward-compatible feature additions or meaningful expansion of supported behavior
+- Major release (`vX+1.0.0`) for breaking changes, incompatible defaults, removed APIs, or changed compatibility guarantees
+- Optional pre-releases may use `vX.Y.Z-alpha.N`, `vX.Y.Z-beta.N`, or `vX.Y.Z-rc.N` before the final `vX.Y.Z` tag
+
+Release naming rules:
+
+- Use the exact same version string for the annotated git tag and the GitHub Release title
+- Create releases from the merge commit on the default branch unless the repository explicitly documents a maintenance-branch workflow
+- Release notes should group changes under at least: Summary, Changes, and Verification
+
 ---
 
 ## Final Checklist
