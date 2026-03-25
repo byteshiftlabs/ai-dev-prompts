@@ -10,6 +10,8 @@ This guide consolidates checks from all development guides before making a proje
 
 When an AI agent runs this release check, use [exhaustive-review.md](../development/exhaustive-review.md) to create and maintain the findings artifact. This document is the release gate, not the audit protocol.
 
+For byteshiftlabs repositories, audit findings artifacts are local working files only. Do not commit or push them. If a findings file needs to be shared, stop and ask the user before proceeding.
+
 ---
 
 ## Phase 1: Architecture Review
@@ -155,6 +157,8 @@ Prepare [PROJECT_NAME] repository for public release:
 ### Git Hygiene
 ```
 Review git history per git-workflow.md.
+
+Before opening a PR, verify the PR creator is assigned to it and that the correct existing label(s) are applied. If no suitable label exists, suggest creating one and wait for user approval before continuing.
 ```
 
 See [git-workflow.md](../development/git-workflow.md) for commit message format, branch naming, and PR conventions.

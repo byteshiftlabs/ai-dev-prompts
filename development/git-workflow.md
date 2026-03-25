@@ -59,6 +59,11 @@ Examples (using byteshiftlabs standard labels):
 ```
 PR titles follow the same format as commit messages (past participle).
 
+When creating a PR:
+- Assign the PR creator to the PR
+- Apply the proper existing GitHub label(s)
+- If no suitable label exists, suggest creating a new label and wait for user approval before proceeding
+
 Description must include:
 - Summary: What was changed and why
 - Changes: Bullet list of specific modifications
@@ -94,4 +99,5 @@ Release notes must include:
 - One logical change per commit
 - Reference issue numbers when applicable (e.g., "Fixed #123")
 - Apply this format consistently across all byteshiftlabs repositories
+- Audit findings files must stay local and must not be pushed to byteshiftlabs repositories
 - **Before committing**, check whether README.md or ROADMAP.md need updating to reflect the change (see [documentation.md](documentation.md#keeping-readmemd-and-roadmapmd-in-sync))
