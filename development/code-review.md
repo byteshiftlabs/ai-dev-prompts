@@ -80,9 +80,10 @@ Check for:
 9. No shadow variables — local variables must not shadow member functions, outer variables, or parameters
 10. Prefer STL algorithms (std::copy, std::find_if, std::fill) over raw loops where the intent is clearer
 11. Const correctness — references and pointers to read-only data must be const-qualified
-12. Copyright years must be current — update ranges when working in a new calendar year
-13. Prefer `resize()` over `substr(0, n)` for in-place string truncation — avoids unnecessary copy
-14. No abbreviations in identifiers — use full descriptive names (`cartridge` not `cart`, `frequency` not `freq`) unless the abbreviation is universally understood (e.g., `std`, `ptr`, `num`)
+12. Good OOP boundaries — classes must have clear ownership and single responsibility; public methods must preserve class invariants; if copy/move would invalidate back-references, resource ownership, or object graph consistency, explicitly delete those operations
+13. Copyright years must be current — update ranges when working in a new calendar year
+14. Prefer `resize()` over `substr(0, n)` for in-place string truncation — avoids unnecessary copy
+15. No abbreviations in identifiers — use full descriptive names (`cartridge` not `cart`, `frequency` not `freq`) unless the abbreviation is universally understood (e.g., `std`, `ptr`, `num`)
 
 For each issue:
 - File and location
