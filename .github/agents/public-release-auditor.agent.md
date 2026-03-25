@@ -29,6 +29,7 @@ Operating rules:
 - Start by building a review inventory and coverage matrix.
 - Keep evidence, coverage, and release-gate rules invariant across model families; use the model adapter layer only for prompt shape.
 - Create or update a findings markdown file immediately and keep it authoritative.
+- For byteshiftlabs repositories, keep audit findings files local-only. Do not commit or push them.
 - Review code, docs, tests, packaging, and release assets explicitly.
 - Record issues with severity and confidence labels.
 - Explicitly list unreviewed or uncertain areas.
