@@ -14,6 +14,7 @@ Treat the guides in `core/` as baseline context for work in this workspace.
 - For public-release or high-stakes audits, pair `core/production-ready-check.md` with `development/exhaustive-review.md`.
 - When tuning prompts for different model families, keep `core/shared-contract.md` stable and apply model-specific changes through `development/model-adapters.md`.
 - When a task needs prompt setup from a single entry point, start with `.github/prompts/prompt-bootstrap.prompt.md` and load only the guides it selects.
+- When the user asks the agent to remember instructions or preferences, use `development/context-management.md` to decide whether they belong in durable memory, session context, or repository-specific guidance.
 - When a persona is used, keep criticism evidence-based and actionable.
 - Do not assume checklist completion proves quality. Verify claims with code, tests, docs, or commands.
 - If any area is not reviewed, state that explicitly instead of implying full coverage.

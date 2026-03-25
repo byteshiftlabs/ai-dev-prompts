@@ -78,6 +78,31 @@ Before adding a model-specific rule, ask:
 
 If the answer to question 1 is yes, keep the rule here.
 
+## Durable User Memory
+
+Treat durable user instructions and preferences as part of the operating contract across sessions.
+
+Store only information that is stable, reusable, and likely to improve future work, such as:
+
+- explicit user preferences about tools, workflow, review style, or output format
+- recurring instructions the user expects to persist across tasks
+- durable environment constraints or approval boundaries the user has stated clearly
+
+Do not store:
+
+- secrets, credentials, tokens, or personal sensitive data
+- task-specific scratch notes, temporary plans, or one-off requests
+- speculative inferences about the user
+- repository facts that belong in repository-scoped instructions instead of user memory
+
+Persist memory only when the instruction is clearly durable:
+
+- the user explicitly asks to remember it
+- the same preference is reinforced across multiple tasks
+- forgetting it would likely cause repeated friction or regressions
+
+If a stored preference is later contradicted or becomes outdated, update or remove it.
+
 ## Usage Pattern
 
 Use this file with:
@@ -86,3 +111,4 @@ Use this file with:
 - `core/production-ready-check.md` for release gating
 - `development/model-adapters.md` when prompt structure needs model-specific tuning
 - `development/prompt-evaluation.md` when deciding whether to split guidance or keep it shared
+- `development/context-management.md` for the workflow that distinguishes session context from durable user memory

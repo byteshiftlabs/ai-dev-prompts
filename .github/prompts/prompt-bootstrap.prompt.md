@@ -27,8 +27,9 @@ Your job is to set up the prompt stack, not to solve the task yet.
 3. Classify the task before loading anything else.
 4. Use the guide-selection matrix below to decide what to load.
 5. Load only the guides relevant to that task from the routing table below.
-6. If the task is ambiguous or high-risk, also load [development/prompt-evaluation.md](../../development/prompt-evaluation.md).
-7. Produce a setup summary and then draft the final task prompt.
+6. If the user wants preferences or instructions remembered across sessions, also load [development/context-management.md](../../development/context-management.md).
+7. If the task is ambiguous or high-risk, also load [development/prompt-evaluation.md](../../development/prompt-evaluation.md).
+8. Produce a setup summary and then draft the final task prompt.
 
 ## Task Classification
 
@@ -52,6 +53,7 @@ Then identify any secondary concerns:
 - high factual-integrity risk
 - multi-stage task
 - public release impact
+- durable user preferences or instructions involved
 - model-specific tuning required
 
 Use one primary task type and as few secondary concerns as possible.
@@ -71,6 +73,7 @@ Use this matrix before the routing table.
 | designing APIs, modules, or structures | `development/api-design.md` or `development/data-structure-design.md`, plus `development/task-decomposition.md` if the work is multi-stage | `development/debugging.md` |
 | writing docs or README material | `setup/documentation.md`, plus `development/content-integrity.md` when accuracy matters | `development/refactoring.md` |
 | commits, branches, or PR hygiene | `development/git-workflow.md` | `development/exhaustive-review.md` |
+| storing or updating durable user instructions or preferences | `core/shared-contract.md`, `development/context-management.md` | unrelated implementation guides |
 | prompt-system design or model tuning | `core/shared-contract.md`, `development/model-adapters.md`, `development/prompt-evaluation.md` | unrelated implementation guides |
 
 ## Overlap And Exclusion Rules
@@ -125,6 +128,7 @@ Select the smallest relevant set of guides.
 
 - Limit scope: [development/scope-control.md](../../development/scope-control.md)
 - Manage task context: [development/context-management.md](../../development/context-management.md)
+- Durable user preferences or remembered instructions: [development/context-management.md](../../development/context-management.md) together with [core/shared-contract.md](../../core/shared-contract.md)
 - Explicit staged reasoning for ambiguous or high-complexity tasks: [development/chain-of-thought.md](../../development/chain-of-thought.md)
 - Break down complex work: [development/task-decomposition.md](../../development/task-decomposition.md)
 - Build incrementally: [development/incremental-development.md](../../development/incremental-development.md)

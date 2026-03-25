@@ -24,6 +24,7 @@ Use the repository as a routed prompt system rather than a flat library of promp
 	- It should identify the primary task type and only a few secondary concerns.
 3. Let the bootstrap choose the minimum relevant guides
 	- It should load the shared contract first, then the model adapter, then only the task-relevant guides.
+   	- If the user asks the agent to remember instructions or preferences, it should route into `development/context-management.md` alongside the shared contract.
 4. Draft the task prompt from the selected guides
 	- Use `.github/prompts/gpt-task-template.prompt.md` for GPT-family models.
 	- Use `.github/prompts/claude-task-template.prompt.md` for Claude-family models.
@@ -70,7 +71,7 @@ Start with the bootstrap and let it justify both selected and excluded guides.
 | [chain-of-thought.md](development/chain-of-thought.md) | Step-by-step reasoning and meta-prompting |
 | [code-review.md](development/code-review.md) | Audit code for style, bugs, maintainability |
 | [content-integrity.md](development/content-integrity.md) | Load when factual accuracy matters |
-| [context-management.md](development/context-management.md) | Control what the AI remembers |
+| [context-management.md](development/context-management.md) | Control session context and decide when durable user preferences should be remembered |
 | [data-structure-design.md](development/data-structure-design.md) | Design structures that eliminate special cases |
 | [debugging.md](development/debugging.md) | Diagnose and fix issues |
 | [error-handling.md](development/error-handling.md) | Design exception patterns and logging |
