@@ -44,7 +44,7 @@ Workspace custom agents live under `.github/agents/` and can orchestrate the pro
 | [error-handling.md](development/error-handling.md) | Design exception patterns and logging |
 | [exhaustive-review.md](development/exhaustive-review.md) | Coverage-driven review protocol for high-recall audits |
 | [fix-and-recheck.prompt.md](development/fix-and-recheck.prompt.md) | Consume an audit findings file, fix issues in severity order, and recheck |
-| [git-workflow.md](development/git-workflow.md) | Commits, branches, PRs |
+| [git-workflow.md](development/git-workflow.md) | Commits, branches, PRs, and release/versioning conventions |
 | [incremental-development.md](development/incremental-development.md) | Build in small, verified steps |
 | [performance.md](development/performance.md) | Efficiency guidelines without premature optimization |
 | [public-release-audit.prompt.md](development/public-release-audit.prompt.md) | Ready-to-run prompt artifact for one-pass public release audits |
