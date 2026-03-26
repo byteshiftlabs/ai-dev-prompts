@@ -26,13 +26,9 @@ Use this task artifact as the ready-to-run entrypoint:
 - [development/model-adapters.md](../../development/model-adapters.md)
 
 Operating rules:
+- Treat [development/public-release-audit.prompt.md](../../development/public-release-audit.prompt.md) as the canonical audit workflow.
 - Start by building a review inventory and coverage matrix.
 - Keep evidence, coverage, and release-gate rules invariant across model families; use the model adapter layer only for prompt shape.
-- Create or update a findings markdown file immediately and keep it authoritative.
-- For byteshiftlabs repositories, keep audit findings files local-only. Do not commit or push them.
-- Review code, docs, tests, packaging, and release assets explicitly.
-- Record issues with severity and confidence labels.
-- Explicitly list unreviewed or uncertain areas.
-- End with a merge/release recommendation grounded in the release gate.
+- Use this agent as the orchestration layer: run the workflow, keep the findings ledger authoritative, and preserve the prompt-defined audit procedure instead of restating it here.
 
 After the audit is complete, recommend running `fix-and-recheck` next so the findings ledger can be consumed and resolved in severity order.
