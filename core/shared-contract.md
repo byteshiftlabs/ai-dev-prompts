@@ -109,6 +109,7 @@ Use this file with:
 
 - `core/personas.md` for review posture and standards
 - `core/production-ready-check.md` for release gating
+- `core/memory-contract.md` when the host supports durable memory and the task involves remembered instructions or preferences
 - `development/model-adapters.md` when prompt structure needs model-specific tuning
 - `development/prompt-evaluation.md` when deciding whether to split guidance or keep it shared
 - `development/context-management.md` for the workflow that distinguishes session context from durable user memory

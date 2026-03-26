@@ -10,6 +10,7 @@ It is organized so you can:
 - start from one entry point
 - load only the guidance needed for the task
 - keep shared rules stable across model families
+- handle memory explicitly when the host supports durable memory
 - reuse specialist agents for audits, prompt tuning, and findings-ledger fixes
 
 ## How To Use This Repo
@@ -20,17 +21,18 @@ Use it like this:
 
 1. Start with [prompt-bootstrap.prompt.md](.github/prompts/prompt-bootstrap.prompt.md) unless you already know the exact workflow file you need.
 2. Keep [core/shared-contract.md](core/shared-contract.md) as the stable rules layer. It should define the invariant standards for verification, scope, and tool use.
-3. Add [development/model-adapters.md](development/model-adapters.md) only when the prompt needs to be shaped differently for a model family such as GPT or Claude.
-4. Load one task workflow from [development](development) or [setup](setup) based on the job:
+3. If the task involves remembered instructions or user preferences, check whether the host actually supports durable memory. When it does, use [core/memory-contract.md](core/memory-contract.md) together with [development/context-management.md](development/context-management.md).
+4. Add [development/model-adapters.md](development/model-adapters.md) only when the prompt needs to be shaped differently for a model family such as GPT or Claude.
+5. Load one task workflow from [development](development) or [setup](setup) based on the job:
 	- use [development/debugging.md](development/debugging.md) for root-cause debugging
 	- use [development/code-review.md](development/code-review.md) for normal review work
 	- use [development/test-generation.md](development/test-generation.md) for tests
 	- use [development/git-workflow.md](development/git-workflow.md) for commits, PRs, and releases
 	- use [core/production-ready-check.md](core/production-ready-check.md) when release readiness is the goal
-5. Use the task templates in [.github/prompts](.github/prompts) when you already know the target model family and want a ready prompt wrapper:
+6. Use the task templates in [.github/prompts](.github/prompts) when you already know the target model family and want a ready prompt wrapper:
 	- [gpt-task-template.prompt.md](.github/prompts/gpt-task-template.prompt.md)
 	- [claude-task-template.prompt.md](.github/prompts/claude-task-template.prompt.md)
-6. Use the specialist agents in [.github/agents](.github/agents) when the job is broader than a single prompt and needs orchestration across multiple steps:
+7. Use the specialist agents in [.github/agents](.github/agents) when the job is broader than a single prompt and needs orchestration across multiple steps:
 	- [public-release-auditor.agent.md](.github/agents/public-release-auditor.agent.md)
 	- [fix-and-recheck.agent.md](.github/agents/fix-and-recheck.agent.md)
 	- [prompt-evaluator.agent.md](.github/agents/prompt-evaluator.agent.md)
@@ -39,6 +41,7 @@ Use it like this:
 Practical rule of thumb:
 - use the bootstrap when you want routing
 - use the shared contract when you want stable rules
+- use the memory contract with context-management when the host can actually persist memory across sessions
 - use a development or setup guide when you know the task
 - use a prompt template when you know the model family
 - use an agent when the work needs a dedicated multi-step workflow
@@ -53,6 +56,8 @@ Start with [core/shared-contract.md](core/shared-contract.md).
 
 This is the invariant layer. It holds the rules that should stay stable across tasks and model families, such as verification standards, scope control, and tool discipline.
 
+When the host supports durable memory, [core/memory-contract.md](core/memory-contract.md) extends this layer with rules for what to remember, what not to remember, and how to separate user memory from session or repository memory.
+
 ### 2. Model Adapter Layer
 
 Use [development/model-adapters.md](development/model-adapters.md) when the wording or structure should change for a model family without changing the underlying rules.
@@ -64,6 +69,7 @@ This layer is for model-specific shaping, not for changing the task requirements
 Load the task-specific guide from [development](development) or [setup](setup).
 
 Examples:
+- [development/context-management.md](development/context-management.md) for session context and memory decisions
 - [development/debugging.md](development/debugging.md) for debugging
 - [development/code-review.md](development/code-review.md) for review work
 - [development/test-generation.md](development/test-generation.md) for tests
@@ -97,7 +103,7 @@ Use an agent when you need orchestration. Use a prompt when you need a focused s
 ## Repository Layout
 
 - [core](core): cross-cutting rules and release gates
-- [development](development): task-specific workflows for coding, reviews, tests, debugging, git, and audits
+- [development](development): task-specific workflows for coding, reviews, tests, debugging, context and memory handling, git, and audits
 - [setup](setup): project setup, architecture, documentation, and reproducibility guidance
 - [.github/prompts](.github/prompts): entry prompts and model-family templates
 - [.github/agents](.github/agents): specialist agent definitions
