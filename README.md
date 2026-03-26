@@ -17,6 +17,9 @@ It is organized so you can:
 
 Treat this repository as a routed system, not a flat pile of prompt files.
 
+Do not load everything by default.
+Prefer one compact context bundle per task.
+
 Use it like this:
 
 1. Start with [prompt-bootstrap.prompt.md](.github/prompts/prompt-bootstrap.prompt.md) unless you already know the exact workflow file you need.
@@ -37,6 +40,29 @@ Use it like this:
 	- [fix-and-recheck.agent.md](.github/agents/fix-and-recheck.agent.md)
 	- [prompt-evaluator.agent.md](.github/agents/prompt-evaluator.agent.md)
 	- [model-adapter-designer.agent.md](.github/agents/model-adapter-designer.agent.md)
+
+### Context Load Order
+
+If you are passing files as context on purpose, use this order:
+
+1. Start with [prompt-bootstrap.prompt.md](.github/prompts/prompt-bootstrap.prompt.md).
+	It decides what should be loaded next.
+2. Pass [core/shared-contract.md](core/shared-contract.md).
+	This establishes the invariant rules before any model-specific or task-specific guidance is added.
+3. Pass [development/model-adapters.md](development/model-adapters.md) only if the active model family needs adapter guidance.
+	This comes after the shared contract because it may shape presentation, but it should not change the core rules.
+4. If the task involves remembered instructions or user preferences, decide whether the host supports durable memory.
+	- If yes, pass [core/memory-contract.md](core/memory-contract.md) and then [development/context-management.md](development/context-management.md).
+	- If no, pass [development/context-management.md](development/context-management.md) without the memory contract and treat the information as session-only.
+5. Pass the one primary task workflow file from [development](development) or [setup](setup).
+	This should be the main procedure for the task.
+6. If needed, pass a small number of secondary workflow files that the bootstrap selected.
+	Do not add extra guides just because they seem related.
+7. Only after the guide set is settled, pass the model-specific prompt wrapper from [.github/prompts](.github/prompts) or a specialist agent from [.github/agents](.github/agents).
+
+In short, the loading sequence is:
+
+`bootstrap -> shared contract -> optional memory/context layer -> optional model adapter -> primary task workflow -> secondary supporting guides if needed -> prompt template or specialist agent`
 
 Practical rule of thumb:
 - use the bootstrap when you want routing
