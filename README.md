@@ -23,26 +23,8 @@ Use it first to decide which guide files belong in the real task context.
 Do not load everything by default.
 Prefer one compact context bundle per task.
 
-Use it like this:
-
-1. Start with [prompt-bootstrap.prompt.md](.github/prompts/prompt-bootstrap.prompt.md) unless you already know the exact workflow file you need.
-2. Keep [core/shared-contract.md](core/shared-contract.md) as the stable rules layer. It should define the invariant standards for verification, scope, and tool use.
-3. If the task involves remembered instructions or user preferences, check whether the host actually supports durable memory. When it does, use [core/memory-contract.md](core/memory-contract.md) together with [development/context-management.md](development/context-management.md).
-4. Add [development/model-adapters.md](development/model-adapters.md) only when the prompt needs to be shaped differently for a model family such as GPT or Claude.
-5. Load one task workflow from [development](development) or [setup](setup) based on the job:
-	- use [development/debugging.md](development/debugging.md) for root-cause debugging
-	- use [development/code-review.md](development/code-review.md) for normal review work
-	- use [development/test-generation.md](development/test-generation.md) for tests
-	- use [development/git-workflow.md](development/git-workflow.md) for commits, PRs, and releases
-	- use [core/production-ready-check.md](core/production-ready-check.md) when release readiness is the goal
-6. Use the task templates in [.github/prompts](.github/prompts) when you already know the target model family and want a ready prompt wrapper:
-	- [gpt-task-template.prompt.md](.github/prompts/gpt-task-template.prompt.md)
-	- [claude-task-template.prompt.md](.github/prompts/claude-task-template.prompt.md)
-7. Use the specialist agents in [.github/agents](.github/agents) when the job is broader than a single prompt and needs orchestration across multiple steps:
-	- [public-release-auditor.agent.md](.github/agents/public-release-auditor.agent.md)
-	- [fix-and-recheck.agent.md](.github/agents/fix-and-recheck.agent.md)
-	- [prompt-evaluator.agent.md](.github/agents/prompt-evaluator.agent.md)
-	- [model-adapter-designer.agent.md](.github/agents/model-adapter-designer.agent.md)
+Use the routing flow below to choose the smallest useful guide set for the task.
+The later sections explain what each layer and file group is for.
 
 ### Two-Pass Workflow
 
@@ -97,23 +79,14 @@ In short, the loading sequence is:
 
 When using the two-pass workflow above, this README belongs to the routing pass and the files in this load order belong to the execution pass.
 
-Practical rule of thumb:
-- use the bootstrap when you want routing
-- use the shared contract when you want stable rules
-- use the memory contract with context-management when the host can actually persist memory across sessions
-- use a development or setup guide when you know the task
-- use a prompt template when you know the model family
-- use an agent when the work needs a dedicated multi-step workflow
-
 ## Prompt And Agent Layers
 
-The repository is meant to be used in layers.
+The repository is organized into layers. Use this section as a map of what each layer is for, not as a second loading procedure.
 
 ### 1. Shared Rules Layer
 
-Start with [core/shared-contract.md](core/shared-contract.md).
-
-This is the invariant layer. It holds the rules that should stay stable across tasks and model families, such as verification standards, scope control, and tool discipline.
+The invariant layer is [core/shared-contract.md](core/shared-contract.md).
+It holds the rules that should stay stable across tasks and model families, such as verification standards, scope control, and tool discipline.
 
 When the host supports durable memory, [core/memory-contract.md](core/memory-contract.md) extends this layer with rules for what to remember, what not to remember, and how to separate user memory from session or repository memory.
 
@@ -125,7 +98,7 @@ This layer is for model-specific shaping, not for changing the task requirements
 
 ### 3. Task Workflow Layer
 
-Load the task-specific guide from [development](development) or [setup](setup).
+Choose the task-specific guide from [development](development) or [setup](setup).
 
 Examples:
 - [development/context-management.md](development/context-management.md) for session context and memory decisions
@@ -139,13 +112,13 @@ This layer tells the agent what kind of work to do and how to do it.
 
 ### 4. Prompt Entry Layer
 
-Use the files under [.github/prompts](.github/prompts) when you want a ready entry point.
+Use the files under [.github/prompts](.github/prompts) when you want a ready prompt wrapper around the selected guide set.
 
 - [prompt-bootstrap.prompt.md](.github/prompts/prompt-bootstrap.prompt.md) is the main router
 - [gpt-task-template.prompt.md](.github/prompts/gpt-task-template.prompt.md) is the GPT-family task template
 - [claude-task-template.prompt.md](.github/prompts/claude-task-template.prompt.md) is the Claude-family task template
 
-This layer is the wrapper that turns the selected guidance into a concrete prompt.
+This layer turns the selected guidance into a concrete prompt.
 
 ### 5. Specialist Agent Layer
 
