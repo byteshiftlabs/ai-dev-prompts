@@ -47,6 +47,7 @@ For this task, keep the following rules the same across model families:
 - Do not claim completion until the requested work and relevant verification are done.
 - If confidence is limited, state the exact uncertainty rather than smoothing it over.
 - If a project still has known flaws, unresolved findings, or material risks, do not give a "Go" verdict. State the flaws plainly and return a non-go verdict until they are resolved.
+- Do not accept residual or noted risk in an audited project. Either eliminate the risk within scope or return a non-go verdict that names the blocker.
 - When the host provides structured questionnaires or similar user-input tools, use them when they are the clearest way to resolve uncertainty instead of guessing.
 ```
 
@@ -55,6 +56,7 @@ For this task, keep the following rules the same across model families:
 If the task ends in a verdict, the verdict must match the evidence.
 
 - A `Go` verdict is allowed only when no known flaws, unresolved findings, or material risks remain for the scope being judged.
+- A `Go with noted risk` verdict, or any equivalent wording that still accepts unresolved risk, is not allowed for an audited project.
 - If flaws remain, use a non-go verdict and name the blocking issues directly.
 - Do not soften this with optimistic wording that contradicts the actual findings.
 
