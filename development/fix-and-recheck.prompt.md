@@ -1,14 +1,17 @@
 ---
-mode: ask
-description: "Use after an audit findings file exists. Fix issues in severity order, update the findings ledger in place, add missing tests, and re-run the audit or targeted verification before closing items."
+agent: "agent"
+description: "Use after an audit findings file exists. Fix issues in severity order, update the findings file in place, add missing tests, and re-run the audit or targeted verification before closing items."
 tools:
-  - codebase
-  - edits
+   - read
+   - search
+   - edit
+   - execute
+   - todo
 ---
 
 # Fix And Recheck
 
-Consume an existing audit findings file, resolve issues in priority order, and update the same ledger with current status.
+Consume an existing audit findings file, resolve issues in priority order, and update the same file with current status.
 
 ## Inputs
 
@@ -56,9 +59,9 @@ Requirements:
 
 Rules:
 - Do not skip to minor cleanup while blocker or serious issues remain open.
-- Do not silently change issue numbering unless you also update the ledger consistently.
+- Do not silently change issue numbering unless you also update the findings file consistently.
 - Do not mark an item fixed without evidence from code, tests, docs, or commands.
-- Preserve unresolved items in the ledger; do not delete them to make the file look clean.
+- Preserve unresolved items in the findings file; do not delete them to make the file look clean.
 - If new issues are discovered during fixes, append them with the next available severity ID.
 - For byteshiftlabs repositories, keep the findings file local-only and do not commit or push it.
 - If the workflow includes opening a PR, assign the PR creator and apply the correct existing label(s). If no suitable label exists, suggest creating one and wait for user approval before proceeding.
@@ -75,7 +78,7 @@ OPTIONAL_PERSONA: Use Silvanus Trold for standards and bluntness, but keep the f
 
 ## Expected Output Characteristics
 
-- The findings ledger remains the single source of truth
+- The findings file remains the single source of truth
 - Issues are closed in severity order, not convenience order
 - Every closed item has evidence
 - Recheck results are written back into the same file

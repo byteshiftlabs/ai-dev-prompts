@@ -1,6 +1,6 @@
 # Refactoring
 
-Structural code improvements without changing external behavior.
+Improve code structure without changing external behavior.
 
 ## Prompt
 
@@ -18,7 +18,7 @@ Goals:
 Before any changes:
 1. Identify current issues (coupling, duplication, complexity)
 2. Propose the refactoring approach
-3. Confirm approach before proceeding
+3. Confirm the approach before proceeding when the user asked for review first or the change is large
 
 After refactoring, verify behavior is unchanged.
 ```
@@ -86,7 +86,7 @@ Refactor [MODULE] to use dependency injection:
 
 ## Tips
 
-- Refactor in small, verified steps — not all at once
+- Refactor in small, verified steps instead of one large rewrite
 - Run tests after each change to catch regressions early
-- Commit each logical refactoring step separately
-- If no tests exist, write them before refactoring
+- Keep each logical refactoring step separate
+- If no tests exist and behavior must stay stable, add them before refactoring

@@ -2,8 +2,8 @@
 
 Control what context is provided to maximize efficiency and relevance.
 
-This file governs session context first.
-If the host also supports durable memory, use it together with [core/memory-contract.md](../core/memory-contract.md).
+This file is mainly about session context.
+If the host also supports memory, use it together with [core/memory-contract.md](../core/memory-contract.md).
 
 ## Prompt
 
@@ -50,14 +50,89 @@ For [TASK], I'm providing only:
 Do not assume knowledge of other files in the project.
 ```
 
+## Long-Session Control
+
+Long sessions accumulate noise.
+
+When the host supports session controls such as compaction, reset, rewind, interruption, or checkpoint summaries, use them deliberately instead of letting stale context pile up.
+
+### Interruption
+
+Interrupt the assistant when it is:
+
+- exploring the wrong area
+- repeating a failed approach
+- drifting beyond scope
+- about to perform an unwanted action
+
+After interruption, restate the active task boundary in one or two lines.
+
+### Session compaction
+
+When the conversation contains useful context but too much low-value history, create a compact session summary and continue from that smaller state.
+
+Good summary contents:
+
+- current task
+- decisions already made
+- relevant constraints
+- open problems
+- completed verification
+
+Bad summary contents:
+
+- every failed attempt in detail
+- stale hypotheses that were already disproven
+- broad unrelated repository exploration notes
+
+### Rewind or branch reset
+
+If the host supports rewinding or jumping back in conversation state, use it when a long detour has polluted the session and the earlier state was cleaner.
+
+Do not rely on rewind as a substitute for explicit summaries. Use it to discard bad branches, not to avoid making decisions.
+
+### Hard reset
+
+When switching to a materially different task, reset the active session context rather than dragging old assumptions forward.
+
+After a reset, restate:
+
+- the new task
+- the relevant files or repository
+- the constraints that still apply
+
+### Checkpoint summaries
+
+For long tasks, create short checkpoints at major transitions.
+
+Useful checkpoint moments:
+
+- after exploration and before implementation
+- after implementation and before verification
+- before switching subprojects or repositories
+- before and after a release or audit pass
+
+## Host Control Rule
+
+Do not name host-specific commands unless the task or repository actually requires them.
+
+Describe the control behavior generically first:
+
+- interrupt current output
+- compact session history
+- reset task context
+- rewind to an earlier clean state
+
+Then map that behavior to the host only if the host capability is known.
+
 ## Durable Preference Workflow
 
-When managing context, separate session context from durable user memory.
+When managing context, separate session context from user memory.
 
-Persist to durable memory only after the work is clear enough to classify:
+Write to memory only after the information is clear enough to classify:
 
 - store explicit user preferences about tools, communication style, output shape, or recurring workflow constraints
-- store stable cross-task instructions that should still apply in a future session
+- store stable cross-task instructions that should still apply later
 - do not store active task state, temporary assumptions, repo-specific facts, or unresolved guesses
 
 Memory decision test:
@@ -75,7 +150,7 @@ Good times to persist:
 - after a repeated correction reveals a stable preference
 - at the end of a task when a reusable instruction has been confirmed
 
-Good examples of durable memory:
+Good examples of saved user memory:
 
 - "Do not use GitKraken for my repos"
 - "Use plain English in commit messages"
@@ -95,13 +170,13 @@ Do not persist examples like:
 - "We are halfway through the release checklist"
 - speculative guesses about what the user might prefer
 
-When in doubt, keep it in session context first and persist only after durability is evident.
+When in doubt, keep it in session context first and persist only after stability is clear.
 
 ## Host Capability Rule
 
-Only use durable memory if the host actually supports writing and later retrieving it.
+Only use memory if the host actually supports writing it and retrieving it later.
 
-If durable memory is unavailable:
+If memory support is unavailable:
 
 - keep the instruction in the current session context
 - mention that cross-session persistence depends on the host runtime
@@ -113,5 +188,7 @@ If durable memory is unavailable:
 - Load context incrementally as needed
 - When switching tasks, explicitly reset or summarize
 - For long sessions, periodically confirm shared understanding
+- Interrupt early when drift is obvious; it is cheaper than recovering later
+- Prefer compact checkpoint summaries over carrying full chat history forever
 - Keep persistent constraints (like content-integrity) always active
-- Use durable memory for confirmed cross-task user preferences, not for temporary task state
+- Use memory for confirmed cross-task preferences, not for temporary task state

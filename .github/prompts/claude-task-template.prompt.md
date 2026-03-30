@@ -1,6 +1,6 @@
 ---
 name: "Claude Task Template"
-description: "Use after the bootstrap step to draft a Claude-oriented task prompt with clean grouping, low redundancy, and relevant guidance only."
+description: "Use after the bootstrap step to draft a Claude-oriented task prompt with clear grouping, low redundancy, and only the guidance that matters."
 agent: "agent"
 argument-hint: "Describe the task, project context, and selected guides"
 tools:
@@ -9,7 +9,7 @@ tools:
 
 # Claude Task Template
 
-Draft a task prompt for a Claude-family model.
+Draft a task prompt for a Claude model.
 
 Use these references:
 
@@ -22,10 +22,10 @@ Requirements:
 1. Start with the invariant rules from the shared contract.
 2. Group related constraints instead of scattering them.
 3. Keep the prompt clear, compact, and low in redundancy.
-4. State the exact mechanical requirements once, plainly.
+4. State exact mechanical requirements once, in plain language.
 5. Include only the guides selected by the bootstrap step.
 6. Avoid instruction collisions caused by repeated or overlapping reminders.
-7. Keep verification concrete even when the prompt framing is high-level.
+7. Keep verification concrete even when the task framing is high-level.
 
 Output structure:
 

@@ -1,6 +1,6 @@
 ---
 name: model-adapter-designer
-description: "Use when designing or revising GPT and Claude prompt adapters without forking the whole agent stack or changing shared contract rules."
+description: "Use when designing or revising GPT and Claude prompt adapters without forking the full instruction set or changing shared contract rules."
 tools:
   - read
   - search
@@ -22,10 +22,10 @@ Use these files as the baseline guidance:
 Operating rules:
 
 - Keep the shared contract unchanged unless the issue is clearly not adapter-specific.
-- Tune wording, grouping, sequencing, and redundancy level only.
-- Do not fork a workflow prompt unless the same workflow repeatedly fails after adapter changes.
-- Explain the failure mode that motivated each adapter change.
-- Preserve task-specific logic in workflow prompts rather than moving it into the adapter.
+- Change wording, grouping, sequencing, and redundancy level only.
+- Do not split a task guide by model unless the same guide keeps failing after adapter changes.
+- Explain the failure mode behind each adapter change.
+- Keep task-specific logic in task guides instead of moving it into the adapter.
 
 Output format:
 

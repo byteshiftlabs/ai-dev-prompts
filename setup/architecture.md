@@ -1,10 +1,10 @@
 # Architecture
 
-Lightweight architecture principles for maintainable, scalable projects.
+Use lightweight architecture principles to keep projects maintainable and scalable.
 
 ## Core Principle
 
-**Good architecture makes change easy.** If adding a feature requires modifying many unrelated files, the architecture needs work.
+**Good architecture makes change easier.** If adding a feature requires modifying many unrelated files, the architecture needs work.
 
 ---
 
@@ -34,7 +34,7 @@ Before implementation, sketch:
 - **Error handling**: Where can things fail? How do we recover?
 - **Testability**: Can each component be tested in isolation?
 
-**Output**: A rough diagram or written description of the structure. Doesn't need to be formal — a text outline or sketch is enough.
+**Output**: A rough diagram or written description of the structure. It does not need to be formal. A text outline or sketch is enough.
 
 ### Phase 3: Implementation
 
@@ -154,6 +154,6 @@ For each violation:
 ## Tips
 
 - Architecture is about trade-offs, not perfection
-- Start simple, refactor when pain points emerge
+- Start simple and refactor when pain points appear
 - Document architectural decisions and their rationale
 - When in doubt, favor clarity over cleverness

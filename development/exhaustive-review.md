@@ -165,12 +165,12 @@ Write all findings to [OUTPUT_MD_FILE].
 No review surface may be omitted without being listed under "Unreviewed Or Uncertain Areas".
 ```
 
-### PR Audit With Findings Artifact
+### PR Audit With Findings File
 
 ```
 Review this PR in one structured pass.
 Do not only comment inline.
-Create or update [OUTPUT_MD_FILE] with a severity-ranked findings ledger,
+Create or update [OUTPUT_MD_FILE] with a severity-ranked findings file,
 a coverage matrix, and an ordered fix plan.
 ```
 
@@ -191,5 +191,5 @@ a coverage matrix, and an ordered fix plan.
 - The coverage matrix is the key mechanism: it prevents silent omission.
 - Require explicit “no findings” statements per review surface.
 - Require confidence labels so speculative comments do not masquerade as confirmed bugs.
-- Require a findings artifact from the start, not as an afterthought.
-- For large repos, review by subsystem and keep the artifact cumulative.
+- Require a findings file from the start, not as an afterthought.
+- For large repos, review by subsystem and keep the file cumulative.

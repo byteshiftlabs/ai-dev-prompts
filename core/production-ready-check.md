@@ -4,13 +4,13 @@ Comprehensive checklist to prepare a software project for public release.
 
 ## Overview
 
-This guide consolidates checks from all development guides before making a project public. Work through each phase sequentially — later phases depend on earlier ones being complete.
+This guide consolidates the checks needed before making a project public. Work through the phases in order because later phases depend on earlier ones.
 
 **Related guides**: [architecture.md](../setup/architecture.md) | [code-review.md](../development/code-review.md) | [error-handling.md](../development/error-handling.md) | [reproducibility.md](../setup/reproducibility.md) | [documentation.md](../setup/documentation.md) | [test-generation.md](../development/test-generation.md) | [git-workflow.md](../development/git-workflow.md)
 
-When an AI agent runs this release check, use [exhaustive-review.md](../development/exhaustive-review.md) to create and maintain the findings artifact. This document is the release gate, not the audit protocol.
+When an AI agent runs this release check, use [exhaustive-review.md](../development/exhaustive-review.md) to create and maintain the findings file. This document is the release gate, not the audit procedure.
 
-For byteshiftlabs repositories, audit findings artifacts are local working files only. Do not commit or push them. If a findings file needs to be shared, stop and ask the user before proceeding.
+For byteshiftlabs repositories, audit findings files are local working files only. Do not commit or push them. If a findings file needs to be shared, stop and ask the user before proceeding.
 
 ---
 
@@ -140,7 +140,7 @@ See [content-integrity.md](../development/content-integrity.md).
 
 ## Phase 7: Release Preparation
 
-Final steps before going public. Apply [git-workflow.md](../development/git-workflow.md).
+These are the final steps before going public. Apply [git-workflow.md](../development/git-workflow.md).
 
 ### Repository Cleanup
 ```
@@ -263,13 +263,13 @@ Before publishing, verify all items:
 
 ## Tips
 
-- Work through phases in order — don't skip ahead
-- Each phase should result in a commit
+- Work through the phases in order
+- Record progress clearly; commit at suitable checkpoints when that matches the repository workflow
 - Get a fresh perspective: have someone else try the Quick Start
-- The "works on my machine" problem is real — test on clean environments
-- Less is more: remove features that aren't ready rather than shipping incomplete work
+- Test on a clean environment, not only on the development machine
+- Remove features that are not ready rather than shipping incomplete work
 - If adding a feature requires modifying many unrelated files, the architecture needs work
-- A focused release is better than a feature-complete mess
+- A focused release is better than an oversized release that is not ready
 
 ---
 

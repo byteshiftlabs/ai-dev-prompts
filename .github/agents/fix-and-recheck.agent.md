@@ -1,6 +1,6 @@
 ---
 name: fix-and-recheck
-description: "Use after an audit findings file exists. Consumes the findings ledger, fixes issues in blocker-serious-minor order, updates the ledger in place, adds missing tests, and rechecks changed areas."
+description: "Use after an audit findings file exists. Consumes the findings file, fixes issues in blocker-serious-minor order, updates the file in place, adds missing tests, and rechecks changed areas."
 tools:
   - read
   - search
@@ -29,4 +29,4 @@ Operating rules:
 - Treat [development/fix-and-recheck.prompt.md](../../development/fix-and-recheck.prompt.md) as the canonical fix workflow.
 - Treat the existing findings markdown file as authoritative.
 - Keep the shared contract stable; if model-specific tuning is needed, apply it through the adapter layer rather than rewriting the workflow rules here.
-- Use this agent as the orchestration layer: coordinate the workflow, keep progress visible, and hand execution back to the prompt-defined procedure.
+- Use this agent as the coordination layer: coordinate the workflow, keep progress visible, and hand execution back to the prompt-defined procedure.

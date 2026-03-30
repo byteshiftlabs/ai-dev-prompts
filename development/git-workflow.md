@@ -17,8 +17,8 @@ Verify with: git config --list
 ## Commit Messages
 
 ```
-Use past participle for all commit messages. Be brief, clear, and concise.
-List each change with a hyphen.
+Use past participle for all commit messages. Keep them brief, clear, and specific.
+List grouped changes with hyphen bullets when a multi-line message is needed.
 
 Examples:
 - Added user authentication module
@@ -96,8 +96,8 @@ Release notes must include:
 
 ## Tips
 
-- One logical change per commit
-- Reference issue numbers when applicable (e.g., "Fixed #123")
-- Apply this format consistently across all byteshiftlabs repositories
+- Keep one logical change per commit
+- Reference issue numbers when applicable (for example, `Fixed #123`)
+- Apply this format consistently across byteshiftlabs repositories unless a repository documents different rules
 - Audit findings files must stay local and must not be pushed to byteshiftlabs repositories
-- **Before committing**, check whether README.md or ROADMAP.md need updating to reflect the change (see [documentation.md](documentation.md#keeping-readmemd-and-roadmapmd-in-sync))
+- Before committing, check whether README.md or ROADMAP.md need updating to reflect the change. See [documentation.md](documentation.md#keeping-readmemd-and-roadmapmd-in-sync).

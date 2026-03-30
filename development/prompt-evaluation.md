@@ -6,7 +6,7 @@ Use small, repeatable evaluations to decide what should stay shared and what sho
 
 Prompt tuning without evaluation turns into folklore.
 
-Use this guide to compare prompt layers across models, isolate failure modes, and decide whether a change belongs in the shared contract, a model adapter, or a task workflow.
+Use this guide to compare prompt layers across models, isolate failure modes, and decide whether a change belongs in the shared contract, a model adapter, or a task guide.
 
 ## Evaluation Rule
 

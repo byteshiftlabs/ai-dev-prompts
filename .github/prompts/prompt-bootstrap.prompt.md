@@ -12,7 +12,7 @@ tools:
 
 Use this file as the master entry point before generating a task-specific prompt.
 
-Your job is to set up the prompt stack, not to solve the task yet.
+Your job is to choose the right guide set, not to solve the task yet.
 
 ## Inputs
 
@@ -20,18 +20,18 @@ Your job is to set up the prompt stack, not to solve the task yet.
 - `PROJECT_CONTEXT`: repository, stack, constraints, and current state
 - `MODEL_FAMILY`: target model family, for example GPT or Claude
 
-## Required Setup Order
+## Setup Order
 
 1. Read [core/shared-contract.md](../../core/shared-contract.md) first.
 2. Read [development/model-adapters.md](../../development/model-adapters.md) second.
 3. Classify the task before loading anything else.
 4. Use the guide-selection matrix below to decide what to load.
 5. Load only the guides relevant to that task from the routing table below.
-6. If the task involves remembered instructions, user preferences, or memory behavior, first determine whether the host actually supports durable memory.
-7. If the host supports durable memory and the task involves remembered instructions or preferences, also load [core/memory-contract.md](../../core/memory-contract.md) and [development/context-management.md](../../development/context-management.md).
-8. If the host does not support durable memory but the task still involves remembered instructions or preferences, load [development/context-management.md](../../development/context-management.md) and treat the information as session context unless the runtime provides a persistence mechanism.
+6. If the task involves remembered instructions or user preferences, decide whether the host actually supports memory.
+7. If the host supports memory, also load [core/memory-contract.md](../../core/memory-contract.md) and [development/context-management.md](../../development/context-management.md).
+8. If the host does not support memory but the task still involves remembered instructions or preferences, load [development/context-management.md](../../development/context-management.md) and treat the information as session context.
 9. If the task is ambiguous or high-risk, also load [development/prompt-evaluation.md](../../development/prompt-evaluation.md).
-10. Produce a setup summary and then draft the final task prompt.
+10. Produce a short setup summary and then draft the final task prompt.
 
 ## Task Classification
 
@@ -43,6 +43,7 @@ Classify the request into one primary task type before selecting guides:
 - code review
 - release audit
 - test generation
+- host integration
 - architecture or design
 - documentation
 - repository workflow
@@ -55,7 +56,7 @@ Then identify any secondary concerns:
 - high factual-integrity risk
 - multi-stage task
 - public release impact
-- durable user preferences or instructions involved
+- remembered preferences or instructions involved
 - model-specific tuning required
 
 Use one primary task type and as few secondary concerns as possible.
@@ -72,10 +73,14 @@ Use this matrix before the routing table.
 | reviewing code quality in normal development | `development/code-review.md` | `development/exhaustive-review.md` unless recall and coverage are the main goal |
 | auditing for release readiness or maximum recall | `development/exhaustive-review.md`, `core/production-ready-check.md` | `development/code-review.md` as the primary review protocol |
 | generating or improving tests | `development/test-generation.md` | `development/public-release-audit.prompt.md` |
+| configuring the assistant host, runtime, instruction files, or support checks | `development/host-integration.md`, plus memory guides if remembered instructions are involved | unrelated implementation guides |
+| designing or reviewing hooks and automated feedback loops | `development/hooks.md`, plus `development/host-integration.md` when host support needs verification | unrelated implementation guides |
+| designing reusable command workflows | `development/commands.md`, plus `development/host-integration.md` when host support needs verification | unrelated implementation guides |
+| extending the assistant with external tools, browser automation, notebooks, or CI integrations | `development/tool-extension.md`, plus `development/host-integration.md` | unrelated implementation guides |
 | designing APIs, modules, or structures | `development/api-design.md` or `development/data-structure-design.md`, plus `development/task-decomposition.md` if the work is multi-stage | `development/debugging.md` |
 | writing docs or README material | `setup/documentation.md`, plus `development/content-integrity.md` when accuracy matters | `development/refactoring.md` |
 | commits, branches, or PR hygiene | `development/git-workflow.md` | `development/exhaustive-review.md` |
-| storing or updating durable user instructions or preferences in a memory-capable host | `core/shared-contract.md`, `core/memory-contract.md`, `development/context-management.md` | unrelated implementation guides |
+| storing or updating saved user instructions or preferences in a host with memory support | `core/shared-contract.md`, `core/memory-contract.md`, `development/context-management.md` | unrelated implementation guides |
 | storing or updating remembered instructions when the host is not memory-capable | `core/shared-contract.md`, `development/context-management.md` | unrelated implementation guides |
 | prompt-system design or model tuning | `core/shared-contract.md`, `development/model-adapters.md`, `development/prompt-evaluation.md` | unrelated implementation guides |
 
@@ -86,7 +91,7 @@ Use these rules to resolve common collisions:
 ### Code Review vs Exhaustive Review
 
 - Use [development/code-review.md](../../development/code-review.md) for normal quality review, maintainability review, or targeted cleanup.
-- Use [development/exhaustive-review.md](../../development/exhaustive-review.md) when the goal is high recall, explicit coverage accounting, a findings ledger, or release readiness.
+- Use [development/exhaustive-review.md](../../development/exhaustive-review.md) when the goal is thorough coverage, explicit review accounting, a findings file, or release readiness.
 - Do not load both by default.
 - Load both only when the task explicitly needs normal code-quality criteria and exhaustive coverage protocol together.
 
@@ -131,8 +136,12 @@ Select the smallest relevant set of guides.
 
 - Limit scope: [development/scope-control.md](../../development/scope-control.md)
 - Manage task context: [development/context-management.md](../../development/context-management.md)
-- Durable user preferences or remembered instructions in a memory-capable host: [core/memory-contract.md](../../core/memory-contract.md), [development/context-management.md](../../development/context-management.md), and [core/shared-contract.md](../../core/shared-contract.md)
-- Remembered instructions when the host is not memory-capable: [development/context-management.md](../../development/context-management.md) together with [core/shared-contract.md](../../core/shared-contract.md)
+- Configure the assistant host/runtime: `development/host-integration.md`
+- Design or review hooks: `development/hooks.md`
+- Design reusable commands: `development/commands.md`
+- Add external or extended tools: `development/tool-extension.md`
+- Remembered instructions in a host with memory support: [core/memory-contract.md](../../core/memory-contract.md), [development/context-management.md](../../development/context-management.md), and [core/shared-contract.md](../../core/shared-contract.md)
+- Remembered instructions in a host without memory support: [development/context-management.md](../../development/context-management.md) together with [core/shared-contract.md](../../core/shared-contract.md)
 - Explicit staged reasoning for ambiguous or high-complexity tasks: [development/chain-of-thought.md](../../development/chain-of-thought.md)
 - Break down complex work: [development/task-decomposition.md](../../development/task-decomposition.md)
 - Build incrementally: [development/incremental-development.md](../../development/incremental-development.md)
@@ -156,7 +165,7 @@ Select the smallest relevant set of guides.
 ### Release and workflow tasks
 
 - Public release audit artifact: [development/public-release-audit.prompt.md](../../development/public-release-audit.prompt.md)
-- Fix from findings ledger: [development/fix-and-recheck.prompt.md](../../development/fix-and-recheck.prompt.md)
+- Fix from findings file: [development/fix-and-recheck.prompt.md](../../development/fix-and-recheck.prompt.md)
 - Git and commit workflow: [development/git-workflow.md](../../development/git-workflow.md)
 
 ### Project setup tasks
