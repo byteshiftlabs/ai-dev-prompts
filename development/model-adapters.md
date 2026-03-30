@@ -1,18 +1,18 @@
 # Model Adapters
 
-Tune prompt shape by model family without forking the full agent stack.
+Adjust prompt structure by model family without rewriting the whole system.
 
 ## Purpose
 
 Use this guide when the same workflow behaves differently across model families.
 
-Keep the shared contract stable. Change only the prompt shape, instruction ordering, and redundancy level needed to improve reliability for the active model.
+Keep the shared contract stable. Change only the prompt structure, instruction order, and repetition level needed to improve reliability for the active model.
 
 ## Adapter Strategy
 
 Apply model-specific tuning only in a thin adapter layer.
 
-Do not rewrite task workflows unless evaluation shows that the workflow itself is the problem.
+Do not rewrite task guides unless evaluation shows that the guide itself is the problem.
 
 ## Shared Baseline
 
@@ -20,13 +20,13 @@ These rules should remain shared unless evidence proves otherwise:
 
 - safety and policy boundaries
 - repository constraints
-- tool-use permissions
+- tool permissions
 - required verification
 - stop conditions and completion criteria
 
 ## GPT-Family Adapter
 
-GPT-family models usually respond well to explicit operational structure.
+GPT-family models usually respond well to explicit structure.
 
 Prefer:
 
@@ -38,7 +38,7 @@ Prefer:
 
 Watch for:
 
-- overfitting to literal wording
+- following wording too literally
 - excessive compliance text in the final answer
 - rigid behavior when too many overlapping rules are present
 
@@ -56,20 +56,19 @@ For this model family:
 
 ## Claude-Family Adapter
 
-Claude-family models usually benefit from cleaner grouping and less duplicated instruction pressure.
+Claude-family models usually benefit from cleaner grouping and less repeated instruction.
 
 Prefer:
 
-- semantically grouped rules
+- related rules grouped together
 - fewer repeated constraints
 - concise but explicit scope boundaries
 - higher-level framing followed by a short execution pattern
 
 Watch for:
 
-- smoothing over precise operational rules when the instruction stack is noisy
-- following the spirit of a rule while missing a required mechanical detail
-- answering elegantly without showing enough concrete verification
+- following the general idea while missing a specific mechanical requirement
+- giving a polished answer without enough concrete verification
 
 Recommended adjustments:
 
@@ -111,7 +110,7 @@ Task workflow:
 
 ## Common Mistakes
 
-- Forking the whole prompt stack after one bad run
+- Forking the whole instruction set after one bad run
 - Encoding style preferences as if they were safety rules
 - Adding more reminders instead of removing conflicting ones
 - Treating model folklore as evidence

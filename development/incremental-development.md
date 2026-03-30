@@ -1,6 +1,6 @@
 # Incremental Development
 
-Build software in small, verified steps rather than large leaps.
+Build software in small, verified steps instead of large leaps.
 
 ## Prompt
 
@@ -29,11 +29,11 @@ Do not move to the next step until the current one is confirmed working.
 ### Data pipeline
 ```
 Build the data pipeline for [PROJECT] in stages:
-1. Data download/access — verify data is retrievable
+1. Data download or access — verify data is retrievable
 2. Data loading — verify data loads correctly
 3. Preprocessing — verify transformations are correct
 4. Feature extraction — verify features match expectations
-5. Output/storage — verify results are saved properly
+5. Output or storage — verify results are saved properly
 
 Test each stage independently before connecting them.
 ```
@@ -53,7 +53,7 @@ Verify each step before proceeding.
 
 ## Tips
 
-- Smaller steps = easier debugging when something breaks
-- "Works on my machine" after each step, not just at the end
-- If a step is too big, break it down further
-- Commit messages should reflect the incremental progress
+- Smaller steps make debugging easier when something breaks
+- Verify each step as you go, not only at the end
+- If a step is too big, break it down again
+- Commit messages should reflect the actual incremental progress

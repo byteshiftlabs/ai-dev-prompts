@@ -1,6 +1,6 @@
 # Documentation
 
-Generate thorough, detailed documentation while maintaining factual accuracy.
+Generate thorough documentation while keeping it factual and relevant.
 
 ## Prompt
 
@@ -21,7 +21,7 @@ Include:
 - Data flow explanation
 - Edge cases and limitations
 
-Be thorough enough that a new developer can understand every aspect of the code.
+Be clear enough that a new developer can understand the code and work safely in it.
 ```
 
 ## Placeholders
@@ -34,7 +34,7 @@ Be thorough enough that a new developer can understand every aspect of the code.
 
 ### README generation
 
-This is the recommended template for all byteshiftlabs repositories. Adapt sections as needed for your project.
+This is the recommended template for byteshiftlabs repositories. Adapt sections as needed for the project.
 
 ```
 Generate a README for [PROJECT_NAME] following this structure:
@@ -83,12 +83,12 @@ Every comment must describe what the code actually does, not what it should do.
 
 ## Tips
 
-- Prefer over-documenting to under-documenting
-- Mark uncertain or incomplete sections with TODO
+- Prefer enough documentation over sparse documentation, but keep each section focused
+- Mark uncertain or incomplete sections clearly instead of inventing detail
 - Include "why" explanations for non-obvious design choices
 - Always keep documentation adjacent to code when possible
 - Keep sections focused: testing goes in tests, architecture in architecture, etc. — do not mix concerns (see [content-integrity.md](../development/content-integrity.md))
-- **Platform-specific documentation:** Only include installation commands and instructions for platforms where the software has been tested. Do NOT include sections or commands for other operating systems (e.g., if tested on Ubuntu, do not include macOS, Windows, Fedora/dnf, or other platform instructions)
+- **Platform-specific documentation:** Only include installation commands and instructions for platforms where the software has been tested
 
 ## Keeping README.md and ROADMAP.md in Sync
 
@@ -97,4 +97,4 @@ After implementing changes to source code or documentation, always check whether
 - **README.md**: Update if the change affects features, requirements, build instructions, project structure, usage examples, or any section that describes current capabilities.
 - **ROADMAP.md**: Update if the change completes a planned item (mark as done), adds new planned work, or changes project direction. If the repository does not have a ROADMAP.md, raise a GitHub issue to track its creation.
 
-This check should happen as part of every commit that introduces functional or documentation changes — not as a separate task after the fact.
+Do this check as part of every commit that changes functionality or documentation, not as a delayed follow-up task.

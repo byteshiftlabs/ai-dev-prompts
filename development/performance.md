@@ -1,10 +1,10 @@
 # Performance
 
-Avoid obviously stupid inefficiency without premature optimization.
+Avoid obvious inefficiency without drifting into premature optimization.
 
 ## Core Principle
 
-**Don't write stupid code.** But also don't waste time optimizing things that don't matter. Most performance problems come from choosing wrong algorithms or data structures, not from missing micro-optimizations.
+**Avoid obvious inefficiency.** Also avoid spending time on optimizations that do not matter. Most performance problems come from poor algorithm or data-structure choices, not from missing micro-optimizations.
 
 ## Prompt
 
@@ -14,7 +14,7 @@ Review [CODE_OR_DESIGN] for performance issues in [PROJECT_NAME].
 Focus on:
 - Algorithm choice (O COMPLEXITY)
 - Data structure access patterns
-- Obviously stupid inefficiency (reading byte-by-byte, excessive allocations, etc.)
+- Clear inefficiencies such as byte-at-a-time I/O or excessive allocation
 - I/O patterns (batching, buffering)
 
 Do NOT focus on:
@@ -71,7 +71,7 @@ See [data-structure-design.md](data-structure-design.md) for detailed guidance o
 
 ### 3. Don't Do Obviously Stupid Things
 
-**Some inefficiencies are inexcusable. These are always wrong:**
+**Some inefficiencies are wrong regardless of profile data:**
 
 #### Byte-at-a-Time I/O
 ```c
@@ -344,7 +344,7 @@ for (int row = 0; row < rows; row++) {
 
 ## Red Flags
 
-**These patterns almost always indicate a problem:**
+**These patterns usually indicate a real problem:**
 
 ```
 🚩 Loop with file I/O inside
@@ -363,7 +363,7 @@ for (int row = 0; row < rows; row++) {
 **Wrong.** Use the **appropriate** structure. A simple array is often faster than a fancy tree for small datasets. Complexity matters more for large data.
 
 ### "Premature optimization is the root of all evil"
-**True, but misunderstood.** This doesn't mean "write stupid code." It means don't micro-optimize before you know where the bottleneck is. **Do** choose the right algorithm and avoid obvious inefficiency.
+**True, but often misunderstood.** It does not mean "ignore efficiency." It means do not micro-optimize before you know where the bottleneck is. You should still choose the right algorithm and avoid obvious waste.
 
 ### "The compiler will optimize it"
 **Sometimes.** Don't write obviously bad code expecting the compiler to fix it. Also, the compiler can't fix wrong algorithm choice.
@@ -376,14 +376,14 @@ for (int row = 0; row < rows; row++) {
 
 ## Tips
 
-- **Think about complexity.** O(n²) is fine for n=100, disaster for n=100,000.
-- **Profile before optimizing.** You're probably wrong about where the bottleneck is.
-- **Optimize the hot path.** 90% of time is spent in 10% of code. Focus there.
-- **Start simple.** Simple array beats fancy tree for small datasets.
-- **Batch I/O operations.** Never read/write one byte at a time.
-- **Reuse allocations.** Allocation is expensive. Reuse buffers when possible.
-- **Measure the improvement.** If optimization doesn't show measurable improvement, revert it.
-- **Readability matters.** Don't sacrifice clarity for 5% speedup unless profiling proves it matters.
+- Think about complexity. O(n²) may be fine for small inputs and unacceptable for large ones.
+- Profile before optimizing. Bottlenecks are often not where people first expect them.
+- Optimize the hot path instead of spreading effort evenly.
+- Start simple. A simple array is often better than a complex structure for small datasets.
+- Batch I/O operations. Do not read or write one byte at a time.
+- Reuse allocations when possible.
+- Measure the improvement. If the change does not help, remove it.
+- Readability still matters. Do not trade clarity for a tiny speedup without evidence.
 
 ## Trade-offs
 
@@ -413,7 +413,7 @@ Some domains where performance is critical:
 - Video encoding (hours of CPU time per video)
 - Large-scale services (small improvement × billions of requests = big savings)
 
-If you're **not** in one of these domains, optimize for **clarity and correctness first**, performance second.
+If you are not in one of these domains, optimize for clarity and correctness first, and performance second.
 
 ## Related Guides
 

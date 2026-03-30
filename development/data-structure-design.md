@@ -1,6 +1,6 @@
 # Data Structure Design
 
-Design data structures that eliminate special cases and make algorithms obvious.
+Design data structures that reduce special cases and make algorithms easier to understand.
 
 ## Core Philosophy
 
@@ -18,7 +18,7 @@ Design data structures for [PROBLEM] in [PROJECT_NAME].
 [content-integrity constraint]
 
 Principles:
-- Design around how data will be accessed, not how you think the code should look
+- Design around how data will be accessed, not around a preferred code shape
 - Choose structures that eliminate special cases and edge conditions
 - Prefer simple, direct access patterns over clever indirection
 - Make the common case fast, the rare case correct
@@ -31,7 +31,7 @@ Questions to answer:
 - Is there unnecessary indirection that obscures data flow?
 - Will this structure be cache-friendly if performance matters?
 
-The "good taste" test: Does this design make the algorithm obvious, or does it require special-case handling?
+The "good taste" test: does this design make the algorithm obvious, or does it force repeated special-case handling?
 ```
 
 ## Placeholders
@@ -78,7 +78,7 @@ void remove_entry(entry *entry_to_remove, list *list) {
 }
 ```
 
-The second approach **eliminates the edge case entirely** through better structure handling. This is good taste.
+The second approach removes the edge case through better structure handling. That is the point of this example.
 
 ## Design Checklist
 
@@ -91,7 +91,7 @@ How will this data be used?
 - FIFO/LIFO access → queue/stack
 
 Don't choose a structure based on what you know how to implement.
-Choose based on how it will be used.
+Choose based on how the data will actually be used.
 ```
 
 ### 2. Eliminate Special Cases
@@ -123,7 +123,7 @@ How are structures related?
 - Many-to-many: separate junction table or bidirectional links
 
 Keep relationships minimal and explicit.
-Unnecessary indirection obscures data flow.
+Unnecessary indirection makes data flow harder to follow.
 ```
 
 ### 5. Invariants
@@ -135,7 +135,7 @@ What must always be true?
 - Indices are valid
 
 Design the structure to make invariants easy to maintain.
-If an invariant is hard to maintain, the structure is wrong.
+If an invariant is hard to maintain, reconsider the structure.
 ```
 
 ## Variations

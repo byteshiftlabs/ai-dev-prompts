@@ -1,6 +1,6 @@
 # Test Generation
 
-Generate unit, integration, and platform test suites.
+Generate unit, integration, and platform tests.
 
 ## Prompt
 
@@ -46,9 +46,9 @@ Generate tests for [MODULE] that verify behavior on real hardware across [PLATFO
 
 ## Tips
 
-- Provide sample input/output when testing domain-specific logic
+- Provide sample input and output when testing domain-specific logic
 - Specify mocking requirements for external dependencies
-- Ask for parameterized tests when testing multiple similar cases
+- Ask for parameterized tests when multiple cases follow the same pattern
 
 ## Verification (Python)
 
@@ -83,4 +83,4 @@ filterwarnings =
     ignore::DeprecationWarning
 ```
 
-Tests must pass with zero warnings before considering them complete.
+Do not consider generated tests complete until they pass with zero warnings.

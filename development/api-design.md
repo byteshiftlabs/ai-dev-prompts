@@ -4,7 +4,7 @@ Design stable, user-facing interfaces that minimize breaking changes.
 
 ## Core Principle
 
-Once you ship an API, it's a **contract with your users**. Breaking that contract without overwhelming justification is unacceptable. Design carefully from the start—fixing a bad API later is painful for everyone.
+Once you ship an API, it becomes a contract with your users. Breaking that contract should be rare and well justified. Design carefully from the start because repairing a weak API later is expensive for both maintainers and users.
 
 ## Prompt
 
@@ -40,7 +40,7 @@ Guiding principle: "Make the simple case simple and the complex case possible."
 
 ### 1. Backward Compatibility is Sacred
 
-**Never break existing code without overwhelming justification.**
+**Do not break existing code without a strong reason.**
 
 ```
 Acceptable changes:
@@ -67,7 +67,7 @@ Unacceptable changes:
 
 ### 2. Minimal Interface
 
-**Expose only what users need. Everything exposed is a maintenance burden.**
+**Expose only what users need. Every public detail becomes a maintenance burden.**
 
 ```
 Good: Small, focused API
@@ -85,7 +85,7 @@ Bad: Kitchen-sink API
 
 ### 3. Principle of Least Surprise
 
-**Functions should do what their names suggest, nothing more.**
+**Functions should do what their names suggest and nothing surprising beyond that.**
 
 ```
 Good names:
@@ -103,7 +103,7 @@ Surprising behavior (avoid):
 
 ### 4. Fail Fast and Clearly
 
-**Invalid input should cause immediate, unambiguous errors.**
+**Invalid input should produce immediate, unambiguous errors.**
 
 ```
 Good error handling:
@@ -121,7 +121,7 @@ Bad error handling:
 
 ### 5. Consistency
 
-**Similar operations should work similarly.**
+**Similar operations should work in similar ways.**
 
 ```
 If you have:
@@ -136,7 +136,7 @@ Keep it consistent:
 - create_comment(post_id, author_id, body)
 ```
 
-**Guideline:** Similar names → similar behavior. Use the same patterns throughout your API.
+**Guideline:** Similar names should imply similar behavior. Use the same patterns throughout the API.
 
 ## API Design Checklist
 
@@ -383,11 +383,11 @@ def parse_config(path):
 
 ## Tips
 
-- **Design for your first 3 users, not your next 1000.** Solve real problems, not hypothetical ones.
-- **Write usage examples first.** If the API is awkward to use in examples, redesign before implementing.
-- **Seek feedback early.** Show the API design to users before implementing.
-- **Document behavior, not just signatures.** Users need to know what your function **does**, not just what it takes.
-- **Stability over cleverness.** A boring, stable API is better than a clever, unstable one.
+- Design for real users and real use cases, not hypothetical future abstractions.
+- Write usage examples early. If the API is awkward in examples, redesign it before implementing.
+- Seek feedback before implementation when the API will be public or long-lived.
+- Document behavior, not just signatures. Users need to know what the function does, not only what it accepts.
+- Prefer stable, predictable APIs over clever but fragile ones.
 
 ## Related Guides
 

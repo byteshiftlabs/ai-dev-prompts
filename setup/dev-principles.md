@@ -1,6 +1,6 @@
 # Development Principles
 
-Establish guiding principles for a project before writing code.
+Define project principles before writing code.
 
 ---
 
@@ -13,7 +13,7 @@ Before starting work on [PROJECT_NAME], establish and follow these development p
 2. **Incremental Progress** — small, testable commits. Never combine unrelated changes.
 3. **Documentation First** — explain WHY before implementing. Design decisions and hardware/domain behavior documented inline.
 4. **Test-Driven** — validate with known-good inputs before moving forward.
-5. **Educational Value** — the codebase is a reference implementation for learning.
+5. **Educational Value** — treat the codebase as something another developer should be able to learn from.
 
 Apply these principles to every commit, review, and design decision.
 ```
@@ -61,14 +61,14 @@ Development principles for [PROJECT_NAME]:
 
 ## Tips
 
-- Define principles at project start, not after problems appear
-- Keep the list short (3–8 items) — too many principles means none are followed
+- Define principles at the start, not after avoidable problems appear
+- Keep the list short (3–8 items). If there are too many principles, people stop using them.
 - Principles should be actionable, not aspirational ("test every change" vs "quality matters")
 - Review principles when onboarding new contributors
 - If a principle is routinely violated, either enforce it or remove it
 - Unless the project says otherwise, keep compiler optimization flags out of the default build so debugging and verification stay predictable
 - Do not commit compiled binaries, build outputs, packaged archives, or other generated artifacts
-- Combine with [code-review.md](../development/code-review.md) to verify principles during reviews
+- Combine this with [code-review.md](../development/code-review.md) when checking whether the project follows its own standards
 
 ---
 

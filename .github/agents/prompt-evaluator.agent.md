@@ -1,6 +1,6 @@
 ---
 name: prompt-evaluator
-description: "Use when comparing prompt behavior across model families, classifying failure modes, and deciding what should stay shared versus move into adapters or workflow prompts."
+description: "Use when comparing prompt behavior across model families, classifying failure modes, and deciding what should stay shared versus move into adapters or task guides."
 tools:
   - read
   - search
@@ -20,7 +20,7 @@ Use these files as the baseline guidance:
 
 Operating rules:
 
-- Evaluate recurring failures by layer: shared contract, model adapter, or workflow prompt.
+- Evaluate recurring failures by layer: shared contract, model adapter, or task guide.
 - Prefer evidence from repeated benchmark tasks over anecdotes.
 - Recommend the smallest change that could plausibly fix the failure.
 - Reject changes that add redundancy without improving reliability.

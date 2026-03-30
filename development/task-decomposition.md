@@ -56,7 +56,7 @@ These depend on the above and must come after:
 ## Tips
 
 - Numbered lists are clearer than prose for multi-step work
-- Explicit ordering prevents AI from jumping ahead
-- "Report after each step" gives you checkpoints
+- Explicit ordering reduces the chance of skipping ahead
+- "Report after each step" creates clear checkpoints
 - Decomposition also helps estimate effort and catch missing requirements
-- If unsure how to decompose, ask the AI to propose a breakdown first
+- If the right breakdown is unclear, ask for one before execution starts

@@ -1,6 +1,6 @@
 # Reproducibility
 
-Ensure results can be reproduced by anyone, anywhere, anytime.
+Make results reproducible by other people on other machines.
 
 ## Prompt
 
@@ -38,6 +38,6 @@ Create reproducible environment setup for [PROJECT]:
 
 - `pip freeze > requirements.txt` captures exact versions
 - Use lockfiles (poetry.lock, package-lock.json, Cargo.lock)
-- Document "it works on" environment in README
-- For ML: set seeds at the very start, before any imports if possible
-- Consider containerization (Docker) for complete reproducibility
+- Document the tested environment in the README
+- For ML, set seeds at the start, ideally before imports that create random state
+- Consider containerization (Docker) when full environment reproducibility matters

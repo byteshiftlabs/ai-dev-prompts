@@ -1,6 +1,6 @@
 # Scope Control
 
-Stay focused on the immediate task. Avoid scope creep.
+Stay focused on the immediate task and avoid scope creep.
 
 ## Prompt
 
@@ -12,7 +12,7 @@ Implement [TASK] in [PROJECT_NAME].
 Scope rules:
 - Focus only on what is explicitly requested
 - Do not add features, optimizations, or improvements unless asked
-- If you notice something out of scope that needs attention, note it as a TODO comment or mention it separately — do not implement it
+- If you notice something out of scope that needs attention, note it separately or in a TODO comment. Do not implement it.
 - If the request is ambiguous, ask for clarification rather than expanding scope
 ```
 
@@ -29,7 +29,7 @@ Scope rules:
 Implement ONLY [SPECIFIC_CHANGE] in [FILE].
 Do not modify any other functionality.
 Do not refactor adjacent code.
-Do not add error handling unless it's part of the request.
+Do not add error handling unless it is part of the request.
 ```
 
 ### Scope with notes
@@ -49,16 +49,16 @@ Implement [TASK] with the minimum amount of code necessary.
 
 ## Tips
 
-- "While I'm here..." is the beginning of scope creep
-- Unrelated improvements belong in separate commits/PRs
-- A focused PR is easier to review than one that "also fixes a few things"
+- "While I am here" is the start of scope creep
+- Unrelated improvements belong in separate commits or PRs
+- A focused PR is easier to review than one that also changes adjacent areas
 - When in doubt, do less and ask
-- The best code is code you don't have to write — every line is a liability
+- Every extra line of code increases maintenance cost
 
 ## Exceptions: Fix on the Go
 
 Some issues must be fixed immediately when encountered, regardless of current scope:
 
-- **Magic numbers**: Fix immediately per [code-review.md](code-review.md) — never leave bare literals for later.
-- **Shadow variables**: Rename immediately per [code-review.md](code-review.md) — they cause subtle bugs.
+- **Magic numbers**: Fix immediately per [code-review.md](code-review.md). Do not leave bare literals for later.
+- **Shadow variables**: Rename immediately per [code-review.md](code-review.md). They can cause subtle bugs.
 - **Copyright years**: Update when you touch a file in a new calendar year.
