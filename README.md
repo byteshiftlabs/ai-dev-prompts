@@ -24,34 +24,24 @@ Use one small guide bundle per task.
 
 ### Two-Pass Workflow
 
-Use two passes when you want the model to choose the right guides before it starts the real work.
+Use this repository in two simple steps:
 
-Pass 1, routing:
-- give the user request together with this README
-- let the model choose the smallest useful set of guides
-- treat that pass as setup, not execution
+1. Use this README or the bootstrap prompt to choose the smallest useful set of guides.
+2. Run the real task with only those guides loaded.
 
-Pass 2, execution:
-- keep the original task context if the host preserves it
-- otherwise restate the task briefly and accurately
-- pass the selected guides from pass 1
-- use those guides as the working instructions for the task
-
-Routing rule:
-- run the README routing step once per task
-- run it again only if the task changes in a meaningful way or the earlier setup context is gone
+Do the routing step once per task. Repeat it only if the task changes in a meaningful way or the earlier setup is no longer available.
 
 ### Recommended Order
 
-If you are assembling context by hand, use this order:
+If you are assembling context by hand, keep the order simple:
 
-1. [prompt-bootstrap.prompt.md](.github/prompts/prompt-bootstrap.prompt.md) if you want guided routing
-2. [core/shared-contract.md](core/shared-contract.md)
-3. [core/memory-contract.md](core/memory-contract.md) and [development/context-management.md](development/context-management.md) if memory or session control matters
-4. [development/model-adapters.md](development/model-adapters.md) if model-family tuning matters
-5. one main workflow guide from [development](development) or [setup](setup)
-6. a small number of supporting guides only when they are clearly needed
-7. a prompt template or specialist agent last
+1. start with [prompt-bootstrap.prompt.md](.github/prompts/prompt-bootstrap.prompt.md) or this README
+2. load [core/shared-contract.md](core/shared-contract.md)
+3. add memory or model-adapter guidance only if the task needs it
+4. load one main workflow guide from [development](development) or [setup](setup)
+5. add a prompt template or specialist agent last
+
+The full routing logic lives in [prompt-bootstrap.prompt.md](.github/prompts/prompt-bootstrap.prompt.md).
 
 ## Prompt And Agent Layers
 
@@ -73,15 +63,13 @@ Choose the task-specific guide from [development](development) or [setup](setup)
 
 Examples:
 - [development/context-management.md](development/context-management.md) for session context and memory decisions
-- [development/host-integration.md](development/host-integration.md) for first-use assistant setup, host capability checks, and instruction-file placement
-- [development/hooks.md](development/hooks.md) for pre-tool and post-tool checks and automated feedback
-- [development/commands.md](development/commands.md) for reusable command workflows
-- [development/tool-extension.md](development/tool-extension.md) for external tools, browser automation, notebooks, and CI or GitHub integrations
 - [development/debugging.md](development/debugging.md) for debugging
 - [development/code-review.md](development/code-review.md) for review work
 - [development/test-generation.md](development/test-generation.md) for tests
 - [development/git-workflow.md](development/git-workflow.md) for commits, PRs, and releases
 - [core/production-ready-check.md](core/production-ready-check.md) for release readiness
+
+For host setup, hooks, commands, external tools, and other specialized workflows, see the rest of the files under [development](development).
 
 ### 4. Prompt Entry Layer
 
