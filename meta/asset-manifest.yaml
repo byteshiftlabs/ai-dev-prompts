@@ -9,6 +9,9 @@ packaging_intent:
     consumer explicitly asks for a full archive.
   primary_entrypoints:
     - README.md
+    - meta/CONSUMING.md
+    - meta/asset-manifest.yaml
+    - meta/guide-index.yaml
     - .github/prompts/prompt-bootstrap.prompt.md
   preserve_separation:
     - shared-rules

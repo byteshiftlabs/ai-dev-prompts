@@ -9,6 +9,8 @@ Use these files first:
 - [guide-index.yaml](guide-index.yaml)
 - [../README.md](../README.md)
 
+For tools and packaging flows, the practical entry point is `README.md` plus the `meta/` folder.
+
 ## Simple Consumer Flow
 
 1. Read [../README.md](../README.md) or [../.github/prompts/prompt-bootstrap.prompt.md](../.github/prompts/prompt-bootstrap.prompt.md).
