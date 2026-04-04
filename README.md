@@ -54,6 +54,28 @@ If the consumer is a tool rather than a person, pair this README with the metada
 
 Do the routing step once per task. Repeat it only if the task changes in a meaningful way or the earlier setup is no longer available.
 
+### Worked Example
+
+Task: debug a regression in a Python service after a refactor.
+
+Small bundle:
+- [core/shared-contract.md](core/shared-contract.md)
+- [development/debugging.md](development/debugging.md)
+- [development/context-management.md](development/context-management.md) only if the session is large or memory matters
+- one prompt wrapper only if the host needs it
+
+Why this bundle:
+- the shared contract keeps baseline rules stable
+- the debugging guide gives the task method
+- context guidance is optional support, not default baggage
+
+What not to load:
+- release audit guides
+- ML bootstrap guides
+- specialist agents unless the task expands into a broader workflow
+
+The point is to end up with a task-sized bundle, not the whole repository.
+
 ### Recommended Order
 
 If you are assembling context by hand, keep the order simple:
