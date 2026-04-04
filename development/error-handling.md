@@ -1,3 +1,9 @@
+---
+pack: task-workflows
+summary: Guidance for designing or reviewing clear and reliable error paths.
+tags: [workflow, reliability, errors]
+---
+
 # Error Handling
 
 Use consistent error handling patterns across projects.

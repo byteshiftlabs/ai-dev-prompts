@@ -1,3 +1,9 @@
+---
+pack: core-rules
+summary: Defines when memory is real, what should be stored, and how to separate memory scopes.
+tags: [core, memory, context]
+---
+
 # Memory Contract
 
 Define how an agent should use memory when the host really supports it.

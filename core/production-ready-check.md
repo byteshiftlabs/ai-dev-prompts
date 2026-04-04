@@ -1,3 +1,9 @@
+---
+pack: core-rules
+summary: Release gate guidance for deciding whether work is ready to ship.
+tags: [core, release, gate]
+---
+
 # Production Ready Check
 
 Comprehensive checklist to prepare a software project for public release.

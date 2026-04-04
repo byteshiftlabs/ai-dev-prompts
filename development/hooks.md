@@ -1,3 +1,9 @@
+---
+pack: task-workflows
+summary: Guidance for designing or reviewing automated hooks and feedback loops.
+tags: [workflow, hooks, automation]
+---
+
 # Hooks
 
 Use hooks to react to tool calls and feed clear feedback back into the assistant workflow.

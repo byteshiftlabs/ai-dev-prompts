@@ -1,3 +1,9 @@
+---
+pack: task-workflows
+summary: Keeps factual outputs accurate, bounded, and evidence-based.
+tags: [workflow, accuracy, documentation]
+---
+
 # Content Integrity
 
 Use this constraint when factual accuracy matters.

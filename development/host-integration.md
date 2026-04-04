@@ -1,3 +1,9 @@
+---
+pack: task-workflows
+summary: Covers assistant host setup, runtime support checks, and integration boundaries.
+tags: [workflow, host, integration]
+---
+
 # Host Integration
 
 Configure the assistant for the actual host runtime before doing substantive work.

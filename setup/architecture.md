@@ -1,3 +1,9 @@
+---
+pack: task-workflows
+summary: Guidance for project architecture review and structural design work.
+tags: [setup, architecture, design]
+---
+
 # Architecture
 
 Use lightweight architecture principles to keep projects maintainable and scalable.

@@ -1,3 +1,9 @@
+---
+pack: core-rules
+summary: Stable rules for correctness, safety, scope, verification, and repository policy.
+tags: [core, policy, verification, safety]
+---
+
 # Shared Contract
 
 Define the rules that should stay the same across model families.

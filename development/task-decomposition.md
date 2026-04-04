@@ -1,3 +1,9 @@
+---
+pack: task-workflows
+summary: Breaks multi-stage work into clear subproblems and execution order.
+tags: [workflow, planning, decomposition]
+---
+
 # Task Decomposition
 
 Break complex requests into clear, numbered sub-tasks.

@@ -1,3 +1,9 @@
+---
+pack: task-workflows
+summary: Guidance for making workflows and outputs reproducible.
+tags: [setup, reproducibility, environment]
+---
+
 # Reproducibility
 
 Make results reproducible by other people on other machines.

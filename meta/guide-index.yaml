@@ -1,0 +1,339 @@
+version: 1
+entrypoints:
+  - path: README.md
+    title: AI Development Prompts
+    kind: readme
+    pack: prompt-routing
+    summary: Starting point for choosing the smallest useful guide bundle for a task.
+    load_when:
+      - a user is new to the repo
+      - a host needs the top-level map before selecting guides
+    avoid_when:
+      - the exact guide set is already known
+    tags: [entrypoint, routing, overview]
+
+guides:
+  - path: core/shared-contract.md
+    title: Shared Contract
+    kind: guide
+    pack: core-rules
+    summary: Stable rules for correctness, safety, scope, verification, and repository policy.
+    load_when: [baseline rules are needed for any task, shared behavior must stay invariant]
+    avoid_when: [you only need task-specific steps and baseline rules are already loaded]
+    tags: [core, policy, verification, safety]
+  - path: core/memory-contract.md
+    title: Memory Contract
+    kind: guide
+    pack: core-rules
+    summary: Defines when memory is real, what should be stored, and how to separate memory scopes.
+    load_when: [the host supports memory, the task involves remembered preferences or repo facts]
+    avoid_when: [the host has no persistent memory support]
+    tags: [core, memory, context]
+  - path: core/personas.md
+    title: Personas
+    kind: guide
+    pack: core-rules
+    summary: Sets review posture and working standards for stricter or more specialized tasks.
+    load_when: [the task needs a defined review stance or stricter judgment criteria]
+    avoid_when: [default posture is enough]
+    tags: [core, posture, review]
+  - path: core/production-ready-check.md
+    title: Production Ready Check
+    kind: guide
+    pack: core-rules
+    summary: Release gate guidance for deciding whether work is ready to ship.
+    load_when: [release readiness or final go-no-go judgment matters]
+    avoid_when: [early implementation work with no release decision]
+    tags: [core, release, gate]
+
+  - path: development/api-design.md
+    title: API Design
+    kind: guide
+    pack: task-workflows
+    summary: Helps design APIs with clear contracts, compatibility, and maintainable boundaries.
+    load_when: [designing interfaces, evaluating API shape, planning breaking changes]
+    avoid_when: [debugging runtime failures]
+    tags: [workflow, design, api]
+  - path: development/chain-of-thought.md
+    title: Structured Reasoning
+    kind: guide
+    pack: task-workflows
+    summary: Adds explicit staged reasoning for ambiguous or high-complexity tasks.
+    load_when: [the task is ambiguous, high-risk, or needs explicit trade-off analysis]
+    avoid_when: [straightforward edits where concise execution matters more]
+    tags: [workflow, reasoning, ambiguity]
+  - path: development/code-review.md
+    title: Code Review
+    kind: guide
+    pack: task-workflows
+    summary: Review process for normal quality, correctness, maintainability, and targeted cleanup.
+    load_when: [reviewing code quality in normal development]
+    avoid_when: [maximum-recall release audits are needed]
+    tags: [workflow, review, quality]
+  - path: development/commands.md
+    title: Commands
+    kind: guide
+    pack: task-workflows
+    summary: Guidance for reusable command workflows and command-driven host integrations.
+    load_when: [designing command workflows or assistant command patterns]
+    avoid_when: [the task is not command-oriented]
+    tags: [workflow, commands, host]
+  - path: development/content-integrity.md
+    title: Content Integrity
+    kind: guide
+    pack: task-workflows
+    summary: Keeps factual outputs accurate, bounded, and evidence-based.
+    load_when: [producing docs, audits, release notes, or factual explanations]
+    avoid_when: [routine local code edits with no factual output]
+    tags: [workflow, accuracy, documentation]
+  - path: development/context-management.md
+    title: Context Management
+    kind: guide
+    pack: task-workflows
+    summary: Helps manage session context, remembered information, and context boundaries.
+    load_when: [context is large, memory decisions matter, or the host has persistence]
+    avoid_when: [small self-contained tasks]
+    tags: [workflow, context, memory]
+  - path: development/data-structure-design.md
+    title: Data Structure Design
+    kind: guide
+    pack: task-workflows
+    summary: Helps choose and shape data structures for correctness and maintainability.
+    load_when: [designing schemas, object models, or data layout]
+    avoid_when: [pure documentation or release workflow tasks]
+    tags: [workflow, design, data]
+  - path: development/debugging.md
+    title: Debugging
+    kind: guide
+    pack: task-workflows
+    summary: Structured process for reproducing issues, finding root cause, and applying fixes.
+    load_when: [tracing bugs, regressions, environment differences, or runtime errors]
+    avoid_when: [the goal is refactoring without behavior change]
+    tags: [workflow, debugging, root-cause]
+  - path: development/error-handling.md
+    title: Error Handling
+    kind: guide
+    pack: task-workflows
+    summary: Guidance for designing or reviewing clear and reliable error paths.
+    load_when: [improving exceptions, failures, recovery paths, or validation behavior]
+    avoid_when: [the task is unrelated to failure handling]
+    tags: [workflow, reliability, errors]
+  - path: development/exhaustive-review.md
+    title: Exhaustive Review
+    kind: guide
+    pack: task-workflows
+    summary: High-recall audit workflow for thorough coverage and explicit findings accounting.
+    load_when: [release readiness, audit work, or maximum coverage is required]
+    avoid_when: [normal code review is enough]
+    tags: [workflow, audit, exhaustive]
+  - path: development/fix-and-recheck.prompt.md
+    title: Fix And Recheck
+    kind: prompt
+    pack: task-workflows
+    summary: Prompt wrapper for fixing recorded findings and rechecking the result.
+    load_when: [working from an existing findings file or audit output]
+    avoid_when: [there is no findings list to drive the work]
+    tags: [workflow, prompt, remediation]
+  - path: development/git-workflow.md
+    title: Git Workflow
+    kind: guide
+    pack: task-workflows
+    summary: Guidance for branches, commits, PR flow, and release hygiene.
+    load_when: [the task involves version control workflow or PR hygiene]
+    avoid_when: [no git or release workflow is involved]
+    tags: [workflow, git, release]
+  - path: development/hooks.md
+    title: Hooks
+    kind: guide
+    pack: task-workflows
+    summary: Guidance for designing or reviewing automated hooks and feedback loops.
+    load_when: [working on pre-commit, CI, or automated assistant hooks]
+    avoid_when: [the task is unrelated to automation hooks]
+    tags: [workflow, hooks, automation]
+  - path: development/host-integration.md
+    title: Host Integration
+    kind: guide
+    pack: task-workflows
+    summary: Covers assistant host setup, runtime support checks, and integration boundaries.
+    load_when: [configuring the assistant host, runtime, or support checks]
+    avoid_when: [the task is purely local coding inside an already-working host]
+    tags: [workflow, host, integration]
+  - path: development/incremental-development.md
+    title: Incremental Development
+    kind: guide
+    pack: task-workflows
+    summary: Breaks implementation into small safe steps with verification between steps.
+    load_when: [building features iteratively or reducing change risk]
+    avoid_when: [a one-shot review or documentation task]
+    tags: [workflow, implementation, incremental]
+  - path: development/model-adapters.md
+    title: Model Adapters
+    kind: guide
+    pack: prompt-routing
+    summary: Describes how prompt structure should vary by model family without changing task rules.
+    load_when: [the same task prompt must be tuned for GPT, Claude, or other model families]
+    avoid_when: [one model family is used and no adapter changes are needed]
+    tags: [routing, adapter, model-family]
+  - path: development/performance.md
+    title: Performance
+    kind: guide
+    pack: task-workflows
+    summary: Guidance for identifying and improving inefficient code paths and scaling issues.
+    load_when: [performance is a primary goal or bottlenecks need review]
+    avoid_when: [the task does not touch performance]
+    tags: [workflow, performance, optimization]
+  - path: development/prompt-evaluation.md
+    title: Prompt Evaluation
+    kind: guide
+    pack: task-workflows
+    summary: Helps compare prompts and decide whether guidance should stay shared or split.
+    load_when: [evaluating prompt systems or model-specific divergence]
+    avoid_when: [ordinary coding tasks]
+    tags: [workflow, prompts, evaluation]
+  - path: development/public-release-audit.prompt.md
+    title: Public Release Audit
+    kind: prompt
+    pack: task-workflows
+    summary: Prompt wrapper for public release audits and final readiness checks.
+    load_when: [auditing a release candidate or public artifact]
+    avoid_when: [the task is not release-facing]
+    tags: [workflow, prompt, release]
+  - path: development/refactoring.md
+    title: Refactoring
+    kind: guide
+    pack: task-workflows
+    summary: Guidance for restructuring code while preserving behavior.
+    load_when: [the code needs cleanup or simplification without changing outputs]
+    avoid_when: [the primary goal is bug fixing]
+    tags: [workflow, refactoring, structure]
+  - path: development/scope-control.md
+    title: Scope Control
+    kind: guide
+    pack: task-workflows
+    summary: Keeps work bounded and prevents opportunistic expansion.
+    load_when: [feature creep or cleanup creep is a risk]
+    avoid_when: [the task is already tightly bounded]
+    tags: [workflow, scope, control]
+  - path: development/task-decomposition.md
+    title: Task Decomposition
+    kind: guide
+    pack: task-workflows
+    summary: Breaks multi-stage work into clear subproblems and execution order.
+    load_when: [the task is genuinely multi-step or cross-cutting]
+    avoid_when: [the task is simple and direct]
+    tags: [workflow, planning, decomposition]
+  - path: development/test-generation.md
+    title: Test Generation
+    kind: guide
+    pack: task-workflows
+    summary: Guidance for creating, improving, and validating tests.
+    load_when: [generating tests, expanding coverage, or tightening regression checks]
+    avoid_when: [the task is unrelated to tests]
+    tags: [workflow, tests, verification]
+  - path: development/tool-extension.md
+    title: Tool Extension
+    kind: guide
+    pack: task-workflows
+    summary: Covers external tools, browser automation, notebooks, and CI-style extensions.
+    load_when: [adding external integrations or extended tool capabilities]
+    avoid_when: [no external tooling changes are involved]
+    tags: [workflow, tools, extension]
+
+  - path: setup/architecture.md
+    title: Architecture
+    kind: guide
+    pack: task-workflows
+    summary: Guidance for project architecture review and structural design work.
+    load_when: [reviewing system structure, module boundaries, or architecture choices]
+    avoid_when: [small isolated implementation tasks]
+    tags: [setup, architecture, design]
+  - path: setup/dev-principles.md
+    title: Development Principles
+    kind: guide
+    pack: task-workflows
+    summary: General development principles for shaping project setup and implementation choices.
+    load_when: [setting project norms or bootstrap guidance]
+    avoid_when: [a more specific task guide already covers the work]
+    tags: [setup, principles, standards]
+  - path: setup/documentation.md
+    title: Documentation
+    kind: guide
+    pack: task-workflows
+    summary: Template and guidance for writing thorough factual documentation.
+    load_when: [writing READMEs, module docs, or explanatory documentation]
+    avoid_when: [documentation is not part of the task]
+    tags: [setup, docs, writing]
+  - path: setup/ml-project-bootstrap.md
+    title: Project Bootstrap
+    kind: guide
+    pack: task-workflows
+    summary: Bootstrap guidance for ML-oriented project setup.
+    load_when: [starting an ML project or shaping ML project scaffolding]
+    avoid_when: [the project is not ML-related]
+    tags: [setup, ml, bootstrap]
+  - path: setup/reproducibility.md
+    title: Reproducibility
+    kind: guide
+    pack: task-workflows
+    summary: Guidance for making workflows and outputs reproducible.
+    load_when: [reproducibility, reruns, or environment consistency matter]
+    avoid_when: [the task is purely exploratory and no repeatability requirement exists]
+    tags: [setup, reproducibility, environment]
+
+  - path: .github/prompts/prompt-bootstrap.prompt.md
+    title: Prompt Bootstrap
+    kind: prompt
+    pack: prompt-routing
+    summary: Main router that classifies the task and selects the smallest useful guide bundle.
+    load_when: [a host needs to choose guides before drafting a task prompt]
+    avoid_when: [guide selection is already complete]
+    tags: [prompt, routing, entrypoint]
+  - path: .github/prompts/gpt-task-template.prompt.md
+    title: GPT Task Template
+    kind: prompt
+    pack: prompt-routing
+    summary: Prompt wrapper for GPT-family task execution once the guide bundle is selected.
+    load_when: [the target model family is GPT]
+    avoid_when: [the target model family is not GPT]
+    tags: [prompt, gpt, template]
+  - path: .github/prompts/claude-task-template.prompt.md
+    title: Claude Task Template
+    kind: prompt
+    pack: prompt-routing
+    summary: Prompt wrapper for Claude-family task execution once the guide bundle is selected.
+    load_when: [the target model family is Claude]
+    avoid_when: [the target model family is not Claude]
+    tags: [prompt, claude, template]
+
+  - path: .github/agents/fix-and-recheck.agent.md
+    title: Fix And Recheck Agent
+    kind: agent
+    pack: specialist-agents
+    summary: Agent workflow for fixing findings and verifying that they are actually resolved.
+    load_when: [review findings already exist and remediation plus recheck is needed]
+    avoid_when: [there are no prior findings to act on]
+    tags: [agent, remediation, verification]
+  - path: .github/agents/model-adapter-designer.agent.md
+    title: Model Adapter Designer
+    kind: agent
+    pack: specialist-agents
+    summary: Agent workflow for designing or revising model-family adapters.
+    load_when: [adapter design or model-specific prompt structure is the task]
+    avoid_when: [normal coding or review tasks]
+    tags: [agent, adapter, prompts]
+  - path: .github/agents/prompt-evaluator.agent.md
+    title: Prompt Evaluator
+    kind: agent
+    pack: specialist-agents
+    summary: Agent workflow for comparing prompts and evaluating prompt quality.
+    load_when: [prompt comparison or evaluation is the primary task]
+    avoid_when: [the task is not about prompts]
+    tags: [agent, prompts, evaluation]
+  - path: .github/agents/public-release-auditor.agent.md
+    title: Public Release Auditor
+    kind: agent
+    pack: specialist-agents
+    summary: Agent workflow for high-recall public release audits.
+    load_when: [a public release needs a broad audit pass]
+    avoid_when: [a normal focused review is enough]
+    tags: [agent, audit, release]

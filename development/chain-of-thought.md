@@ -1,3 +1,9 @@
+---
+pack: task-workflows
+summary: Adds explicit staged reasoning for ambiguous or high-complexity tasks.
+tags: [workflow, reasoning, ambiguity]
+---
+
 # Structured Reasoning
 
 Use explicit analysis for complex problems.

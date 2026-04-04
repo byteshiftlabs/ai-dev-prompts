@@ -1,3 +1,9 @@
+---
+pack: task-workflows
+summary: Guidance for restructuring code while preserving behavior.
+tags: [workflow, refactoring, structure]
+---
+
 # Refactoring
 
 Improve code structure without changing external behavior.
