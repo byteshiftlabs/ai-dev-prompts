@@ -1,3 +1,9 @@
+---
+pack: task-workflows
+summary: Structured process for reproducing issues, finding root cause, and applying fixes.
+tags: [workflow, debugging, root-cause]
+---
+
 # Debugging
 
 Use a structured approach to diagnosing and fixing issues.

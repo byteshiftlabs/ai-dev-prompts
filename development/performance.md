@@ -1,3 +1,9 @@
+---
+pack: task-workflows
+summary: Guidance for identifying and improving inefficient code paths and scaling issues.
+tags: [workflow, performance, optimization]
+---
+
 # Performance
 
 Avoid obvious inefficiency without drifting into premature optimization.

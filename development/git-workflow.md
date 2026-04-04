@@ -1,3 +1,9 @@
+---
+pack: task-workflows
+summary: Guidance for branches, commits, PR flow, and release hygiene.
+tags: [workflow, git, release]
+---
+
 # Git Workflow
 
 Conventions for commits, branches, pull requests, and releases.

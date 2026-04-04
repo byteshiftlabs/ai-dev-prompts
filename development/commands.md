@@ -1,3 +1,9 @@
+---
+pack: task-workflows
+summary: Guidance for reusable command workflows and command-driven host integrations.
+tags: [workflow, commands, host]
+---
+
 # Commands
 
 Use reusable commands to package recurring workflows into stable, low-friction entry points.

@@ -1,3 +1,9 @@
+---
+pack: task-workflows
+summary: Helps design APIs with clear contracts, compatibility, and maintainable boundaries.
+tags: [workflow, design, api]
+---
+
 # API Design
 
 Design stable, user-facing interfaces that minimize breaking changes.

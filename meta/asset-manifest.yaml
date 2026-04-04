@@ -1,0 +1,116 @@
+version: 1
+repo: ai-dev-prompts
+packaging_intent:
+  selective_loading: true
+  default_behavior: never-load-entire-repo
+  description: >-
+    Package this repository as small, task-oriented assets. Preserve routing and
+    guide selection. Do not merge all guides into one monolithic skill unless a
+    consumer explicitly asks for a full archive.
+  primary_entrypoints:
+    - README.md
+    - .github/prompts/prompt-bootstrap.prompt.md
+  preserve_separation:
+    - shared-rules
+    - task-workflows
+    - prompt-routing
+    - specialist-agents
+assets:
+  - id: core-rules
+    label: Core Rules
+    purpose: Stable operating rules, memory policy, personas, and release gates.
+    load_when:
+      - every task needs baseline constraints
+      - memory behavior must stay consistent
+      - release readiness or stricter review posture matters
+    avoid_when:
+      - used alone for a task that also needs a workflow guide
+    files:
+      - core/shared-contract.md
+      - core/memory-contract.md
+      - core/personas.md
+      - core/production-ready-check.md
+
+  - id: task-workflows
+    label: Task Workflows
+    purpose: Task-specific methods for coding, review, debugging, scope, and setup work.
+    load_when:
+      - the task has a clear primary workflow such as debugging or code review
+      - the user needs step-by-step task guidance
+    avoid_when:
+      - the host only needs a routing entrypoint and will fetch guides later
+    files:
+      - development/api-design.md
+      - development/chain-of-thought.md
+      - development/code-review.md
+      - development/commands.md
+      - development/content-integrity.md
+      - development/context-management.md
+      - development/data-structure-design.md
+      - development/debugging.md
+      - development/error-handling.md
+      - development/exhaustive-review.md
+      - development/fix-and-recheck.prompt.md
+      - development/git-workflow.md
+      - development/hooks.md
+      - development/host-integration.md
+      - development/incremental-development.md
+      - development/performance.md
+      - development/prompt-evaluation.md
+      - development/public-release-audit.prompt.md
+      - development/refactoring.md
+      - development/scope-control.md
+      - development/task-decomposition.md
+      - development/test-generation.md
+      - development/tool-extension.md
+      - setup/architecture.md
+      - setup/dev-principles.md
+      - setup/documentation.md
+      - setup/ml-project-bootstrap.md
+      - setup/reproducibility.md
+
+  - id: prompt-routing
+    label: Prompt Routing
+    purpose: Entry points, model-family templates, and selection logic.
+    load_when:
+      - a host needs to choose the smallest guide bundle for a task
+      - prompt formatting differs by model family
+    avoid_when:
+      - a user already selected the exact guides manually
+    files:
+      - README.md
+      - .github/prompts/prompt-bootstrap.prompt.md
+      - .github/prompts/gpt-task-template.prompt.md
+      - .github/prompts/claude-task-template.prompt.md
+      - development/model-adapters.md
+
+  - id: specialist-agents
+    label: Specialist Agents
+    purpose: Dedicated workflows for broader audits, rechecks, and prompt design work.
+    load_when:
+      - the job is broader than a single prompt
+      - coordination across multiple steps or artifacts is needed
+    avoid_when:
+      - a focused task can be handled with the router plus one workflow guide
+    files:
+      - .github/agents/fix-and-recheck.agent.md
+      - .github/agents/model-adapter-designer.agent.md
+      - .github/agents/prompt-evaluator.agent.md
+      - .github/agents/public-release-auditor.agent.md
+
+packaging_rules:
+  - Start from the routing entrypoints, not from bulk ingestion.
+  - Prefer packaging one asset per consumer-facing use case.
+  - Preserve original file paths in metadata so the router can point back to source files.
+  - Keep shared contract files separate from task workflows when exporting.
+  - Treat prompts and agents as optional layers added after guide selection.
+
+suggested_exports:
+  - target: claude-skill
+    recommendation: Export core-rules plus one selected workflow, then add prompt-routing only if needed.
+  - target: ide-rules
+    recommendation: Export prompt-routing and the smallest relevant workflow subset.
+  - target: rag-or-search
+    recommendation: Index all assets, but retrieve by pack and task tags rather than loading the whole corpus.
+  - target: mcp
+    recommendation: Expose the guide index and asset manifest as lookup metadata before serving file contents.

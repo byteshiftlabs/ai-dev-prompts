@@ -1,3 +1,9 @@
+---
+pack: task-workflows
+summary: Keeps work bounded and prevents opportunistic expansion.
+tags: [workflow, scope, control]
+---
+
 # Scope Control
 
 Stay focused on the immediate task and avoid scope creep.

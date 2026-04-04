@@ -1,3 +1,9 @@
+---
+pack: task-workflows
+summary: Helps compare prompts and decide whether guidance should stay shared or split.
+tags: [workflow, prompts, evaluation]
+---
+
 # Prompt Evaluation
 
 Use small, repeatable evaluations to decide what should stay shared and what should split by model family.

@@ -1,3 +1,9 @@
+---
+pack: task-workflows
+summary: Template and guidance for writing thorough factual documentation.
+tags: [setup, docs, writing]
+---
+
 # Documentation
 
 Generate thorough documentation while keeping it factual and relevant.

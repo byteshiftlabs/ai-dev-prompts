@@ -1,3 +1,9 @@
+---
+pack: task-workflows
+summary: Breaks implementation into small safe steps with verification between steps.
+tags: [workflow, implementation, incremental]
+---
+
 # Incremental Development
 
 Build software in small, verified steps instead of large leaps.

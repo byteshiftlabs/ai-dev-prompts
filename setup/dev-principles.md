@@ -1,3 +1,9 @@
+---
+pack: task-workflows
+summary: General development principles for shaping project setup and implementation choices.
+tags: [setup, principles, standards]
+---
+
 # Development Principles
 
 Define project principles before writing code.
