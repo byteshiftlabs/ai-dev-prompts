@@ -106,4 +106,4 @@ Release notes must include:
 - Reference issue numbers when applicable (for example, `Fixed #123`)
 - Apply this format consistently across byteshiftlabs repositories unless a repository documents different rules
 - Audit findings files must stay local and must not be pushed to byteshiftlabs repositories
-- Before committing, check whether README.md or ROADMAP.md need updating to reflect the change. See [documentation.md](documentation.md#keeping-readmemd-and-roadmapmd-in-sync).
+- Before committing, check whether README.md or ROADMAP.md need updating to reflect the change. See [documentation.md](../setup/documentation.md#keeping-readmemd-and-roadmapmd-in-sync).

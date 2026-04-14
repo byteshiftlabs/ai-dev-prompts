@@ -57,11 +57,87 @@ def has_frontmatter(path: Path) -> bool:
     return len(lines) >= 3 and lines[0] == "---" and "---" in lines[1:15]
 
 
+def markdown_lines_without_fences(path: Path) -> list[str]:
+    lines: list[str] = []
+    in_fence = False
+
+    for line in read_lines(path):
+        if line.strip().startswith("```"):
+            in_fence = not in_fence
+            continue
+        if in_fence:
+            continue
+        lines.append(line)
+
+    return lines
+
+
+def extract_markdown_link_targets(line: str) -> list[str]:
+    targets: list[str] = []
+    index = 0
+
+    while True:
+        open_bracket = line.find("[", index)
+        if open_bracket == -1:
+            return targets
+
+        close_bracket = line.find("]", open_bracket + 1)
+        if close_bracket == -1:
+            return targets
+
+        if close_bracket + 1 >= len(line) or line[close_bracket + 1] != "(":
+            index = close_bracket + 1
+            continue
+
+        close_paren = line.find(")", close_bracket + 2)
+        if close_paren == -1:
+            return targets
+
+        target = line[close_bracket + 2:close_paren].strip()
+        if target:
+            targets.append(target)
+
+        index = close_paren + 1
+
+
+def normalize_markdown_target(target: str) -> str:
+    if "#" in target:
+        return target.split("#", 1)[0]
+    return target
+
+
+def find_missing_internal_links(path: Path) -> list[str]:
+    missing: list[str] = []
+    source = path.relative_to(ROOT).as_posix()
+
+    for line in markdown_lines_without_fences(path):
+        for raw_target in extract_markdown_link_targets(line):
+            if "://" in raw_target or raw_target.startswith(("mailto:", "/", "#")):
+                continue
+
+            target = normalize_markdown_target(raw_target)
+            if not target:
+                continue
+
+            resolved = (path.parent / target).resolve()
+            try:
+                resolved.relative_to(ROOT)
+            except ValueError:
+                missing.append(f"{source} -> {target} (outside repo)")
+                continue
+
+            if not resolved.exists():
+                missing.append(f"{source} -> {target}")
+
+    return missing
+
+
 def expected_markdown_files() -> list[Path]:
     folders = [
         ROOT / "core",
         ROOT / "development",
         ROOT / "setup",
+        ROOT / "meta",
         ROOT / ".github" / "prompts",
         ROOT / ".github" / "agents",
     ]
@@ -96,7 +172,8 @@ def main() -> int:
         if not (ROOT / rel_path).exists():
             errors.append(f"Guide index references missing file: {rel_path}")
 
-    expected = {path.relative_to(ROOT).as_posix() for path in expected_markdown_files()}
+    expected_files = expected_markdown_files()
+    expected = {path.relative_to(ROOT).as_posix() for path in expected_files}
     indexed = set(indexed_paths)
     missing_from_index = sorted(expected - indexed)
     if missing_from_index:
@@ -105,7 +182,7 @@ def main() -> int:
         )
 
     files_requiring_frontmatter = [
-        path for path in expected_markdown_files() if path.relative_to(ROOT).as_posix() != "README.md"
+        path for path in expected_files if path.relative_to(ROOT).as_posix() != "README.md"
     ]
     missing_frontmatter = [
         path.relative_to(ROOT).as_posix() for path in files_requiring_frontmatter if not has_frontmatter(path)
@@ -113,6 +190,14 @@ def main() -> int:
     if missing_frontmatter:
         errors.append(
             "Files missing frontmatter: " + ", ".join(sorted(missing_frontmatter))
+        )
+
+    missing_links: list[str] = []
+    for path in expected_files:
+        missing_links.extend(find_missing_internal_links(path))
+    if missing_links:
+        errors.append(
+            "Markdown files contain broken internal links: " + ", ".join(sorted(missing_links))
         )
 
     if errors:
