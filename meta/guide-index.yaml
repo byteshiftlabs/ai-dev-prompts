@@ -209,6 +209,22 @@ guides:
     load_when: [auditing a release candidate or public artifact]
     avoid_when: [the task is not release-facing]
     tags: [workflow, prompt, release]
+  - path: .github/prompts/gpt-clean-literal-newlines-in-history.prompt.md
+    title: GPT Commit Message Newline Cleanup
+    kind: prompt
+    pack: task-workflows
+    summary: GPT-specific workflow prompt for safely normalizing literal \n text in public commit history.
+    load_when: [public history contains literal backslash-n text in commit messages, a GPT-family model must drive a message-only rewrite]
+    avoid_when: [the task does not involve history rewriting, the target model family is not GPT]
+    tags: [workflow, prompt, git, history-rewrite]
+  - path: .github/prompts/gpt-silvanus-linkedin-readiness-audit.prompt.md
+    title: GPT Silvanus LinkedIn Readiness Audit
+    kind: prompt
+    pack: task-workflows
+    summary: GPT-specific workflow prompt for a harsh evidence-based public portfolio audit under the Silvanus standards layer.
+    load_when: [auditing public repositories for portfolio or LinkedIn readiness with a GPT-family model]
+    avoid_when: [the task is not a public showcase audit, the target model family is not GPT]
+    tags: [workflow, prompt, audit, linkedin]
   - path: development/refactoring.md
     title: Refactoring
     kind: guide
