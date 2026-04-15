@@ -61,8 +61,6 @@ assets:
       - development/performance.md
       - development/prompt-evaluation.md
       - development/public-release-audit.prompt.md
-      - .github/prompts/gpt-clean-literal-newlines-in-history.prompt.md
-      - .github/prompts/gpt-silvanus-linkedin-readiness-audit.prompt.md
       - development/refactoring.md
       - development/scope-control.md
       - development/task-decomposition.md
