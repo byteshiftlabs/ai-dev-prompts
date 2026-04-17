@@ -28,6 +28,7 @@ Include:
 - Edge cases and limitations
 
 Be clear enough that a new developer can understand the code and work safely in it.
+Use plain, standard English. Avoid ornate vocabulary, academic-sounding synonyms, and rare words.
 ```
 
 ## Placeholders
@@ -91,6 +92,7 @@ Every comment must describe what the code actually does, not what it should do.
 
 - Prefer enough documentation over sparse documentation, but keep each section focused
 - Mark uncertain or incomplete sections clearly instead of inventing detail
+- Write for non-native English speakers first. If a simpler common word works, use it.
 - Include "why" explanations for non-obvious design choices
 - Always keep documentation adjacent to code when possible
 - Keep sections focused: testing goes in tests, architecture in architecture, etc. — do not mix concerns (see [content-integrity.md](../development/content-integrity.md))
