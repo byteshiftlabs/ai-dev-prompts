@@ -1,0 +1,89 @@
+# Documentation
+
+Generate thorough, detailed documentation while maintaining factual accuracy.
+
+## Prompt
+
+```
+Generate comprehensive documentation for [FILE_OR_MODULE] in [PROJECT_NAME].
+
+[content-integrity constraint]
+
+Include:
+- Module/file purpose and responsibilities
+- Every public function/method with:
+  - Description of what it does
+  - Parameters (name, type, purpose)
+  - Return values
+  - Exceptions/errors raised
+  - Usage example
+- Dependencies and their roles
+- Data flow explanation
+- Edge cases and limitations
+
+Be thorough enough that a new developer can understand every aspect of the code.
+```
+
+## Placeholders
+
+- `[FILE_OR_MODULE]`: Target code to document
+- `[PROJECT_NAME]`: Project context
+- `[content-integrity constraint]`: See [content-integrity.md](content-integrity.md)
+
+## Variations
+
+### README generation
+
+This is the recommended template for all byteshiftlabs repositories. Adapt sections as needed for your project.
+
+```
+Generate a README for [PROJECT_NAME] following this structure:
+
+# Project Name
+One-line description of what the project does.
+
+[Badges: License, Language version, Dataset DOI if applicable]
+
+> **Disclosure:** This software was developed with AI assistance under human supervision. [Include if applicable]
+
+## Overview
+2-3 paragraphs explaining the project purpose, key features, and what problem it solves.
+
+## Quick Start
+Step-by-step commands to clone, install, and run:
+- Clone and setup
+- Install dependencies
+- Run the main script/program
+Include actual bash code blocks.
+
+## How It Works [for complex projects]
+Explain the pipeline, algorithm, or architecture with subsections.
+
+## Project Structure
+Directory tree showing key files and their purposes.
+
+## Requirements
+- Language version
+- Dependencies with purpose
+- Optional dependencies
+
+## License
+License type with link.
+
+[content-integrity constraint]
+```
+
+### Inline comments
+```
+Add inline comments to [FILE] explaining complex logic, non-obvious decisions, and algorithm steps.
+Every comment must describe what the code actually does, not what it should do.
+
+[content-integrity constraint]
+```
+
+## Tips
+
+- Prefer over-documenting to under-documenting
+- Mark uncertain or incomplete sections with TODO
+- Include "why" explanations for non-obvious design choices
+- Always keep documentation adjacent to code when possible
