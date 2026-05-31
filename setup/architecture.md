@@ -132,16 +132,10 @@ Design for testability:
 
 ---
 
-## Placeholders
-
-- `[content-integrity constraint]`: See [content-integrity.md](../development/content-integrity.md)
-
 ## Prompt
 
 ```
 Review the architecture of [PROJECT_NAME].
-
-[content-integrity constraint]
 
 Check for:
 1. Clear layer separation (interface → logic → data)

@@ -13,8 +13,6 @@ Generate unit, integration, and platform tests.
 ```
 Generate tests for [FILE_OR_MODULE] in [PROJECT_NAME].
 
-[content-integrity constraint]
-
 Include:
 - Unit tests for each public function/method
 - Edge cases (empty inputs, boundary values, invalid types)
@@ -31,7 +29,6 @@ Place tests in [tests/ directory structure].
 - `[PROJECT_NAME]`: Project context
 - `[pytest/unittest]`: Testing framework
 - `[tests/ directory structure]`: Where to place test files
-- `[content-integrity constraint]`: See [content-integrity.md](content-integrity.md)
 
 ## Variations
 

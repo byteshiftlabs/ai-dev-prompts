@@ -95,6 +95,79 @@ For this model family:
 - Restate exact verification or output requirements once, plainly.
 ```
 
+### XML Tags for Claude
+
+Claude parses structured sections more reliably when content is wrapped in XML tags. Use tags to separate instructions, context, examples, and output format.
+
+```text
+<instructions>
+[task rules and steps]
+</instructions>
+
+<context>
+[background the model needs to understand the task]
+</context>
+
+<example>
+Input: [example input]
+Output: [example output]
+</example>
+
+<output_format>
+[what the response must look like]
+</output_format>
+```
+
+Do not mix XML tag structure with markdown header structure at the same level. Use one or the other per block.
+
+### Assistant Prefilling for Claude
+
+Claude treats the start of its own turn as a strong formatting signal. Prefill the assistant turn with the exact token you want the response to begin with. This locks the output format before the model begins generating.
+
+Example: to force a JSON response, end your human turn and open the assistant turn like this:
+
+```text
+[your prompt here]
+```
+
+The assistant will begin its response from that token, preventing preamble and enforcing format from the first character. Useful for locking JSON, YAML, code blocks, or specific section headers.
+
+## Reasoning Model Adapter
+
+Use this adapter for models that run extended internal reasoning before responding: Claude with extended thinking enabled, and OpenAI o1 / o3 family models.
+
+These models internally generate a chain of reasoning that is not visible in the response. Because of this, the prompting patterns that work for standard models are counterproductive here.
+
+**Do not use with reasoning models:**
+
+- Explicit chain-of-thought instructions ("think step by step", "reason through this in order")
+- Stepped reasoning templates from `chain-of-thought.md` — the model already does this internally
+- Over-specified decomposition prompts that prescribe how to reason
+
+**Do use with reasoning models:**
+
+- Open-ended problem framing that gives the model room to explore
+- Explicit constraints and success criteria (state what the answer must satisfy, not how to find it)
+- Minimal instruction count — fewer instructions produce more thorough internal reasoning
+- Direct questions rather than step-by-step procedures
+
+Recommended adjustments:
+
+```text
+Use the shared contract as written.
+
+For reasoning models (o1, o3, Claude extended thinking):
+- State the problem and the success criteria. Do not prescribe reasoning steps.
+- List hard constraints the answer must satisfy.
+- Do not add chain-of-thought instructions — the model reasons internally.
+- Keep the prompt shorter than you would for a standard model.
+- Trust a longer, slower response. It reflects genuine internal exploration.
+```
+
+**Claude extended thinking:** Enable via the API `thinking` parameter. Do not instruct the model to think step by step in the prompt — set the budget tokens parameter instead and let the model allocate reasoning effort.
+
+**o1 / o3:** These models perform best with direct task statements and explicit output format requirements. Do not add few-shot reasoning examples; they can anchor the model to a shallow pattern instead of letting it reason fully.
+
 ## When To Split A Workflow Prompt
 
 Split a workflow prompt by model family only if all of the following are true:

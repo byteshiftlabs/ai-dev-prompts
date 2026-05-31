@@ -183,8 +183,6 @@ Do the following:
 3. Identify the correct place for persistent project summary information.
 4. Document tool permissions and runtime constraints.
 5. Recommend the smallest reliable setup that supports the task.
-
-[content-integrity constraint]
 ```
 
 ## Variations

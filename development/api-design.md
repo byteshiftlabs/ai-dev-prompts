@@ -17,8 +17,6 @@ Once you ship an API, it becomes a contract with your users. Breaking that contr
 ```
 Design a public API for [FUNCTIONALITY] in [PROJECT_NAME].
 
-[content-integrity constraint]
-
 Requirements:
 - Define the minimal interface that solves the problem
 - Design for extensibility without breaking existing code
@@ -40,7 +38,6 @@ Guiding principle: "Make the simple case simple and the complex case possible."
 
 - `[FUNCTIONALITY]`: What the API enables (e.g., "file I/O", "network requests")
 - `[PROJECT_NAME]`: Project context
-- `[content-integrity constraint]`: See [content-integrity.md](content-integrity.md)
 
 ## API Design Principles
 

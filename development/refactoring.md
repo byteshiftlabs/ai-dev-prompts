@@ -13,8 +13,6 @@ Improve code structure without changing external behavior.
 ```
 Refactor [FILE_OR_MODULE] in [PROJECT_NAME].
 
-[content-integrity constraint]
-
 Goals:
 - Improve code organization and readability
 - Reduce complexity and duplication
@@ -33,7 +31,6 @@ After refactoring, verify behavior is unchanged.
 
 - `[FILE_OR_MODULE]`: Target code to refactor
 - `[PROJECT_NAME]`: Project context
-- `[content-integrity constraint]`: See [content-integrity.md](content-integrity.md)
 
 ## Variations
 

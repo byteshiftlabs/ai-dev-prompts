@@ -21,8 +21,6 @@ Design data structures that reduce special cases and make algorithms easier to u
 ```
 Design data structures for [PROBLEM] in [PROJECT_NAME].
 
-[content-integrity constraint]
-
 Principles:
 - Design around how data will be accessed, not around a preferred code shape
 - Choose structures that eliminate special cases and edge conditions
@@ -44,7 +42,6 @@ The "good taste" test: does this design make the algorithm obvious, or does it f
 
 - `[PROBLEM]`: The problem domain (e.g., "a symbol table", "an event queue")
 - `[PROJECT_NAME]`: Project context
-- `[content-integrity constraint]`: See [content-integrity.md](content-integrity.md)
 
 ## The "Good Taste" Principle
 

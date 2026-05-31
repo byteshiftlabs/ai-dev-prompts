@@ -124,8 +124,6 @@ Do the following:
 3. Keep the command scope narrow and explicit.
 4. State what it reads, writes, or verifies.
 5. Describe the success condition.
-
-[content-integrity constraint]
 ```
 
 ## Variations

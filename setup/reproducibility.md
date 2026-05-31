@@ -13,8 +13,6 @@ Make results reproducible by other people on other machines.
 ```
 Make [PROJECT_NAME] reproducible.
 
-[content-integrity constraint]
-
 Ensure:
 - All dependencies are pinned to exact versions (requirements.txt, package-lock.json, etc.)
 - Random seeds are set and documented for all stochastic operations
@@ -26,7 +24,6 @@ Ensure:
 ## Placeholders
 
 - `[PROJECT_NAME]`: Project to make reproducible
-- `[content-integrity constraint]`: See [content-integrity.md](../development/content-integrity.md)
 
 ## Variations
 

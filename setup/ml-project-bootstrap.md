@@ -15,8 +15,6 @@ Create a new local repo and its remote [public/private] counterpart for [PROJECT
 
 Create only the code and scripts needed for the software to run correctly and for the results to be presented correctly.
 
-[content-integrity constraint]
-
 Base your work on the original paper [PAPER_TITLE, DOI/URL] and create the logic for:
 - Downloading the dataset(s)
 - Feature extraction
@@ -35,7 +33,6 @@ Create a to-do list and execute it in order.
 - `[public/private]`: Repository visibility
 - `[PAPER_TITLE, DOI/URL]`: Reference paper for methodology
 - `[Python X.X, PyTorch/TensorFlow, etc.]`: Preferred tech stack
-- `[content-integrity constraint]`: See [content-integrity.md](../development/content-integrity.md)
 
 ## Tips
 

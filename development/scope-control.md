@@ -13,8 +13,6 @@ Stay focused on the immediate task and avoid scope creep.
 ```
 Implement [TASK] in [PROJECT_NAME].
 
-[content-integrity constraint]
-
 Scope rules:
 - Focus only on what is explicitly requested
 - Do not add features, optimizations, or improvements unless asked
@@ -26,7 +24,6 @@ Scope rules:
 
 - `[TASK]`: The specific task to complete
 - `[PROJECT_NAME]`: Project context
-- `[content-integrity constraint]`: See [content-integrity.md](content-integrity.md)
 
 ## Variations
 

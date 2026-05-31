@@ -1,5 +1,5 @@
 version: 1
-repo: ai-dev-prompts
+repo: rubric
 packaging_intent:
   selective_loading: true
   default_behavior: never-load-entire-repo
@@ -85,6 +85,7 @@ assets:
       - .github/prompts/prompt-bootstrap.prompt.md
       - .github/prompts/gpt-task-template.prompt.md
       - .github/prompts/claude-task-template.prompt.md
+      - .github/prompts/reasoning-task-template.prompt.md
       - development/model-adapters.md
 
   - id: specialist-agents

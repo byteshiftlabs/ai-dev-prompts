@@ -13,8 +13,6 @@ Generate thorough documentation while keeping it factual and relevant.
 ```
 Generate comprehensive documentation for [FILE_OR_MODULE] in [PROJECT_NAME].
 
-[content-integrity constraint]
-
 Include:
 - Module/file purpose and responsibilities
 - Every public function/method with:
@@ -34,7 +32,6 @@ Be clear enough that a new developer can understand the code and work safely in 
 
 - `[FILE_OR_MODULE]`: Target code to document
 - `[PROJECT_NAME]`: Project context
-- `[content-integrity constraint]`: See [content-integrity.md](../development/content-integrity.md)
 
 ## Variations
 
@@ -75,16 +72,12 @@ Directory tree showing key files and their purposes.
 
 ## License
 License type with link.
-
-[content-integrity constraint]
 ```
 
 ### Inline comments
 ```
 Add inline comments to [FILE] explaining complex logic, non-obvious decisions, and algorithm steps.
 Every comment must describe what the code actually does, not what it should do.
-
-[content-integrity constraint]
 ```
 
 ## Tips
