@@ -1,57 +1,84 @@
 # AI Development Prompts
 
-Reusable prompt patterns for AI-assisted software development at byteshiftlabs.
+Reusable prompt patterns for AI-assisted software development.
 
-## Prompts
+---
 
-| File | Purpose |
-|------|---------|
-| [ml-project-bootstrap.md](ml-project-bootstrap.md) | Initialize new ML/research projects |
-| [code-review.md](code-review.md) | Code quality audits and refactoring |
-| [refactoring.md](refactoring.md) | Structural code improvements |
+## Quick Start
+
+Load what you need from the categories below.
+
+---
+
+## Prompts by Category
+
+### 🛡️ Foundational Constraints
+| Prompt | When to use |
+|--------|-------------|
+| [content-integrity.md](content-integrity.md) | Load when factual accuracy matters — recommended for documentation and research tasks |
+
+### 🔧 Code Quality
+| Prompt | When to use |
+|--------|-------------|
+| [code-review.md](code-review.md) | Audit code for style, bugs, maintainability |
+| [refactoring.md](refactoring.md) | Restructure without changing behavior |
+| [error-handling.md](error-handling.md) | Design exception patterns and logging |
+| [architecture.md](architecture.md) | Review system structure and dependencies |
+
+### 🧪 Testing & Debugging
+| Prompt | When to use |
+|--------|-------------|
 | [test-generation.md](test-generation.md) | Generate comprehensive test suites |
 | [debugging.md](debugging.md) | Diagnose and fix issues |
-| [git-workflow.md](git-workflow.md) | Commits, branches, and PRs |
-| [documentation.md](documentation.md) | Generate thorough code documentation |
-| [error-handling.md](error-handling.md) | Exception patterns and logging |
-| [incremental-development.md](incremental-development.md) | Build in small, verified steps |
-| [reproducibility.md](reproducibility.md) | Ensure reproducible results |
-| [scope-control.md](scope-control.md) | Stay focused, avoid scope creep |
-| [chain-of-thought.md](chain-of-thought.md) | Step-by-step reasoning |
-| [context-management.md](context-management.md) | Control session context |
+| [reproducibility.md](reproducibility.md) | Ensure consistent, reproducible results |
+
+### 📝 Documentation & Workflow
+| Prompt | When to use |
+|--------|-------------|
+| [documentation.md](documentation.md) | Generate code documentation |
+| [git-workflow.md](git-workflow.md) | Commits, branches, PRs |
+
+### 🚀 Development Process
+| Prompt | When to use |
+|--------|-------------|
 | [task-decomposition.md](task-decomposition.md) | Break complex tasks into steps |
-Don't load all prompts at once. Use selective loading based on the task:
+| [incremental-development.md](incremental-development.md) | Build in small, verified steps |
+| [scope-control.md](scope-control.md) | Stay focused, avoid scope creep |
 
-**Always active (system prompt or conversation start):**
-- `content-integrity.md` — base constraint for all interactions
+### 🧠 Reasoning & Context
+| Prompt | When to use |
+|--------|-------------|
+| [chain-of-thought.md](chain-of-thought.md) | Step-by-step reasoning for complex problems |
+| [context-management.md](context-management.md) | Control what the AI remembers |
 
-**Load per task:**
-| Task | Prompt to load |
-|------|----------------|
-| Review code quality | `code-review.md` |
-| Write tests | `test-generation.md` |
-| Fix a bug | `debugging.md` |
-| Restructure code | `refactoring.md` |
-| Commit/PR | `git-workflow.md` |
-| Write docs | `documentation.md` |
-| Design error handling | `error-handling.md` |
-| Start new ML project | `ml-project-bootstrap.md` |
-| Complex problem solving | `chain-of-thought.md` |
-| Break down large task | `task-decomposition.md` |
-| Build feature step-by-step | `incremental-development.md` |
-| Ensure reproducibility | `reproducibility.md` |
-| Keep focus | `scope-control.md` |
-| Manage session context | `context-management.md` |
+### 🤖 Project Setup
+| Prompt | When to use |
+|--------|-------------|
+| [ml-project-bootstrap.md](ml-project-bootstrap.md) | Initialize new ML/research projects |
 
-### Example Workflow
+---
+
+## Example Session
 
 ```
-1. Start session with content-integrity.md as context
-2. "I need to add feature X" → load task-decomposition.md, break it down
-3. "Let's start" → load incremental-development.md, build step by step
-4. "Review this code" → load code-review.md
-5. "Fix the issues" → (already have context)
-6. "Write tests" → load test-generation.md
-7. "Commit changes" → load git-workflow.md
-8. "Create PR" → (git-workflow.md still active)
+"Add feature X"
+└── Load task-decomposition.md → break it down
+
+"Let's build it"
+└── Load incremental-development.md → step by step
+
+"Review this code"
+└── Load code-review.md → audit
+
+"Write tests"
+└── Load test-generation.md → generate tests
+
+"Commit and PR"
+└── Load git-workflow.md → commit, push, PR
 ```
+
+---
+
+## License
+
+CC BY 4.0 — Use freely with attribution.
