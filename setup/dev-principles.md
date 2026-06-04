@@ -66,6 +66,8 @@ Development principles for [PROJECT_NAME]:
 - Principles should be actionable, not aspirational ("test every change" vs "quality matters")
 - Review principles when onboarding new contributors
 - If a principle is routinely violated, either enforce it or remove it
+- Unless the project says otherwise, keep compiler optimization flags out of the default build so debugging and verification stay predictable
+- Do not commit compiled binaries, build outputs, packaged archives, or other generated artifacts
 - Combine with [code-review.md](../development/code-review.md) to verify principles during reviews
 
 ---
