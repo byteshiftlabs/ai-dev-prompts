@@ -391,7 +391,7 @@ def parse_config(path):
 
 ## Related Guides
 
-- [architecture.md](architecture.md) — system-level organization
-- [documentation.md](documentation.md) — documenting APIs
+- [architecture.md](../setup/architecture.md) — system-level organization
+- [documentation.md](../setup/documentation.md) — documenting APIs
 - [git-workflow.md](git-workflow.md) — versioning and releases
 - [data-structure-design.md](data-structure-design.md) — internal structure design

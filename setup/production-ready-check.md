@@ -6,7 +6,7 @@ Comprehensive checklist to prepare a software project for public release.
 
 This guide consolidates checks from all development guides before making a project public. Work through each phase sequentially — later phases depend on earlier ones being complete.
 
-**Related guides**: [architecture.md](architecture.md) | [code-review.md](code-review.md) | [error-handling.md](error-handling.md) | [reproducibility.md](reproducibility.md) | [documentation.md](documentation.md) | [test-generation.md](test-generation.md) | [git-workflow.md](git-workflow.md)
+**Related guides**: [architecture.md](architecture.md) | [code-review.md](../development/code-review.md) | [error-handling.md](../development/error-handling.md) | [reproducibility.md](reproducibility.md) | [documentation.md](documentation.md) | [test-generation.md](../development/test-generation.md) | [git-workflow.md](../development/git-workflow.md)
 
 ---
 
@@ -14,105 +14,49 @@ This guide consolidates checks from all development guides before making a proje
 
 Good architecture makes change easy. Review structural integrity first.
 
-### Layered Separation
-From [architecture.md](architecture.md) — verify clean layer boundaries:
 ```
-Review [PROJECT_NAME] architecture:
-- Interface layer (UI, CLI, API) handles only user interaction
-- Business logic layer is independent of how it's accessed
-- Data layer is isolated behind abstractions
-- No layer-skipping (interface should not directly access data)
+Review [PROJECT_NAME] architecture per architecture.md.
+Verify all 10 principles: layered separation, dependency direction,
+single responsibility, configuration externalization, single entry point,
+separation of concerns, fail-fast validation, state minimization,
+module size limits, and clear interfaces.
 ```
 
-### Dependency Direction
-```
-Verify dependency direction in [PROJECT_NAME]:
-- Outer layers depend on inner layers, never the reverse
-- Core logic does not know about specific databases, APIs, or UI frameworks
-- No circular dependencies between modules
-- Each module has a single, clear responsibility (describable in one sentence)
-```
-
-### Configuration
-```
-Audit configuration in [PROJECT_NAME]:
-- No hardcoded paths, URLs, or credentials in code
-- Environment-specific values come from config files or environment variables
-- Sensible defaults are provided
-- All configuration options are documented
-```
-
-### Single Entry Point
-```
-Verify [PROJECT_NAME] has a clear entry point:
-- One main.py, main(), or equivalent
-- All initialization happens at the entry point
-- New developers can find "start here" immediately
-```
+See [architecture.md](architecture.md) for the full principle list and prompts.
 
 ---
 
 ## Phase 2: Code Quality
 
-Clean, readable code is the foundation. Apply [code-review.md](code-review.md).
+Clean, readable code is the foundation.
 
-### Code Review
 ```
 Review [PROJECT_NAME] for code quality before public release.
-
-[content-integrity constraint]
-
-Check for:
-- Language-specific style compliance (PEP8, GNU, C++ Core Guidelines)
-- Imports organized: stdlib → third-party → local
-- Clear, descriptive naming throughout
-- Prefer string methods over regex where possible
-- Consistent formatting and structure
+Run a full code review per code-review.md for the project's language(s).
+Apply structural improvements per refactoring.md.
+Verify separation of concerns per architecture.md §6.
 ```
 
-### Refactoring
-Apply [refactoring.md](refactoring.md) to address structural issues:
-```
-Identify and fix structural issues in [PROJECT_NAME]:
-- Break up monolithic modules (>500 lines)
-- Simplify complex conditionals (early returns, named functions)
-- Replace nested if/else with guard clauses
-```
-
-### Separation of Concerns
-```
-Verify each component in [PROJECT_NAME] does one thing:
-- I/O is separate from computation
-- Validation is separate from business logic
-- Formatting is separate from data processing
-- State is minimized — prefer pure functions and immutable data
-```
+See [code-review.md](../development/code-review.md) | [refactoring.md](../development/refactoring.md) | [architecture.md](architecture.md)
 
 ---
 
 ## Phase 3: Robustness
 
-Production code must handle failures gracefully. Apply [error-handling.md](error-handling.md).
+Production code must handle failures gracefully.
 
 ### Error Handling
 ```
-Implement production-ready error handling for [PROJECT_NAME]:
-- Custom exception classes for domain-specific errors
-- Appropriate exception hierarchy (inherit from base exceptions)
-- Descriptive error messages that help diagnose issues
-- User-friendly messages separate from technical logs
-- Logging at appropriate levels (debug, info, warning, error)
-- Graceful degradation where possible
+Implement production-ready error handling for [PROJECT_NAME]
+per error-handling.md.
 ```
 
+See [error-handling.md](../development/error-handling.md) for custom exceptions, logging levels, and user-facing messages.
+
 ### Fail Fast
-From [architecture.md](architecture.md):
 ```
-Verify [PROJECT_NAME] validates early at system boundaries:
-- Inputs are checked at entry points
-- Invalid state fails immediately with clear messages
-- Invalid state is not propagated through the system
-- Specific exceptions are caught (no bare except:)
+Verify [PROJECT_NAME] validates early at system boundaries
+per architecture.md §7.
 ```
 
 ### Edge Cases
@@ -130,17 +74,14 @@ Review [PROJECT_NAME] for edge case handling:
 
 ## Phase 4: Testing
 
-Public projects need verifiable correctness. Apply [test-generation.md](test-generation.md).
+Public projects need verifiable correctness.
 
-### Test Coverage
 ```
-Generate tests for [PROJECT_NAME] before public release:
-- Unit tests for all public functions/methods
-- Edge cases (empty inputs, boundary values, invalid types)
-- Integration tests for module interactions
-- Descriptive test names: test_[function]_[scenario]_[expected_result]
-- Mock external dependencies appropriately
+Generate tests for [PROJECT_NAME] before public release
+per test-generation.md.
 ```
+
+See [test-generation.md](../development/test-generation.md) for unit test patterns, edge case coverage, and naming conventions.
 
 ### Verification
 ```
@@ -161,109 +102,41 @@ pytest tests/ -v -W default --tb=short
 
 ## Phase 5: Reproducibility
 
-Anyone should be able to reproduce results. Apply [reproducibility.md](reproducibility.md).
+Anyone should be able to reproduce results.
 
-### Dependencies
 ```
-Make [PROJECT_NAME] dependencies reproducible:
-- All dependencies pinned to exact versions (== not >=)
-- Use lockfiles (poetry.lock, package-lock.json, Cargo.lock)
-- Document language/compiler version
-- Document system dependencies (apt, brew packages)
+Ensure reproducibility for [PROJECT_NAME] per reproducibility.md.
+Verify all items on its checklist.
 ```
 
-### Environment
-```
-Document environment for [PROJECT_NAME]:
-- Create requirements.txt with pinned versions (pip freeze)
-- Add .env.example for environment variables
-- Include setup script or Makefile for automation
-- Document "works on" environment in README
-- Consider containerization (Docker) for complete reproducibility
-```
-
-### For ML/Research Projects
-```
-Ensure reproducibility for stochastic operations:
-- Random seeds set and documented
-- Seeds set at the very start, before any imports if possible
-- Data sources versioned or checksummed
-- All configuration explicit, not implicit
-```
+See [reproducibility.md](reproducibility.md) for dependency pinning, environment documentation, and ML seed management.
 
 ---
 
 ## Phase 6: Documentation
 
-Documentation is the first thing users see. Apply [documentation.md](documentation.md).
+Documentation is the first thing users see.
 
 ### README
-Follow the recommended template:
 ```
-Generate a production README for [PROJECT_NAME]:
-
-# Project Name
-One-line description of what the project does.
-
-[Badges: License, Language version, Dataset DOI if applicable]
-
-> **Disclosure:** This software was developed with AI assistance under human supervision. [Include if applicable]
-
-## Overview
-2-3 paragraphs explaining purpose, key features, and what problem it solves.
-
-## Quick Start
-Step-by-step commands to clone, install, and run:
-- Clone and setup
-- Install dependencies  
-- Run the main script/program
-Include actual bash code blocks.
-
-## How It Works [for complex projects]
-Explain the pipeline, algorithm, or architecture.
-
-## Project Structure
-Directory tree showing key files and their purposes.
-
-## Requirements
-- Language version
-- Dependencies with purpose
-- Optional dependencies
-
-## License
-License type with link.
-
-[content-integrity constraint]
+Generate a production README for [PROJECT_NAME]
+following the template in documentation.md.
 ```
 
-### Code Documentation
-```
-Document [PROJECT_NAME] for contributors:
-- Module/file docstrings explaining purpose
-- Every public function/method with:
-  - Description
-  - Parameters (name, type, purpose)
-  - Return values
-  - Exceptions raised
-- Inline comments for complex logic only (explain "why" not "what")
-- Architecture overview for larger projects
-```
+See [documentation.md](documentation.md) for the full README template and inline comment guidelines.
 
 ### Content Integrity
-From [content-integrity.md](content-integrity.md):
 ```
-Verify documentation accuracy in [PROJECT_NAME]:
-- No fabricated performance metrics or benchmarks
-- No placeholder data or example outputs presented as real
-- No unverified claims about capabilities
-- Each section contains only its intended content
+Verify documentation accuracy per content-integrity.md.
 ```
+
+See [content-integrity.md](../development/content-integrity.md).
 
 ---
 
 ## Phase 7: Release Preparation
 
-Final steps before going public. Apply [git-workflow.md](git-workflow.md).
+Final steps before going public. Apply [git-workflow.md](../development/git-workflow.md).
 
 ### Repository Cleanup
 ```
@@ -278,12 +151,10 @@ Prepare [PROJECT_NAME] repository for public release:
 
 ### Git Hygiene
 ```
-Review git history for [PROJECT_NAME]:
-- Commit messages use past participle, are brief and clear
-- No "WIP", "fix", or meaningless commit messages
-- Branch names follow [label]/[brief-description] pattern
-- Consider squashing messy history before release
+Review git history per git-workflow.md.
 ```
+
+See [git-workflow.md](../development/git-workflow.md) for commit message format, branch naming, and PR conventions.
 
 ### Version and Tag
 ```
@@ -389,13 +260,9 @@ Build [PROJECT_NAME] under ALL supported configurations and flag combinations:
 - Debug build (e.g., -DDEBUG=ON) with all warnings enabled
 - Every conditional compilation path (#ifdef DEBUG, #ifdef TESTING, etc.)
   MUST be compiled and verified — not just the default configuration
-- Build with static analyzer (cppcheck, clang-tidy, pylint, etc.)
-- For C++: run cppcheck --enable=all --inline-suppr and resolve every finding:
-  - Shadow variables (shadowVariable, shadowFunction) — rename locals
-  - Const correctness (constVariableReference) — add const to read-only refs
-  - STL algorithm preference (useStlAlgorithm) — convert or suppress with reason
-  - Redundant conditions (knownConditionTrueFalse) — simplify cascading if-chains
-  - Unused private functions (unusedPrivateFunction) — remove dead code
+- Build with static analyzer per [code-review.md](../development/code-review.md) static analysis section
+- For C++: run cppcheck and resolve every finding (see code-review.md for the
+  command and common finding catalog)
 - Count: warnings MUST be exactly zero in ALL configurations
 - Count: static analysis findings MUST be exactly zero
   (suppress intentional patterns in a suppressions file with justification)

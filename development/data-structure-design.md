@@ -264,7 +264,7 @@ Don't use bit-packing, pointer tagging, or other tricks unless:
 
 ## Related Guides
 
-- [architecture.md](architecture.md) — system-level structure
+- [architecture.md](../setup/architecture.md) — system-level structure
 - [code-review.md](code-review.md) — reviewing implementation
 - [performance.md](performance.md) — when and how to optimize
 - [refactoring.md](refactoring.md) — restructuring existing code
