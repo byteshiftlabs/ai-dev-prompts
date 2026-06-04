@@ -77,7 +77,7 @@ Start with the bootstrap and let it justify both selected and excluded guides.
 | [error-handling.md](development/error-handling.md) | Design exception patterns and logging |
 | [exhaustive-review.md](development/exhaustive-review.md) | Coverage-driven review protocol for high-recall audits |
 | [fix-and-recheck.prompt.md](development/fix-and-recheck.prompt.md) | Consume an audit findings file, fix issues in severity order, and recheck |
-| [git-workflow.md](development/git-workflow.md) | Commits, branches, PRs |
+| [git-workflow.md](development/git-workflow.md) | Commits, branches, PRs, and release/versioning conventions |
 | [incremental-development.md](development/incremental-development.md) | Build in small, verified steps |
 | [model-adapters.md](development/model-adapters.md) | Thin model-family tuning layer without forking the full prompt stack |
 | [performance.md](development/performance.md) | Efficiency guidelines without premature optimization |
