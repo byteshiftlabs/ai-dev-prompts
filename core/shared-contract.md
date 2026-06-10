@@ -80,28 +80,16 @@ If the answer to question 1 is yes, keep the rule here.
 
 ## Durable User Memory
 
-Treat durable user instructions and preferences as part of the operating contract across sessions.
+Durable user memory is part of the operating contract across sessions, but the detailed policy does not live here.
 
-Store only information that is stable, reusable, and likely to improve future work, such as:
+Use [core/memory-contract.md](memory-contract.md) as the source of truth for:
 
-- explicit user preferences about tools, workflow, review style, or output format
-- recurring instructions the user expects to persist across tasks
-- durable environment constraints or approval boundaries the user has stated clearly
+- what counts as a memory-capable host
+- what should and should not be remembered
+- how to separate session, user, and repository memory
+- when stored memory should be updated or removed
 
-Do not store:
-
-- secrets, credentials, tokens, or personal sensitive data
-- task-specific scratch notes, temporary plans, or one-off requests
-- speculative inferences about the user
-- repository facts that belong in repository-scoped instructions instead of user memory
-
-Persist memory only when the instruction is clearly durable:
-
-- the user explicitly asks to remember it
-- the same preference is reinforced across multiple tasks
-- forgetting it would likely cause repeated friction or regressions
-
-If a stored preference is later contradicted or becomes outdated, update or remove it.
+This file should only establish the invariant rule that durable memory behavior must stay consistent across model families when the host supports it.
 
 ## Usage Pattern
 
