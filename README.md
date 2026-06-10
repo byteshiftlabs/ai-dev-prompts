@@ -12,23 +12,36 @@ It is organized so you can:
 - keep shared rules stable across model families
 - reuse specialist agents for audits, prompt tuning, and findings-ledger fixes
 
-## Start Here
+## How To Use This Repo
 
-If you want one entry point, start with [prompt-bootstrap.prompt.md](.github/prompts/prompt-bootstrap.prompt.md).
+Treat this repository as a routed system, not a flat pile of prompt files.
 
-The bootstrap is the default router. It classifies the task, selects the minimum relevant guides, and points you to the right task template or workflow file.
+Use it like this:
 
-If you already know the task type, you can also go straight to the relevant workflow file in [development](development) or [setup](setup).
+1. Start with [prompt-bootstrap.prompt.md](.github/prompts/prompt-bootstrap.prompt.md) unless you already know the exact workflow file you need.
+2. Keep [core/shared-contract.md](core/shared-contract.md) as the stable rules layer. It should define the invariant standards for verification, scope, and tool use.
+3. Add [development/model-adapters.md](development/model-adapters.md) only when the prompt needs to be shaped differently for a model family such as GPT or Claude.
+4. Load one task workflow from [development](development) or [setup](setup) based on the job:
+	- use [development/debugging.md](development/debugging.md) for root-cause debugging
+	- use [development/code-review.md](development/code-review.md) for normal review work
+	- use [development/test-generation.md](development/test-generation.md) for tests
+	- use [development/git-workflow.md](development/git-workflow.md) for commits, PRs, and releases
+	- use [core/production-ready-check.md](core/production-ready-check.md) when release readiness is the goal
+5. Use the task templates in [.github/prompts](.github/prompts) when you already know the target model family and want a ready prompt wrapper:
+	- [gpt-task-template.prompt.md](.github/prompts/gpt-task-template.prompt.md)
+	- [claude-task-template.prompt.md](.github/prompts/claude-task-template.prompt.md)
+6. Use the specialist agents in [.github/agents](.github/agents) when the job is broader than a single prompt and needs orchestration across multiple steps:
+	- [public-release-auditor.agent.md](.github/agents/public-release-auditor.agent.md)
+	- [fix-and-recheck.agent.md](.github/agents/fix-and-recheck.agent.md)
+	- [prompt-evaluator.agent.md](.github/agents/prompt-evaluator.agent.md)
+	- [model-adapter-designer.agent.md](.github/agents/model-adapter-designer.agent.md)
 
-Use the task templates when you already know the target model family:
-- [gpt-task-template.prompt.md](.github/prompts/gpt-task-template.prompt.md)
-- [claude-task-template.prompt.md](.github/prompts/claude-task-template.prompt.md)
-
-Use the specialist agents when the task is broader than a single prompt:
-- [public-release-auditor.agent.md](.github/agents/public-release-auditor.agent.md)
-- [fix-and-recheck.agent.md](.github/agents/fix-and-recheck.agent.md)
-- [prompt-evaluator.agent.md](.github/agents/prompt-evaluator.agent.md)
-- [model-adapter-designer.agent.md](.github/agents/model-adapter-designer.agent.md)
+Practical rule of thumb:
+- use the bootstrap when you want routing
+- use the shared contract when you want stable rules
+- use a development or setup guide when you know the task
+- use a prompt template when you know the model family
+- use an agent when the work needs a dedicated multi-step workflow
 
 ## Prompt And Agent Layers
 
@@ -88,38 +101,6 @@ Use an agent when you need orchestration. Use a prompt when you need a focused s
 - [setup](setup): project setup, architecture, documentation, and reproducibility guidance
 - [.github/prompts](.github/prompts): entry prompts and model-family templates
 - [.github/agents](.github/agents): specialist agent definitions
-
-## Most Common Files
-
-Use these first unless the bootstrap selects something else:
-
-| File | Purpose |
-|------|---------|
-| [core/shared-contract.md](core/shared-contract.md) | Stable working rules that should not drift across tasks or models |
-| [development/model-adapters.md](development/model-adapters.md) | Model-family differences without forking the whole prompt stack |
-| [development/git-workflow.md](development/git-workflow.md) | Commit, branch, PR, and release conventions |
-| [core/production-ready-check.md](core/production-ready-check.md) | Public-release checklist and final gate |
-| [development/code-review.md](development/code-review.md) | Normal code review workflow |
-| [development/test-generation.md](development/test-generation.md) | Test design and coverage guidance |
-| [development/debugging.md](development/debugging.md) | Root-cause debugging workflow |
-
-## Recommended Use
-
-Treat this repository as a routed system, not a flat pile of prompt files.
-
-The intended order is:
-1. Start with the bootstrap.
-2. Let it choose the smallest useful set of guides.
-3. Keep shared rules in [core/shared-contract.md](core/shared-contract.md).
-4. Keep model-specific behavior in [development/model-adapters.md](development/model-adapters.md).
-5. Keep task procedures in the relevant [development](development) or [setup](setup) guide.
-
-In short:
-- use the shared contract for stable rules
-- use model adapters for model-family differences
-- use development/setup guides for task procedures
-- use prompt files as entry points
-- use agent files for broader multi-step workflows
 
 ## License
 
