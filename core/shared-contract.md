@@ -1,43 +1,43 @@
 # Shared Contract
 
-Define the stable rules that should remain consistent across model families.
+Define the rules that should stay the same across model families.
 
 ## Purpose
 
-Use this guide to separate invariant agent behavior from model-specific prompt tuning.
+Use this guide to separate shared operating rules from model-specific tuning.
 
-The goal is not to maintain a different workflow for every model. The goal is to keep one reliable operating contract, then add thin adapters only where model behavior actually differs.
+The goal is to keep one reliable base contract and change only the smallest layer that needs to change.
 
 ## Principle
 
-Treat the prompt stack as three layers:
+Treat the instruction set as three layers:
 
-1. Shared contract: rules that must hold regardless of model
-2. Model adapter: wording and structure tuned for a specific model family
-3. Task workflow: debugging, review, refactoring, release audit, and other task-specific prompts
+1. shared contract: rules that should stay the same
+2. model adapter: structure changes for a model family
+3. task guide: steps for a specific kind of task
 
-If a rule affects correctness, safety, verification, or repository policy, it belongs in the shared contract unless there is strong evidence that it must vary.
+If a rule affects correctness, safety, verification, or repository policy, it belongs here unless there is clear evidence that it must vary by model.
 
-## What Belongs In The Shared Contract
+## What Belongs Here
 
-- Safety boundaries and prohibited behavior
-- Tool permissions and tool-use discipline
-- Scope control and completion criteria
-- Verification requirements before claiming success
-- Repository constraints and style expectations
-- Output requirements that matter to downstream automation or reviewers
+- safety boundaries and prohibited behavior
+- tool permissions and careful tool use
+- scope control and completion criteria
+- verification requirements before claiming success
+- repository constraints and style expectations
+- output requirements that matter to automation or review
 
 ## What Does Not Belong Here
 
-- Model-specific wording preferences
-- Redundant reminders added only because one model tends to drift
-- Task-specific steps that belong in a workflow prompt
-- Local project details that belong in repository instructions
+- model-specific wording preferences
+- repeated reminders added only because one model sometimes drifts
+- task-specific steps that belong in a workflow guide
+- local project details that belong in repository instructions
 
 ## Default Operating Rules
 
 ```text
-For this task, keep the following rules invariant across model families:
+For this task, keep the following rules the same across model families:
 
 - Obey repository constraints and coding standards.
 - Do not add compiler optimization flags unless the project explicitly requires them.
@@ -58,46 +58,46 @@ First identify the failure mode:
 - excessive verbosity
 - weak decomposition
 - poor tool discipline
-- shallow verification
-- brittle formatting compliance
+- weak verification
+- format non-compliance
 
-Then adjust the smallest layer responsible for that failure:
+Then change the smallest layer responsible for that failure:
 
-- shared contract if the behavior should never vary
-- model adapter if the behavior is elicitation-sensitive
-- workflow prompt if the issue is task-specific
+- shared contract if the behavior should not vary
+- model adapter if the issue is model-specific
+- workflow guide if the issue belongs to one task type
 
 ## Design Test
 
 Before adding a model-specific rule, ask:
 
 1. Would this rule still be correct for every model?
-2. Is this about policy or about elicitation?
+2. Is this about policy or about prompt structure?
 3. Can the problem be fixed by removing conflicting instructions instead of adding more?
-4. Do we have evidence from repeated failures, not a single anecdote?
+4. Do we have repeated evidence, not just one anecdote?
 
 If the answer to question 1 is yes, keep the rule here.
 
-## Durable User Memory
+## Memory Note
 
-Durable user memory is part of the operating contract across sessions, but the detailed policy does not live here.
+Memory behavior is part of the operating contract, but the detailed policy does not live here.
 
 Use [core/memory-contract.md](memory-contract.md) as the source of truth for:
 
-- what counts as a memory-capable host
+- what counts as real memory support
 - what should and should not be remembered
 - how to separate session, user, and repository memory
 - when stored memory should be updated or removed
 
-This file should only establish the invariant rule that durable memory behavior must stay consistent across model families when the host supports it.
+This file only establishes the rule that memory behavior should stay consistent across model families when the host supports memory.
 
-## Usage Pattern
+## Use With
 
 Use this file with:
 
 - `core/personas.md` for review posture and standards
 - `core/production-ready-check.md` for release gating
-- `core/memory-contract.md` when the host supports durable memory and the task involves remembered instructions or preferences
+- `core/memory-contract.md` when memory is part of the task
 - `development/model-adapters.md` when prompt structure needs model-specific tuning
-- `development/prompt-evaluation.md` when deciding whether to split guidance or keep it shared
-- `development/context-management.md` for the workflow that distinguishes session context from durable user memory
+- `development/prompt-evaluation.md` when deciding whether guidance should stay shared or split
+- `development/context-management.md` when session context and memory both matter

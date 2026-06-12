@@ -1,6 +1,6 @@
 ---
 name: "GPT Task Template"
-description: "Use after the bootstrap step to draft a GPT-oriented task prompt with explicit ordering, completion checks, and relevant guidance only."
+description: "Use after the bootstrap step to draft a GPT-oriented task prompt with explicit ordering, completion checks, and only the guidance that matters."
 agent: "agent"
 argument-hint: "Describe the task, project context, and selected guides"
 tools:
@@ -9,7 +9,7 @@ tools:
 
 # GPT Task Template
 
-Draft a task prompt for a GPT-family model.
+Draft a task prompt for a GPT model.
 
 Use these references:
 

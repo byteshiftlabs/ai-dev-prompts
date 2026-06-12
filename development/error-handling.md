@@ -1,6 +1,6 @@
 # Error Handling
 
-Design patterns for consistent error handling across projects.
+Use consistent error handling patterns across projects.
 
 ## Prompt
 
@@ -11,11 +11,11 @@ Implement error handling for [FILE_OR_MODULE] in [PROJECT_NAME].
 
 Include:
 - Custom exception classes for domain-specific errors
-- Appropriate exception hierarchy (inherit from base exceptions)
+- An appropriate exception hierarchy
 - Descriptive error messages that help diagnose the issue
 - Logging at appropriate levels (debug, info, warning, error)
 - Graceful degradation where possible
-- User-friendly messages (separate from technical logs)
+- User-friendly messages that are separate from technical logs
 
 Follow the project's existing error handling patterns if present.
 ```
@@ -35,7 +35,7 @@ Create a base exception class and specific exceptions for:
 - Input validation errors
 - External service failures
 - Resource not found
-- Permission/authorization errors
+- Permission or authorization errors
 - Configuration errors
 ```
 
@@ -56,7 +56,7 @@ Map exception types to clear, actionable messages without exposing internals.
 
 ## Tips
 
-- Catch specific exceptions, not bare `except:`
-- Log before re-raising if adding context: when you catch an exception to add information but need to propagate it, log the enriched context at that point since higher-level handlers may not have access to that local state
-- Include relevant state in error messages (IDs, values that caused failure)
-- Fail fast for unrecoverable errors, retry for transient failures
+- Catch specific exceptions instead of using a bare `except:`
+- If you catch an exception only to add context and then re-raise it, log that added context there because higher layers may not have access to the same local state
+- Include relevant state in error messages, such as IDs or values that caused the failure
+- Fail fast for unrecoverable errors and retry only for genuinely transient failures

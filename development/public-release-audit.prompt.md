@@ -1,14 +1,17 @@
 ---
-mode: ask
-description: "Use when performing a high-recall public-release audit in one structured pass. Creates or updates a single markdown findings ledger with coverage tracking, severity-ranked issues, unreviewed areas, and an ordered fix plan."
+agent: "agent"
+description: "Use when performing a thorough public-release audit in one structured pass. Creates or updates a single markdown findings file with coverage tracking, severity-ranked issues, unchecked areas, and an ordered fix plan."
 tools:
-  - codebase
-  - edits
+  - read
+  - search
+  - edit
+  - execute
+  - todo
 ---
 
 # Public Release Audit
 
-Run a high-recall, coverage-driven audit of a project before public release.
+Run a thorough, coverage-driven audit of a project before public release.
 
 ## Inputs
 
@@ -40,7 +43,7 @@ Use these supporting guides where relevant:
 Optional tone / standards layer:
 OPTIONAL_PERSONA
 
-Create or update OUTPUT_MD_FILE immediately and keep it as the authoritative audit ledger.
+Create or update OUTPUT_MD_FILE immediately and keep it as the authoritative audit file.
 
 Additional rules for this release audit:
 - Do not claim complete certainty without evidence.

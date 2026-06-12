@@ -1,10 +1,10 @@
 # Code Review
 
-Audit code quality with emphasis on readability and maintainability.
+Review code quality with emphasis on readability and maintainability.
 
 ## Core Principle
 
-**Code is read far more often than it is written.** Prioritize clarity over cleverness. Every piece of code should be immediately understandable to a new developer.
+**Code is read far more often than it is written.** Prioritize clarity over cleverness. New contributors should be able to understand the code without reconstructing hidden intent.
 
 ---
 
@@ -29,7 +29,7 @@ For each issue:
 - Problem description
 - Applied fix
 
-After fixes, commit following git-workflow.md.
+If the task includes committing, follow [git-workflow.md](git-workflow.md).
 ```
 
 ---
@@ -56,7 +56,7 @@ For each issue:
 - Problem description
 - Applied fix
 
-After fixes, commit following git-workflow.md.
+If the task includes committing, follow [git-workflow.md](git-workflow.md).
 ```
 
 ---
@@ -90,7 +90,7 @@ For each issue:
 - Problem description
 - Applied fix
 
-After fixes, commit following git-workflow.md.
+If the task includes committing, follow [git-workflow.md](git-workflow.md).
 ```
 
 ---
@@ -124,7 +124,7 @@ When presenting review results, group findings by severity with a summary table:
 | M1 | docs/api/index.rst | Stale method name in example | Minor |
 ```
 
-This convention ensures reviewers and authors share a common vocabulary and nothing ships with unresolved blockers.
+This convention helps reviewers and authors prioritize work with a shared vocabulary.
 
 ## Quick Variations
 
@@ -156,7 +156,7 @@ When a cppcheck finding cannot be cleanly fixed (e.g., loop with side-effect ind
 
 ## Tips
 
-- Run after every change, major or minor
-- Readable code reduces bugs and speeds up onboarding
+- Run this after every change, major or minor
+- Readable code reduces bugs and shortens onboarding time
 - When in doubt, choose the more explicit option
-- **Fix magic numbers on the go** — never leave bare numeric literals for later. Name them immediately when writing or reviewing code.
+- **Fix magic numbers immediately.** Do not leave bare numeric literals for later cleanup.
