@@ -17,6 +17,9 @@ It is organized so you can:
 
 Treat this repository as a routed system, not a flat pile of prompt files.
 
+The README is the routing entry point.
+Use it first to decide which guide files belong in the real task context.
+
 Do not load everything by default.
 Prefer one compact context bundle per task.
 
@@ -41,6 +44,34 @@ Use it like this:
 	- [prompt-evaluator.agent.md](.github/agents/prompt-evaluator.agent.md)
 	- [model-adapter-designer.agent.md](.github/agents/model-adapter-designer.agent.md)
 
+### Two-Pass Workflow
+
+Use this repository in two passes when you want the model to choose the right guidance before the real task starts.
+
+The goal is to avoid duplicating the task description when the host can already preserve it.
+
+Pass 1, routing:
+- pass the user request together with this README
+- let the model identify the smallest useful set of guide files
+- treat that step as selection only, not final task execution
+
+Pass 2, execution:
+- keep using the existing conversation context if the host preserves the conversation, including the original user request
+- if you are starting a fresh call and the original request is no longer available, pass either the original request or a short task capsule that restates it accurately
+- pass the guide files selected in pass 1
+- use those selected files as the actual execution instructions for the task
+
+Practical example:
+- first pass: user request + [README.md](README.md)
+- second pass in the same conversation: existing conversation context + selected guide files such as [core/shared-contract.md](core/shared-contract.md) + one primary workflow such as [development/debugging.md](development/debugging.md) + any small supporting set chosen in pass 1
+- second pass in a fresh call: short task capsule or original request + the same selected guide files
+
+This keeps the routing context small and makes the execution context explicit.
+
+Routing frequency rule:
+- run the README routing step once per task, not once per session
+- run it again only if the task changes materially or the conversation context no longer preserves the original request and selected guidance
+
 ### Context Load Order
 
 If you are passing files as context on purpose, use this order:
@@ -63,6 +94,8 @@ If you are passing files as context on purpose, use this order:
 In short, the loading sequence is:
 
 `bootstrap -> shared contract -> optional memory/context layer -> optional model adapter -> primary task workflow -> secondary supporting guides if needed -> prompt template or specialist agent`
+
+When using the two-pass workflow above, this README belongs to the routing pass and the files in this load order belong to the execution pass.
 
 Practical rule of thumb:
 - use the bootstrap when you want routing
