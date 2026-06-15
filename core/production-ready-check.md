@@ -6,6 +6,8 @@ Comprehensive checklist to prepare a software project for public release.
 
 This guide consolidates the checks needed before making a project public. Work through the phases in order because later phases depend on earlier ones.
 
+Residual or noted risk is not an acceptable release outcome. If any audited risk remains in scope, fix it before release or return a non-go result that names the blocker.
+
 **Related guides**: [architecture.md](../setup/architecture.md) | [code-review.md](../development/code-review.md) | [error-handling.md](../development/error-handling.md) | [reproducibility.md](../setup/reproducibility.md) | [documentation.md](../setup/documentation.md) | [test-generation.md](../development/test-generation.md) | [git-workflow.md](../development/git-workflow.md)
 
 When an AI agent runs this release check, use [exhaustive-review.md](../development/exhaustive-review.md) to create and maintain the findings file. This document is the release gate, not the audit procedure.
@@ -189,6 +191,10 @@ Release naming rules:
 ## Final Checklist
 
 Before publishing, verify all items:
+
+### Release Gate
+- [ ] No known flaws, unresolved findings, or material risks remain in the audited scope
+- [ ] No residual-risk or "go with noted risk" exception is being used to bypass the gate
 
 ### Architecture
 - [ ] Clear layered separation (interface → logic → data)
