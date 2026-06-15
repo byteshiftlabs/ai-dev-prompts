@@ -11,6 +11,17 @@ entrypoints:
     avoid_when:
       - the exact guide set is already known
     tags: [entrypoint, routing, overview]
+  - path: meta/CONSUMING.md
+    title: Consuming This Repo
+    kind: guide
+    pack: prompt-routing
+    summary: Packaging-oriented entrypoint that explains how to use README.md with the metadata files under meta/.
+    load_when:
+      - a tool or packaging pipeline needs structured routing metadata
+      - the consumer should start from README.md plus the meta folder
+    avoid_when:
+      - a human reader only needs the top-level overview in README.md
+    tags: [entrypoint, routing, packaging, metadata]
 
 guides:
   - path: core/shared-contract.md

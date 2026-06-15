@@ -35,6 +35,8 @@ The repo now includes lightweight metadata for that purpose:
 - [meta/asset-manifest.yaml](meta/asset-manifest.yaml): defines packaging groups and export rules
 - [meta/guide-index.yaml](meta/guide-index.yaml): describes what each guide is for and when to load it
 
+For packaging or host integration, treat the entry point as `README.md` plus the `meta/` folder.
+
 Validate the metadata with:
 
 ```bash
@@ -47,6 +49,8 @@ Use this repository in two simple steps:
 
 1. Use this README or the bootstrap prompt to choose the smallest useful set of guides.
 2. Run the real task with only those guides loaded.
+
+If the consumer is a tool rather than a person, pair this README with the metadata files under `meta/` before selecting guides.
 
 Do the routing step once per task. Repeat it only if the task changes in a meaningful way or the earlier setup is no longer available.
 
