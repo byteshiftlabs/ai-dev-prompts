@@ -1,3 +1,9 @@
+---
+pack: task-workflows
+summary: Helps choose and shape data structures for correctness and maintainability.
+tags: [workflow, design, data]
+---
+
 # Data Structure Design
 
 Design data structures that reduce special cases and make algorithms easier to understand.

@@ -1,3 +1,9 @@
+---
+pack: task-workflows
+summary: Covers external tools, browser automation, notebooks, and CI-style extensions.
+tags: [workflow, tools, extension]
+---
+
 # Tool Extension
 
 Use this guide when the assistant must operate beyond its default tool set.

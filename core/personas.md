@@ -1,3 +1,9 @@
+---
+pack: core-rules
+summary: Sets review posture and working standards for stricter or more specialized tasks.
+tags: [core, posture, review]
+---
+
 # Personas
 
 Use personas to change review posture and output style without changing the core task.

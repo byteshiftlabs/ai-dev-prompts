@@ -1,3 +1,9 @@
+---
+pack: task-workflows
+summary: Helps manage session context, remembered information, and context boundaries.
+tags: [workflow, context, memory]
+---
+
 # Context Management
 
 Control what context is provided to maximize efficiency and relevance.

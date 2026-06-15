@@ -1,3 +1,9 @@
+---
+pack: prompt-routing
+summary: Describes how prompt structure should vary by model family without changing task rules.
+tags: [routing, adapter, model-family]
+---
+
 # Model Adapters
 
 Adjust prompt structure by model family without rewriting the whole system.

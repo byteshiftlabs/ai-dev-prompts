@@ -1,3 +1,9 @@
+---
+pack: task-workflows
+summary: High-recall audit workflow for thorough coverage and explicit findings accounting.
+tags: [workflow, audit, exhaustive]
+---
+
 # Exhaustive Review
 
 Use this when you want the agent to maximize issue recall in a single invocation and maintain one authoritative findings document while it works.

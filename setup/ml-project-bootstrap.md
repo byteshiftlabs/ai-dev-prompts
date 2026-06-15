@@ -1,3 +1,9 @@
+---
+pack: task-workflows
+summary: Bootstrap guidance for ML-oriented project setup.
+tags: [setup, ml, bootstrap]
+---
+
 # Project Bootstrap
 
 Initialize a new ML or research project with minimal, verified code.

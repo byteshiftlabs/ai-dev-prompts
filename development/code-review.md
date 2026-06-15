@@ -1,3 +1,9 @@
+---
+pack: task-workflows
+summary: Review process for normal quality, correctness, maintainability, and targeted cleanup.
+tags: [workflow, review, quality]
+---
+
 # Code Review
 
 Review code quality with emphasis on readability and maintainability.

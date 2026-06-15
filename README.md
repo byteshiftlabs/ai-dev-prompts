@@ -22,6 +22,25 @@ Start with this README. Its job is to help you choose the smallest useful set of
 Do not load everything by default.
 Use one small guide bundle per task.
 
+## External Packaging Note
+
+This repository is designed for selective loading.
+
+If you package it for an AI tool, search system, MCP server, or skill format:
+- do not merge the whole repo into one default prompt payload
+- start from the router and load only the files needed for the current task
+- keep shared rules separate from task workflows, prompt templates, and specialist agents
+
+The repo now includes lightweight metadata for that purpose:
+- [meta/asset-manifest.yaml](meta/asset-manifest.yaml): defines packaging groups and export rules
+- [meta/guide-index.yaml](meta/guide-index.yaml): describes what each guide is for and when to load it
+
+Validate the metadata with:
+
+```bash
+python3 scripts/validate_metadata.py
+```
+
 ### Two-Pass Workflow
 
 Use this repository in two simple steps:

@@ -1,3 +1,9 @@
+---
+pack: task-workflows
+summary: Guidance for creating, improving, and validating tests.
+tags: [workflow, tests, verification]
+---
+
 # Test Generation
 
 Generate unit, integration, and platform tests.
