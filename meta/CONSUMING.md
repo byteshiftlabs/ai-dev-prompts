@@ -1,3 +1,9 @@
+---
+pack: prompt-routing
+summary: Packaging-oriented entrypoint that explains how to use README.md with the metadata files under meta/.
+tags: [entrypoint, routing, packaging, metadata]
+---
+
 # Consuming This Repo
 
 This repository is meant to be loaded in small pieces.
