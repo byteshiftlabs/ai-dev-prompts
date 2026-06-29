@@ -47,6 +47,8 @@ Watch for:
 - following wording too literally
 - excessive compliance text in the final answer
 - rigid behavior when too many overlapping rules are present
+- defaulting to abstract, jargon-heavy language instead of plain explanations
+- framing simple concepts in academic or consulting register when direct wording is clearer
 
 Recommended adjustments:
 
@@ -58,6 +60,11 @@ For this model family:
 - Use numbered execution steps for complex tasks.
 - State the completion check explicitly.
 - Keep formatting rules concrete and close to the requested output.
+- Write in plain, direct language. Prefer concrete words over abstract nouns.
+  Say "check that X matches Y" instead of "enforce a compatibility invariant".
+  Say "the build fails if versions differ" instead of "a machine-enforced
+  compatibility marker beyond documented release discipline".
+  If a sentence would confuse a junior developer, rewrite it.
 ```
 
 ## Claude-Family Adapter
