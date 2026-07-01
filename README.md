@@ -13,6 +13,23 @@ Use it to:
 - handle memory clearly when the host supports it
 - reuse specialist agents for broader audit or evaluation work
 
+## Beginner Ramp-Up
+
+If you are new to this repository, do not start by reading every guide.
+
+Use this short path instead:
+
+1. Start with this README when you are routing the guide set by hand. Use [.github/prompts/prompt-bootstrap.prompt.md](.github/prompts/prompt-bootstrap.prompt.md) only when your host wants a ready-made routing prompt.
+2. Pick one concrete task, such as debugging a Python service or running a release audit.
+3. Load [core/shared-contract.md](core/shared-contract.md) plus one main workflow guide for that task.
+4. Add model-adapter, memory, or agent files only if the task actually needs them.
+
+Good first combinations:
+
+- Debugging: [core/shared-contract.md](core/shared-contract.md) + [development/debugging.md](development/debugging.md)
+- Code review: [core/shared-contract.md](core/shared-contract.md) + [development/code-review.md](development/code-review.md)
+- Release audit: [core/shared-contract.md](core/shared-contract.md) + [development/exhaustive-review.md](development/exhaustive-review.md) + [core/production-ready-check.md](core/production-ready-check.md)
+
 ## How To Use This Repo
 
 Treat this repository as a routing system, not a pile of files.
@@ -42,6 +59,8 @@ Validate the metadata with:
 ```bash
 python3 scripts/validate_metadata.py
 ```
+
+This validator checks that the metadata files point to real repository files, that guide markdown files keep the required frontmatter, and that internal markdown links still resolve.
 
 ### Two-Pass Workflow
 
