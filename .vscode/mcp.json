@@ -1,0 +1,11 @@
+{
+  "servers": {
+    "rubric": {
+      "type": "stdio",
+      "command": "python3",
+      "args": [
+        "${workspaceFolder}/rubric_mcp.py"
+      ]
+    }
+  }
+}
