@@ -66,7 +66,7 @@ guides:
     avoid_when: [debugging runtime failures]
     tags: [workflow, design, api]
   - path: development/chain-of-thought.md
-    title: Structured Reasoning
+    title: Chain of Thought
     kind: guide
     pack: task-workflows
     summary: Adds explicit staged reasoning for ambiguous or high-complexity tasks.
@@ -315,6 +315,14 @@ guides:
     load_when: [the target model family is Claude]
     avoid_when: [the target model family is not Claude]
     tags: [prompt, claude, template]
+  - path: .github/prompts/reasoning-task-template.prompt.md
+    title: Reasoning Model Task Template
+    kind: prompt
+    pack: prompt-routing
+    summary: Prompt wrapper for reasoning models (o1, o3, Claude extended thinking) — minimal instructions, open problem framing, success criteria only.
+    load_when: [the target model is a reasoning model such as o1, o3, or Claude with extended thinking]
+    avoid_when: [the target model is a standard instruction-following model]
+    tags: [prompt, reasoning, template]
 
   - path: .github/agents/fix-and-recheck.agent.md
     title: Fix And Recheck Agent

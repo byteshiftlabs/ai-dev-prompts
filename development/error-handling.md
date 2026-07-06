@@ -13,8 +13,6 @@ Use consistent error handling patterns across projects.
 ```
 Implement error handling for [FILE_OR_MODULE] in [PROJECT_NAME].
 
-[content-integrity constraint]
-
 Include:
 - Custom exception classes for domain-specific errors
 - An appropriate exception hierarchy
@@ -30,7 +28,6 @@ Follow the project's existing error handling patterns if present.
 
 - `[FILE_OR_MODULE]`: Target code
 - `[PROJECT_NAME]`: Project context
-- `[content-integrity constraint]`: See [content-integrity.md](content-integrity.md)
 
 ## Variations
 

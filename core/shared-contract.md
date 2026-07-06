@@ -55,6 +55,11 @@ For this task, keep the following rules the same across model families:
 - If a project still has known flaws, unresolved findings, or material risks, do not give a "Go" verdict. State the flaws plainly and return a non-go verdict until they are resolved.
 - Do not accept residual or noted risk in an audited project. Either eliminate the risk within scope or return a non-go verdict that names the blocker.
 - When the host provides structured questionnaires or similar user-input tools, use them when they are the clearest way to resolve uncertainty instead of guessing.
+- Do not fabricate facts, citations, URLs, API endpoints, performance numbers, or technical specifications. State uncertainty explicitly instead of filling gaps with invented detail.
+- Do not generate performance benchmarks or timing results without actual measured data and explicit request.
+- Do not generate biased, unfounded, unverified, opinion-based, or fabricated content in code, documentation, or any other file.
+- Keep documentation sections focused. Each section should contain only its intended content. Do not mix concerns.
+- If a request is ambiguous, ask clarifying questions instead of assuming intent.
 ```
 
 ## Verdict Rule

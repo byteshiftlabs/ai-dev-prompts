@@ -142,6 +142,7 @@ Use the files under [.github/prompts](.github/prompts) when you want a ready pro
 - [prompt-bootstrap.prompt.md](.github/prompts/prompt-bootstrap.prompt.md) is the main router
 - [gpt-task-template.prompt.md](.github/prompts/gpt-task-template.prompt.md) is the GPT task template
 - [claude-task-template.prompt.md](.github/prompts/claude-task-template.prompt.md) is the Claude task template
+- [reasoning-task-template.prompt.md](.github/prompts/reasoning-task-template.prompt.md) is the reasoning model template (o1, o3, Claude extended thinking)
 
 ### 5. Specialist Agent Layer
 
@@ -173,7 +174,7 @@ You may use, adapt, and share the material, including commercially, as long as y
 
 If you reuse or adapt this repository, credit:
 - `byteshiftlabs`
-- `https://github.com/byteshiftlabs/ai-dev-prompts`
+- `https://github.com/byteshiftlabs/rubric`
 
 If you made changes, say that clearly in your attribution.
 
@@ -181,6 +182,6 @@ Example:
 
 ```text
 Based on AI Development Prompts by byteshiftlabs
-https://github.com/byteshiftlabs/ai-dev-prompts
+https://github.com/byteshiftlabs/rubric
 Used under CC BY 4.0. Changes were made.
 ```

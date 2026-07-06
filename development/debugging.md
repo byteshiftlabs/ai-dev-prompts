@@ -21,8 +21,6 @@ Debug the following issue in [PROJECT_NAME]:
 [PASTE_ERROR]
 ```
 
-[content-integrity constraint]
-
 Find the root cause, explain it clearly, and apply the fix.
 ```
 
@@ -33,7 +31,6 @@ Find the root cause, explain it clearly, and apply the fix.
 - `[WHAT_SHOULD_HAPPEN]`: Expected behavior
 - `[STEPS_OR_COMMAND]`: How to reproduce
 - `[PASTE_ERROR]`: Stack trace or error message
-- `[content-integrity constraint]`: See [content-integrity.md](content-integrity.md)
 
 ## Variations
 

@@ -167,8 +167,6 @@ Do the following:
 3. Define the hook contract clearly for the host.
 4. Keep the hook feedback specific enough for the assistant to act on.
 5. Minimize cost and overlap with other automation.
-
-[content-integrity constraint]
 ```
 
 ## Variations

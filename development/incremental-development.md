@@ -13,8 +13,6 @@ Build software in small, verified steps instead of large leaps.
 ```
 Implement [FEATURE] in [PROJECT_NAME] incrementally.
 
-[content-integrity constraint]
-
 Follow this approach:
 1. Break the task into the smallest logical steps
 2. Implement one step at a time
@@ -28,7 +26,6 @@ Do not move to the next step until the current one is confirmed working.
 
 - `[FEATURE]`: What to implement
 - `[PROJECT_NAME]`: Project context
-- `[content-integrity constraint]`: See [content-integrity.md](content-integrity.md)
 
 ## Variations
 

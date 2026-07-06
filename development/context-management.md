@@ -19,7 +19,6 @@ For this session, the relevant context is:
 Project: [PROJECT_NAME]
 Current task: [TASK]
 Key files: [FILE_LIST]
-Constraints: [content-integrity constraint]
 
 Ignore information not relevant to the current task.
 If you need additional context, ask for specific files or information.
@@ -30,7 +29,6 @@ If you need additional context, ask for specific files or information.
 - `[PROJECT_NAME]`: Project being worked on
 - `[TASK]`: Current objective
 - `[FILE_LIST]`: Files relevant to the task
-- `[content-integrity constraint]`: See [content-integrity.md](content-integrity.md)
 
 ## Variations
 

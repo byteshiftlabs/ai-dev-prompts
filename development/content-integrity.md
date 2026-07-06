@@ -26,9 +26,11 @@ When a request is ambiguous, ask clarifying questions instead of assuming intent
 
 ## Usage
 
-Add this constraint to prompts where factual accuracy matters:
+The three core rules (no fabrication, no invented benchmarks, ask when ambiguous) are now part of `core/shared-contract.md` and apply to every task automatically.
+
+Load this guide when factual accuracy needs extra emphasis beyond the shared baseline:
 - Documentation generation
-- Source code implementations
+- Source code implementations with domain facts (citations, specifications, API contracts)
 - README files
 - Code comments that explain domain logic
 

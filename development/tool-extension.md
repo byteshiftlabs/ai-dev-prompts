@@ -139,8 +139,6 @@ Do the following:
 3. Describe permission and safety implications.
 4. State what verification becomes possible with the extension.
 5. Provide a fallback if the extension is unavailable.
-
-[content-integrity constraint]
 ```
 
 ## Variations

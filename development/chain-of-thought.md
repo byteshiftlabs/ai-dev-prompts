@@ -4,7 +4,7 @@ summary: Adds explicit staged reasoning for ambiguous or high-complexity tasks.
 tags: [workflow, reasoning, ambiguity]
 ---
 
-# Structured Reasoning
+# Chain of Thought
 
 Use explicit analysis for complex problems.
 
