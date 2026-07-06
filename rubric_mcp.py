@@ -94,7 +94,8 @@ def select_guides(
 
     Args:
         task: Plain-language description of what you are about to do.
-        model_family: One of 'claude', 'gpt', 'reasoning'. Defaults to 'claude'.
+        model_family: One of 'claude', 'gpt', 'gemini', 'llama', 'mistral', 'grok',
+            'reasoning'. Defaults to 'claude'.
         tags: Optional hint tags to narrow selection (e.g. ['debugging', 'scope']).
 
     Returns a JSON object with:

@@ -132,6 +132,127 @@ Example: to force a JSON response, end your human turn and open the assistant tu
 
 The assistant will begin its response from that token, preventing preamble and enforcing format from the first character. Useful for locking JSON, YAML, code blocks, or specific section headers.
 
+## Gemini-Family Adapter
+
+Source: Google's official Gemini prompting guide (ai.google.dev/gemini-api/docs/prompting-strategies).
+
+Prefer:
+
+- direct, precise wording — state the goal plainly, skip persuasive language
+- clear delimiters between prompt parts (XML tags such as `<context>`/`<task>`, or markdown headings)
+- critical instructions, role definition, and output format placed first — in the system instruction or the very start of the prompt
+- few-shot examples in most prompts — Google's own guidance is that prompts without them tend to be weaker; 3-5 consistent examples is a reasonable range
+- one task per prompt — split multi-part requests into separate sequential prompts instead of one large one
+- structured output features (not prompt-only instructions) for JSON or other strict formats
+
+Watch for:
+
+- leaving out context the model needs — Gemini does not fill gaps well from assumed shared knowledge
+- inconsistent formatting across few-shot examples, which weakens the pattern instead of reinforcing it
+
+Recommended adjustments:
+
+```text
+Use the shared contract as written.
+
+For this model family:
+- Put role, constraints, and output format at the very start of the prompt.
+- Separate instructions, context, and examples with clear delimiters (XML tags or headings).
+- Include a few consistent examples rather than none.
+- Ask for one task per prompt; split multi-part requests into separate prompts.
+- Keep temperature at its default unless there is a specific, tested reason to change it.
+```
+
+## Llama-Family Adapter
+
+Source: Meta's official Llama best-practices documentation and AWS's Meta-partnered guide for Llama 3 on Amazon SageMaker.
+
+Prefer:
+
+- an explicit role/persona at the start of the prompt for context
+- task decomposition — break a complex request into smaller sub-tasks rather than one large instruction
+- an explicit nudge toward step-by-step reasoning when the task needs it — Llama does not reliably reason in stages unless asked
+- concrete, literal constraints — Llama follows explicit formatting and scope restrictions closely (for example, "respond only in bullet points" or "do not use sources older than 2020")
+- at least two examples when using few-shot prompting
+
+Watch for:
+
+- vague instructions — Llama tends to follow the letter of a prompt, so ambiguity shows up directly in the output
+- if calling a raw/self-hosted Llama model directly (not through a chat-style API), the prompt needs the model's special tokens (`<|begin_of_text|>`, `<|start_header_id|>`/`<|end_header_id|>` for roles, `<|eot_id|>` to end a turn) — most hosted APIs (Bedrock, Together, Groq, etc.) add these automatically
+
+Recommended adjustments:
+
+```text
+Use the shared contract as written.
+
+For this model family:
+- Open with a clear role or persona statement.
+- Break multi-part work into explicit sub-tasks.
+- State formatting and scope constraints literally and concretely.
+- Ask directly for step-by-step reasoning when the task needs it.
+- Use two or more examples for few-shot prompting.
+```
+
+## Mistral-Family Adapter
+
+Source: Mistral's official documentation (docs.mistral.ai/models/best-practices/prompt-engineering).
+
+Prefer:
+
+- a short role-and-task opening: "You are a [role], your task is to [task]"
+- hierarchical structure — clear sections and subsections rather than one flat block
+- markdown or XML-style tags to mark those sections; Mistral's own docs recommend this because it is readable, parsable, and familiar from training data
+- explicit output-format instructions, and structured-output/JSON mode when the format must be strictly consistent
+- objective, measurable language instead of vague qualifiers ("too long," "better") — state a concrete limit or criterion instead
+- worded scales ("Very Low, Low, Neutral, Good, Very Good") instead of numeric 1-5 ratings, per Mistral's own guidance
+
+Watch for:
+
+- contradictory instructions — Mistral's docs recommend a decision tree when two rules could conflict, rather than leaving the conflict implicit
+- asking the model to count things itself (word counts, item counts) — provide counts as input instead
+- requesting more output than the task actually needs
+
+Recommended adjustments:
+
+```text
+Use the shared contract as written.
+
+For this model family:
+- Open with "You are a [role], your task is to [task]."
+- Organize the prompt into clearly labeled sections.
+- State output format explicitly; use structured output mode for strict formats.
+- Replace vague qualifiers with objective, measurable criteria.
+- Resolve any conflicting instructions explicitly instead of leaving them implicit.
+```
+
+## Grok-Family Adapter
+
+Source: xAI's official documentation (docs.x.ai) and xAI's published prompting guidance for grok-code-fast-1.
+
+Prefer:
+
+- XML tags or markdown headers to separate sections of a prompt, especially for agentic/coding tasks
+- a Goal → Constraints → Available tools → Deliverables structure for task-oriented or agentic prompts
+- deliberate markdown inside responses: bullet lists for parallel items, bold for emphasis, inline code for identifiers/paths/commands, tables for short enumerable facts
+- an iterative prompting loop — send a reasonable first attempt and refine based on the result, rather than trying to perfect one long prompt upfront
+
+Watch for:
+
+- editing, removing, or reordering earlier messages in a multi-turn session — if the integration uses xAI's prompt caching, this invalidates the cached prefix and slows every following call
+- when calling the xAI API directly, forgetting to keep a stable conversation/session identifier, which also affects cache hits
+
+Recommended adjustments:
+
+```text
+Use the shared contract as written.
+
+For this model family:
+- Separate sections with XML tags or markdown headers.
+- For agentic or tool-using tasks, structure the prompt as Goal, Constraints, Available tools, Deliverables.
+- Use markdown deliberately in the response: bullets, bold, inline code, and tables where they fit.
+- Treat the first prompt as a draft; refine through iteration rather than one long upfront prompt.
+```
+
 ## Reasoning Model Adapter
 
 Use this adapter for models that run extended internal reasoning before responding: Claude with extended thinking enabled, and OpenAI o1 / o3 family models.

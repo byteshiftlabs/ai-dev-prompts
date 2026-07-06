@@ -25,13 +25,11 @@ If you want a ready-to-run artifact instead of assembling the prompt manually, u
 
 ---
 
-## Use This Instead Of Persona Alone
+## Tone Is Not Coverage
 
-Personas change tone and standards.
-They do not guarantee coverage.
+A strict tone does not guarantee full coverage.
 
 For release-quality review, combine:
-- a persona, if desired, for voice and standards
 - this protocol, for coverage and output structure
 - core/production-ready-check.md, for release gating
 
@@ -100,7 +98,6 @@ Rules:
 - If context is too large, state exactly what was not reviewed.
 - If a claim depends on runtime behavior, say how it should be verified.
 
-[OPTIONAL_PERSONA]
 [PROJECT_CONTEXT]
 ```
 

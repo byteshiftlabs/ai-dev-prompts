@@ -18,7 +18,6 @@ Consume an existing audit findings file, resolve issues in priority order, and u
 - `PROJECT_NAME`: project or repository name
 - `FINDINGS_MD_FILE`: path to the existing audit findings markdown file
 - `PROJECT_CONTEXT`: short description of the project, stack, and constraints
-- `OPTIONAL_PERSONA`: optional standards/tone layer, for example Silvanus from `core/personas.md`
 
 ## Prompt
 
@@ -34,9 +33,6 @@ Use these guides together:
 - development/test-generation.md
 - development/git-workflow.md
 - development/error-handling.md
-
-Optional tone / standards layer:
-OPTIONAL_PERSONA
 
 Requirements:
 1. Read FINDINGS_MD_FILE first and treat it as authoritative.
@@ -73,7 +69,6 @@ Rules:
 PROJECT_NAME: premise
 FINDINGS_MD_FILE: docs/audit-findings.md
 PROJECT_CONTEXT: Python research search tool with CLI, GUI, external APIs, cache layer, packaging metadata, and unit tests. Goal is public release with outstanding code, docs, and tests.
-OPTIONAL_PERSONA: Use Silvanus Trold for standards and bluntness, but keep the fix notes constructive and evidence-based.
 ```
 
 ## Expected Output Characteristics

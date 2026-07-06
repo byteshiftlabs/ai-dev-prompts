@@ -18,7 +18,6 @@ Run a thorough, coverage-driven audit of a project before public release.
 - `PROJECT_NAME`: project or repository name
 - `PROJECT_CONTEXT`: short description of the project, stack, and release goals
 - `OUTPUT_MD_FILE`: path to the audit findings markdown file to create or update
-- `OPTIONAL_PERSONA`: optional standards/tone layer, for example Silvanus from `core/personas.md`
 
 ## Prompt
 
@@ -40,9 +39,6 @@ Use these supporting guides where relevant:
 - development/error-handling.md
 - development/content-integrity.md
 
-Optional tone / standards layer:
-OPTIONAL_PERSONA
-
 Create or update OUTPUT_MD_FILE immediately and keep it as the authoritative audit file.
 
 Additional rules for this release audit:
@@ -61,7 +57,6 @@ Additional rules for this release audit:
 PROJECT_NAME: premise
 PROJECT_CONTEXT: Python research search tool with CLI, GUI, multiple external APIs, cache layer, packaging metadata, and unit tests. Goal is public release with outstanding code, docs, and tests.
 OUTPUT_MD_FILE: docs/audit-findings.md
-OPTIONAL_PERSONA: Use Silvanus Trold for standards and bluntness, but keep the audit constructive and evidence-based.
 ```
 
 ## Expected Output Characteristics

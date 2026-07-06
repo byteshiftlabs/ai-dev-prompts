@@ -129,7 +129,6 @@ Select the smallest relevant set of guides.
 
 ### Cross-cutting standards
 
-- Review posture or stricter standards: [core/personas.md](../../core/personas.md)
 - Public release or final gate: [core/production-ready-check.md](../../core/production-ready-check.md)
 
 ### Problem framing and control

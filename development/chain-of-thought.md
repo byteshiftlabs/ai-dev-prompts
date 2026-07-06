@@ -130,4 +130,3 @@ Before coding, identify:
 
 - This is especially valuable for ambiguous or complex requests
 - A short pause before implementation often prevents major rework
-- Combine it with a [persona](../core/personas.md) when you want a specific review posture

@@ -21,7 +21,7 @@ packaging_intent:
 assets:
   - id: core-rules
     label: Core Rules
-    purpose: Stable operating rules, memory policy, personas, and release gates.
+    purpose: Stable operating rules, memory policy, and release gates.
     load_when:
       - every task needs baseline constraints
       - memory behavior must stay consistent
@@ -31,7 +31,6 @@ assets:
     files:
       - core/shared-contract.md
       - core/memory-contract.md
-      - core/personas.md
       - core/production-ready-check.md
 
   - id: task-workflows
@@ -85,6 +84,10 @@ assets:
       - .github/prompts/prompt-bootstrap.prompt.md
       - .github/prompts/gpt-task-template.prompt.md
       - .github/prompts/claude-task-template.prompt.md
+      - .github/prompts/gemini-task-template.prompt.md
+      - .github/prompts/llama-task-template.prompt.md
+      - .github/prompts/mistral-task-template.prompt.md
+      - .github/prompts/grok-task-template.prompt.md
       - .github/prompts/reasoning-task-template.prompt.md
       - development/model-adapters.md
 
@@ -101,6 +104,17 @@ assets:
       - .github/agents/model-adapter-designer.agent.md
       - .github/agents/prompt-evaluator.agent.md
       - .github/agents/public-release-auditor.agent.md
+
+  - id: mcp-server
+    label: MCP Server
+    purpose: Runs this repo as an MCP server so a host can call get_index, select_guides, get_guide, and get_shared_contract directly instead of reading files by hand.
+    load_when:
+      - the host connects over MCP instead of reading files directly
+    avoid_when:
+      - the consumer reads guide files directly and has no MCP client
+    files:
+      - rubric_mcp.py
+      - pyproject.toml
 
 packaging_rules:
   - Start from the routing entrypoints, not from bulk ingestion.
