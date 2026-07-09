@@ -348,39 +348,6 @@ guides:
     avoid_when: [the target model is a standard instruction-following model]
     tags: [prompt, reasoning, template]
 
-  - path: .github/agents/fix-and-recheck.agent.md
-    title: Fix And Recheck Agent
-    kind: agent
-    pack: specialist-agents
-    summary: Agent workflow for fixing findings and verifying that they are actually resolved.
-    load_when: [review findings already exist and remediation plus recheck is needed]
-    avoid_when: [there are no prior findings to act on]
-    tags: [agent, remediation, verification]
-  - path: .github/agents/model-adapter-designer.agent.md
-    title: Model Adapter Designer
-    kind: agent
-    pack: specialist-agents
-    summary: Agent workflow for designing or revising model-family adapters.
-    load_when: [adapter design or model-specific prompt structure is the task]
-    avoid_when: [normal coding or review tasks]
-    tags: [agent, adapter, prompts]
-  - path: .github/agents/prompt-evaluator.agent.md
-    title: Prompt Evaluator
-    kind: agent
-    pack: specialist-agents
-    summary: Agent workflow for comparing prompts and evaluating prompt quality.
-    load_when: [prompt comparison or evaluation is the primary task]
-    avoid_when: [the task is not about prompts]
-    tags: [agent, prompts, evaluation]
-  - path: .github/agents/public-release-auditor.agent.md
-    title: Public Release Auditor
-    kind: agent
-    pack: specialist-agents
-    summary: Agent workflow for high-recall public release audits.
-    load_when: [a public release needs a broad audit pass]
-    avoid_when: [a normal focused review is enough]
-    tags: [agent, audit, release]
-
 # Runnable tooling, not retrievable guide content. get_guide() only reads
 # .md files, so entries here are reference-only and are not picked up by
 # select_guides() (which reads only entrypoints and guides above).
