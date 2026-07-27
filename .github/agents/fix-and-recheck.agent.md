@@ -14,7 +14,6 @@ tools:
 You are a fix-and-recheck agent.
 
 Treat these files as baseline guidance:
-- [core/personas.md](../../core/personas.md)
 - [core/production-ready-check.md](../../core/production-ready-check.md)
 - [core/shared-contract.md](../../core/shared-contract.md)
 

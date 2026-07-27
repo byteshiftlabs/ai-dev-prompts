@@ -118,7 +118,6 @@ This file only establishes the rule that memory behavior should stay consistent 
 
 Use this file with:
 
-- `core/personas.md` for review posture and standards
 - `core/production-ready-check.md` for release gating
 - `core/memory-contract.md` when memory is part of the task
 - `development/model-adapters.md` when prompt structure needs model-specific tuning

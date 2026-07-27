@@ -1,187 +1,85 @@
-# AI Development Prompts
+# Rubric
 
-Reusable prompt patterns for AI-assisted software development.
+A set of reusable prompt guides for AI-assisted software work.
 
-## What This Repo Is
+## What this is
 
-This repository is a prompt toolkit for software work.
+A collection of short guides — one per task (debugging, code review, release checks, and so on) — plus rules that stay the same no matter which task you're doing. You pick only the guides a task needs, instead of loading the whole repo every time.
 
-Use it to:
-- start from one entry point
-- load only the guides that matter for the task
-- keep shared rules stable across model families
-- handle memory clearly when the host supports it
-- reuse specialist agents for broader audit or evaluation work
+## Quick start
 
-## Beginner Ramp-Up
+1. Pick one concrete task. For example: "debug a regression" or "review this PR."
+2. Load [core/shared-contract.md](core/shared-contract.md) — the rules that apply to every task.
+3. Load one workflow guide that matches the task, for example [development/debugging.md](development/debugging.md) or [development/code-review.md](development/code-review.md).
+4. If you're tuning the prompt for a specific model, also load [development/model-adapters.md](development/model-adapters.md).
+5. Run the task with just those files. Don't load anything else unless the task changes.
 
-If you are new to this repository, do not start by reading every guide.
-
-Use this short path instead:
-
-1. Start with this README when you are routing the guide set by hand. Use [.github/prompts/prompt-bootstrap.prompt.md](.github/prompts/prompt-bootstrap.prompt.md) only when your host wants a ready-made routing prompt.
-2. Pick one concrete task, such as debugging a Python service or running a release audit.
-3. Load [core/shared-contract.md](core/shared-contract.md) plus one main workflow guide for that task.
-4. Add model-adapter, memory, or agent files only if the task actually needs them.
-
-Good first combinations:
+Good starting combinations:
 
 - Debugging: [core/shared-contract.md](core/shared-contract.md) + [development/debugging.md](development/debugging.md)
 - Code review: [core/shared-contract.md](core/shared-contract.md) + [development/code-review.md](development/code-review.md)
-- Release audit: [core/shared-contract.md](core/shared-contract.md) + [development/exhaustive-review.md](development/exhaustive-review.md) + [core/production-ready-check.md](core/production-ready-check.md)
+- Release check: [core/shared-contract.md](core/shared-contract.md) + [development/exhaustive-review.md](development/exhaustive-review.md) + [core/production-ready-check.md](core/production-ready-check.md)
 
-## How To Use This Repo
+If you'd rather have a ready-made prompt do the picking for you, use [.github/prompts/prompt-bootstrap.prompt.md](.github/prompts/prompt-bootstrap.prompt.md) — it reads the task, picks the smallest useful set of guides, and drafts the prompt.
 
-Treat this repository as a routing system, not a pile of files.
+## Rules for using this repo
 
-Start with this README. Its job is to help you choose the smallest useful set of guides for the task.
+- Load a small, task-sized bundle. Don't load every guide by default.
+- Keep `core/shared-contract.md` stable across tasks — it's the one thing that shouldn't change.
+- Only change prompt wording per model through [development/model-adapters.md](development/model-adapters.md), not by rewriting task guides.
+- If you're packaging this repo for a tool, search index, or MCP server, see [meta/CONSUMING.md](meta/CONSUMING.md) — don't bundle everything into one payload.
 
-Do not load everything by default.
-Use one small guide bundle per task.
+## The four layers
 
-## External Packaging Note
+1. **Shared rules** — [core/shared-contract.md](core/shared-contract.md) (plus [core/memory-contract.md](core/memory-contract.md) if the host has memory, and [core/production-ready-check.md](core/production-ready-check.md) for release gates). These don't change by task or model.
+2. **Model adapters** — [development/model-adapters.md](development/model-adapters.md) changes prompt structure per model family (Claude, GPT, Gemini, Llama, Mistral, Grok, or reasoning models like o1/o3) without changing the task rules.
+3. **Task guides** — one file per kind of work: [debugging](development/debugging.md), [code review](development/code-review.md), [test generation](development/test-generation.md), [git workflow](development/git-workflow.md), and the rest of [development](development) and [setup](setup).
+4. **Prompt templates and agents** — ready-to-use wrappers in [.github/prompts](.github/prompts) (one per model family, plus the bootstrap router) and [.github/agents](.github/agents) for bigger jobs like a full release audit.
 
-This repository is designed for selective loading.
+Use a prompt template when you want a single focused task done. Use an agent when the job spans several steps or files.
 
-If you package it for an AI tool, search system, MCP server, or skill format:
-- do not merge the whole repo into one default prompt payload
-- start from the router and load only the files needed for the current task
-- keep shared rules separate from task workflows, prompt templates, and specialist agents
+## Running this repo as an MCP server
 
-The repo now includes lightweight metadata for that purpose:
-- [meta/asset-manifest.yaml](meta/asset-manifest.yaml): defines packaging groups and export rules
-- [meta/guide-index.yaml](meta/guide-index.yaml): describes what each guide is for and when to load it
+`rubric_mcp.py` runs this repo as an MCP server, so a host can call it directly instead of you finding and pasting files by hand. It has four tools:
 
-For packaging or host integration, treat the entry point as `README.md` plus the `meta/` folder.
+- `get_index` — the full guide list as JSON
+- `select_guides` — the smallest set of guides for a task you describe
+- `get_guide` — the raw content of one guide file
+- `get_shared_contract` — the content of `core/shared-contract.md` directly
 
-Validate the metadata with:
+To run it:
 
 ```bash
-python3 scripts/validate_metadata.py
+pip install .
+python3 rubric_mcp.py
 ```
 
-This validator checks that the metadata files point to real repository files, that guide markdown files keep the required frontmatter, and that internal markdown links still resolve.
+An example MCP client config is in [.vscode/mcp.json](.vscode/mcp.json).
 
-### Two-Pass Workflow
+## Repository layout
 
-Use this repository in two simple steps:
-
-1. Use this README or the bootstrap prompt to choose the smallest useful set of guides.
-2. Run the real task with only those guides loaded.
-
-If the consumer is a tool rather than a person, pair this README with the metadata files under `meta/` before selecting guides.
-
-Do the routing step once per task. Repeat it only if the task changes in a meaningful way or the earlier setup is no longer available.
-
-### Worked Example
-
-Task: debug a regression in a Python service after a refactor.
-
-Small bundle:
-- [core/shared-contract.md](core/shared-contract.md)
-- [development/debugging.md](development/debugging.md)
-- [development/context-management.md](development/context-management.md) only if the session is large or memory matters
-- one prompt wrapper only if the host needs it
-
-Why this bundle:
-- the shared contract keeps baseline rules stable
-- the debugging guide gives the task method
-- context guidance is optional support, not default baggage
-
-What not to load:
-- release audit guides
-- ML bootstrap guides
-- specialist agents unless the task expands into a broader workflow
-
-The point is to end up with a task-sized bundle, not the whole repository.
-
-### Recommended Order
-
-If you are assembling context by hand, keep the order simple:
-
-1. start with [prompt-bootstrap.prompt.md](.github/prompts/prompt-bootstrap.prompt.md) or this README
-2. load [core/shared-contract.md](core/shared-contract.md)
-3. add memory or model-adapter guidance only if the task needs it
-4. load one main workflow guide from [development](development) or [setup](setup)
-5. add a prompt template or specialist agent last
-
-The full routing logic lives in [prompt-bootstrap.prompt.md](.github/prompts/prompt-bootstrap.prompt.md).
-
-## Prompt And Agent Layers
-
-The repository is organized into layers. Use this section as a map.
-
-### 1. Shared Rules Layer
-
-[core/shared-contract.md](core/shared-contract.md) holds the rules that should stay the same across tasks and model families.
-
-If the host supports memory, [core/memory-contract.md](core/memory-contract.md) explains what should be remembered and where it belongs.
-
-### 2. Model Adapter Layer
-
-Use [development/model-adapters.md](development/model-adapters.md) when prompt structure should change for a model family without changing the task itself.
-
-### 3. Task Workflow Layer
-
-Choose the task-specific guide from [development](development) or [setup](setup).
-
-Examples:
-- [development/context-management.md](development/context-management.md) for session context and memory decisions
-- [development/debugging.md](development/debugging.md) for debugging
-- [development/code-review.md](development/code-review.md) for review work
-- [development/test-generation.md](development/test-generation.md) for tests
-- [development/git-workflow.md](development/git-workflow.md) for commits, PRs, and releases
-- [core/production-ready-check.md](core/production-ready-check.md) for release readiness
-
-For host setup, hooks, commands, external tools, and other specialized workflows, see the rest of the files under [development](development).
-
-### 4. Prompt Entry Layer
-
-Use the files under [.github/prompts](.github/prompts) when you want a ready prompt wrapper around the selected guide set.
-
-- [prompt-bootstrap.prompt.md](.github/prompts/prompt-bootstrap.prompt.md) is the main router
-- [gpt-task-template.prompt.md](.github/prompts/gpt-task-template.prompt.md) is the GPT task template
-- [claude-task-template.prompt.md](.github/prompts/claude-task-template.prompt.md) is the Claude task template
-- [reasoning-task-template.prompt.md](.github/prompts/reasoning-task-template.prompt.md) is the reasoning model template (o1, o3, Claude extended thinking)
-
-### 5. Specialist Agent Layer
-
-Use the files under [.github/agents](.github/agents) when the job is broader than a single prompt or needs a dedicated workflow.
-
-Examples:
-- [public-release-auditor.agent.md](.github/agents/public-release-auditor.agent.md) for high-recall release audits
-- [fix-and-recheck.agent.md](.github/agents/fix-and-recheck.agent.md) for fixing findings and rechecking them
-- [prompt-evaluator.agent.md](.github/agents/prompt-evaluator.agent.md) for prompt comparisons
-- [model-adapter-designer.agent.md](.github/agents/model-adapter-designer.agent.md) for adapter design work
-
-Use an agent when you need coordination across a broader workflow. Use a prompt when you need a focused task setup.
-
-## Repository Layout
-
-- [core](core): shared rules and release gates
-- [development](development): task-specific workflows for coding, reviews, tests, debugging, context, memory, git, and audits
-- [setup](setup): project setup, architecture, documentation, and reproducibility guidance
-- [.github/prompts](.github/prompts): prompt entry files and model-family templates
-- [.github/agents](.github/agents): specialist agent definitions
+- [core](core) — rules that stay the same across tasks and models
+- [development](development) — one guide per kind of task: coding, review, tests, debugging, git, and audits
+- [setup](setup) — project setup, architecture, documentation, and reproducibility guidance
+- [.github/prompts](.github/prompts) — the router plus one prompt template per model family
+- [.github/agents](.github/agents) — bigger, multi-step workflows (fix-and-recheck, release audits, prompt evaluation)
+- [meta](meta) — machine-readable index of every guide, for tools that package or search this repo
+- `rubric_mcp.py`, `pyproject.toml` — the MCP server that exposes this repo as callable tools
 
 ## License
 
-This repository is licensed under CC BY 4.0.
-
-You may use, adapt, and share the material, including commercially, as long as you provide attribution.
+CC BY 4.0 — use, adapt, and share, including commercially, as long as you give credit.
 
 ## Attribution
 
-If you reuse or adapt this repository, credit:
+If you reuse or adapt this repo, credit:
 - `byteshiftlabs`
 - `https://github.com/byteshiftlabs/rubric`
 
-If you made changes, say that clearly in your attribution.
-
-Example:
+If you changed it, say so. Example:
 
 ```text
-Based on AI Development Prompts by byteshiftlabs
+Based on Rubric by byteshiftlabs
 https://github.com/byteshiftlabs/rubric
 Used under CC BY 4.0. Changes were made.
 ```

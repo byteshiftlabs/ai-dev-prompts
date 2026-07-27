@@ -1,7 +1,7 @@
 version: 1
 entrypoints:
   - path: README.md
-    title: AI Development Prompts
+    title: Rubric
     kind: readme
     pack: prompt-routing
     summary: Starting point for choosing the smallest useful guide bundle for a task.
@@ -40,14 +40,6 @@ guides:
     load_when: [the host supports memory, the task involves remembered preferences or repo facts]
     avoid_when: [the host has no persistent memory support]
     tags: [core, memory, context]
-  - path: core/personas.md
-    title: Personas
-    kind: guide
-    pack: core-rules
-    summary: Sets review posture and working standards for stricter or more specialized tasks.
-    load_when: [the task needs a defined review stance or stricter judgment criteria]
-    avoid_when: [default posture is enough]
-    tags: [core, posture, review]
   - path: core/production-ready-check.md
     title: Production Ready Check
     kind: guide
@@ -182,7 +174,7 @@ guides:
     kind: guide
     pack: prompt-routing
     summary: Describes how prompt structure should vary by model family without changing task rules.
-    load_when: [the same task prompt must be tuned for GPT, Claude, or other model families]
+    load_when: [the same task prompt must be tuned for GPT, Claude, Gemini, Llama, Mistral, Grok, or reasoning models]
     avoid_when: [one model family is used and no adapter changes are needed]
     tags: [routing, adapter, model-family]
   - path: development/performance.md
@@ -315,6 +307,38 @@ guides:
     load_when: [the target model family is Claude]
     avoid_when: [the target model family is not Claude]
     tags: [prompt, claude, template]
+  - path: .github/prompts/gemini-task-template.prompt.md
+    title: Gemini Task Template
+    kind: prompt
+    pack: prompt-routing
+    summary: Prompt wrapper for Gemini-family task execution once the guide bundle is selected.
+    load_when: [the target model family is Gemini]
+    avoid_when: [the target model family is not Gemini]
+    tags: [prompt, gemini, template]
+  - path: .github/prompts/llama-task-template.prompt.md
+    title: Llama Task Template
+    kind: prompt
+    pack: prompt-routing
+    summary: Prompt wrapper for Llama-family task execution once the guide bundle is selected.
+    load_when: [the target model family is Llama]
+    avoid_when: [the target model family is not Llama]
+    tags: [prompt, llama, template]
+  - path: .github/prompts/mistral-task-template.prompt.md
+    title: Mistral Task Template
+    kind: prompt
+    pack: prompt-routing
+    summary: Prompt wrapper for Mistral-family task execution once the guide bundle is selected.
+    load_when: [the target model family is Mistral]
+    avoid_when: [the target model family is not Mistral]
+    tags: [prompt, mistral, template]
+  - path: .github/prompts/grok-task-template.prompt.md
+    title: Grok Task Template
+    kind: prompt
+    pack: prompt-routing
+    summary: Prompt wrapper for Grok-family task execution once the guide bundle is selected.
+    load_when: [the target model family is Grok]
+    avoid_when: [the target model family is not Grok]
+    tags: [prompt, grok, template]
   - path: .github/prompts/reasoning-task-template.prompt.md
     title: Reasoning Model Task Template
     kind: prompt
@@ -356,3 +380,15 @@ guides:
     load_when: [a public release needs a broad audit pass]
     avoid_when: [a normal focused review is enough]
     tags: [agent, audit, release]
+
+# Runnable tooling, not retrievable guide content. get_guide() only reads
+# .md files, so entries here are reference-only and are not picked up by
+# select_guides() (which reads only entrypoints and guides above).
+tools:
+  - path: rubric_mcp.py
+    title: Rubric MCP Server
+    kind: server
+    summary: Runs this repo as an MCP server with four tools — get_index, select_guides, get_guide, get_shared_contract.
+    run: python3 rubric_mcp.py
+    install: pip install .
+    tags: [mcp, server, tooling]
