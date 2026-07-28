@@ -28,8 +28,7 @@ Context:
 PROJECT_CONTEXT
 
 Use these guides together:
-- development/exhaustive-review.md
-- core/production-ready-check.md
+- development/repo-integrity-audit.md
 - development/test-generation.md
 - development/git-workflow.md
 - development/error-handling.md

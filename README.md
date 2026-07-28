@@ -21,9 +21,7 @@ Good starting combinations:
 
 - Debugging: [core/shared-contract.md](core/shared-contract.md) + [development/debugging.md](development/debugging.md)
 - Code review: [core/shared-contract.md](core/shared-contract.md) + [development/code-review.md](development/code-review.md)
-- Release check: [core/shared-contract.md](core/shared-contract.md) + [development/exhaustive-review.md](development/exhaustive-review.md) + [core/production-ready-check.md](core/production-ready-check.md)
-
-If you'd rather have a ready-made prompt do the picking for you, use [.github/prompts/prompt-bootstrap.prompt.md](.github/prompts/prompt-bootstrap.prompt.md) — it reads the task, picks the smallest useful set of guides, and drafts the prompt.
+- Release check: [core/shared-contract.md](core/shared-contract.md) + [development/repo-integrity-audit.md](development/repo-integrity-audit.md)
 
 ## Rules for using this repo
 
@@ -32,12 +30,11 @@ If you'd rather have a ready-made prompt do the picking for you, use [.github/pr
 - Only change prompt wording per model through [development/model-adapters.md](development/model-adapters.md), not by rewriting task guides.
 - If you're packaging this repo for a tool, search index, or MCP server, see [meta/CONSUMING.md](meta/CONSUMING.md) — don't bundle everything into one payload.
 
-## The four layers
+## The three layers
 
-1. **Shared rules** — [core/shared-contract.md](core/shared-contract.md) (plus [core/memory-contract.md](core/memory-contract.md) if the host has memory, and [core/production-ready-check.md](core/production-ready-check.md) for release gates). These don't change by task or model.
+1. **Shared rules** — [core/shared-contract.md](core/shared-contract.md) (plus [core/memory-contract.md](core/memory-contract.md) if the host has memory). These don't change by task or model. Release gating lives in [development/repo-integrity-audit.md](development/repo-integrity-audit.md) instead, since it's task-shaped, not a standing rule.
 2. **Model adapters** — [development/model-adapters.md](development/model-adapters.md) changes prompt structure per model family (Claude, GPT, Gemini, Llama, Mistral, Grok, or reasoning models like o1/o3) without changing the task rules.
 3. **Task guides** — one file per kind of work: [debugging](development/debugging.md), [code review](development/code-review.md), [test generation](development/test-generation.md), [git workflow](development/git-workflow.md), and the rest of [development](development) and [setup](setup).
-4. **Prompt templates** — ready-to-use wrappers in [.github/prompts](.github/prompts), one per model family, plus the bootstrap router.
 
 ## Running this repo as an MCP server
 
@@ -62,7 +59,6 @@ An example MCP client config is in [.vscode/mcp.json](.vscode/mcp.json).
 - [core](core) — rules that stay the same across tasks and models
 - [development](development) — one guide per kind of task: coding, review, tests, debugging, git, and audits
 - [setup](setup) — project setup, architecture, documentation, and reproducibility guidance
-- [.github/prompts](.github/prompts) — the router plus one prompt template per model family
 - [meta](meta) — machine-readable index of every guide, for tools that package or search this repo
 - `rubric_mcp.py`, `pyproject.toml` — the MCP server that exposes this repo as callable tools
 
