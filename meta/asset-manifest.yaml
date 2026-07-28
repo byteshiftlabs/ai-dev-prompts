@@ -12,25 +12,21 @@ packaging_intent:
     - meta/CONSUMING.md
     - meta/asset-manifest.yaml
     - meta/guide-index.yaml
-    - .github/prompts/prompt-bootstrap.prompt.md
   preserve_separation:
     - shared-rules
     - task-workflows
-    - prompt-routing
 assets:
   - id: core-rules
     label: Core Rules
-    purpose: Stable operating rules, memory policy, and release gates.
+    purpose: Stable operating rules and memory policy.
     load_when:
       - every task needs baseline constraints
       - memory behavior must stay consistent
-      - release readiness or stricter review posture matters
     avoid_when:
       - used alone for a task that also needs a workflow guide
     files:
       - core/shared-contract.md
       - core/memory-contract.md
-      - core/production-ready-check.md
 
   - id: task-workflows
     label: Task Workflows
@@ -50,16 +46,17 @@ assets:
       - development/data-structure-design.md
       - development/debugging.md
       - development/error-handling.md
-      - development/exhaustive-review.md
       - development/fix-and-recheck.prompt.md
       - development/git-workflow.md
       - development/hooks.md
       - development/host-integration.md
       - development/incremental-development.md
+      - development/model-adapters.md
       - development/performance.md
       - development/prompt-evaluation.md
       - development/public-release-audit.prompt.md
       - development/refactoring.md
+      - development/repo-integrity-audit.md
       - development/scope-control.md
       - development/task-decomposition.md
       - development/test-generation.md
@@ -69,26 +66,6 @@ assets:
       - setup/documentation.md
       - setup/ml-project-bootstrap.md
       - setup/reproducibility.md
-
-  - id: prompt-routing
-    label: Prompt Routing
-    purpose: Entry points, model-family templates, and selection logic.
-    load_when:
-      - a host needs to choose the smallest guide bundle for a task
-      - prompt formatting differs by model family
-    avoid_when:
-      - a user already selected the exact guides manually
-    files:
-      - README.md
-      - .github/prompts/prompt-bootstrap.prompt.md
-      - .github/prompts/gpt-task-template.prompt.md
-      - .github/prompts/claude-task-template.prompt.md
-      - .github/prompts/gemini-task-template.prompt.md
-      - .github/prompts/llama-task-template.prompt.md
-      - .github/prompts/mistral-task-template.prompt.md
-      - .github/prompts/grok-task-template.prompt.md
-      - .github/prompts/reasoning-task-template.prompt.md
-      - development/model-adapters.md
 
   - id: mcp-server
     label: MCP Server
@@ -106,13 +83,12 @@ packaging_rules:
   - Prefer packaging one asset per consumer-facing use case.
   - Preserve original file paths in metadata so the router can point back to source files.
   - Keep shared contract files separate from task workflows when exporting.
-  - Treat prompts as an optional layer added after guide selection.
 
 suggested_exports:
   - target: claude-skill
-    recommendation: Export core-rules plus one selected workflow, then add prompt-routing only if needed.
+    recommendation: Export core-rules plus one selected workflow.
   - target: ide-rules
-    recommendation: Export prompt-routing and the smallest relevant workflow subset.
+    recommendation: Export core-rules and the smallest relevant workflow subset.
   - target: rag-or-search
     recommendation: Index all assets, but retrieve by pack and task tags rather than loading the whole corpus.
   - target: mcp
