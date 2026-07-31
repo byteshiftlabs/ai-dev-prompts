@@ -139,7 +139,6 @@ def expected_markdown_files() -> list[Path]:
         ROOT / "setup",
         ROOT / "meta",
         ROOT / ".github" / "prompts",
-        ROOT / ".github" / "agents",
     ]
     files = [ROOT / "README.md"]
     for folder in folders:

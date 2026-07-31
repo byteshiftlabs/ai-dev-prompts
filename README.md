@@ -37,9 +37,7 @@ If you'd rather have a ready-made prompt do the picking for you, use [.github/pr
 1. **Shared rules** — [core/shared-contract.md](core/shared-contract.md) (plus [core/memory-contract.md](core/memory-contract.md) if the host has memory, and [core/production-ready-check.md](core/production-ready-check.md) for release gates). These don't change by task or model.
 2. **Model adapters** — [development/model-adapters.md](development/model-adapters.md) changes prompt structure per model family (Claude, GPT, Gemini, Llama, Mistral, Grok, or reasoning models like o1/o3) without changing the task rules.
 3. **Task guides** — one file per kind of work: [debugging](development/debugging.md), [code review](development/code-review.md), [test generation](development/test-generation.md), [git workflow](development/git-workflow.md), and the rest of [development](development) and [setup](setup).
-4. **Prompt templates and agents** — ready-to-use wrappers in [.github/prompts](.github/prompts) (one per model family, plus the bootstrap router) and [.github/agents](.github/agents) for bigger jobs like a full release audit.
-
-Use a prompt template when you want a single focused task done. Use an agent when the job spans several steps or files.
+4. **Prompt templates** — ready-to-use wrappers in [.github/prompts](.github/prompts), one per model family, plus the bootstrap router.
 
 ## Running this repo as an MCP server
 
@@ -65,7 +63,6 @@ An example MCP client config is in [.vscode/mcp.json](.vscode/mcp.json).
 - [development](development) — one guide per kind of task: coding, review, tests, debugging, git, and audits
 - [setup](setup) — project setup, architecture, documentation, and reproducibility guidance
 - [.github/prompts](.github/prompts) — the router plus one prompt template per model family
-- [.github/agents](.github/agents) — bigger, multi-step workflows (fix-and-recheck, release audits, prompt evaluation)
 - [meta](meta) — machine-readable index of every guide, for tools that package or search this repo
 - `rubric_mcp.py`, `pyproject.toml` — the MCP server that exposes this repo as callable tools
 
