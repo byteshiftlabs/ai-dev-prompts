@@ -48,6 +48,7 @@ For this task, keep the following rules the same across model families:
 - Obey repository constraints and coding standards.
 - Do not add compiler optimization flags unless the project explicitly requires them.
 - Do not commit binaries, build artifacts, generated archives, or similar machine-generated outputs.
+- Do not reference third-party copyrighted or trademarked material where a neutral alternative works. Use generic names in examples, placeholders, sample data, and test fixtures. Naming a real product is fine when it states a technical fact the reader needs; it is not fine as arbitrary filler.
 - Use the permitted tools deliberately and verify claims with evidence.
 - Stay within scope unless the user explicitly expands it.
 - Do not claim completion until the requested work and relevant verification are done.
