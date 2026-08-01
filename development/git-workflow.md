@@ -85,6 +85,16 @@ recounting of what you checked and in what order, stay out. A before/after
 table beats a paragraph explaining a discrepancy.
 
 Keep all sections brief and factual.
+
+Do not hard-wrap the text. Write each paragraph and each list item as one long
+line and let the browser reflow it. GitHub renders issue, pull request and
+discussion bodies with soft line breaks enabled, so a paragraph wrapped at 76
+columns becomes a stack of 76-column lines and cannot use the full width of the
+page. Tables, code fences and list markers stay on their own lines as normal.
+
+This applies only to text posted to GitHub. Files committed to a repository and
+git commit messages stay wrapped at roughly 72-80 columns, because editors and
+terminals do not reflow them.
 ```
 
 ## Releases
