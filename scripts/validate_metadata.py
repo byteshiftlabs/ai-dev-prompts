@@ -1,4 +1,20 @@
 #!/usr/bin/env python3
+"""Checks that rubric's YAML catalogue still matches the files on disk.
+
+The MCP server answers from meta/guide-index.yaml and meta/asset-manifest.yaml
+rather than by scanning folders, so the catalogue is what consumers actually
+see. Nothing stops it drifting from reality: move a guide and the catalogue
+points at a dead path, add one and it stays invisible. Both fail silently.
+
+Run by .github/workflows/validate-metadata.yml on every push and PR. Fails if:
+  1. the catalogue references a file that does not exist
+  2. a markdown guide exists but is not in the catalogue
+  3. a guide is missing its YAML frontmatter
+  4. a markdown file links to something that is not there
+
+Deliberately parses the YAML by hand, line by line, so the check has no
+third-party dependencies and CI needs nothing installed.
+"""
 
 from __future__ import annotations
 
@@ -12,10 +28,17 @@ GUIDE_INDEX = ROOT / "meta" / "guide-index.yaml"
 
 
 def read_lines(path: Path) -> list[str]:
+    """Read a text file and return its lines, newlines stripped."""
     return path.read_text(encoding="utf-8").splitlines()
 
 
 def extract_list_values(lines: list[str], key: str) -> list[str]:
+    """Pull every value for a given YAML key out of raw lines.
+
+    Matches both "key: value" and "- key: value", so it catches the field
+    whether it sits on its own or opens a list item. Used to collect every
+    `path:` in the guide index.
+    """
     values: list[str] = []
     prefix = f"{key}: "
     list_prefix = f"- {key}: "
@@ -29,6 +52,12 @@ def extract_list_values(lines: list[str], key: str) -> list[str]:
 
 
 def extract_manifest_files(lines: list[str]) -> list[str]:
+    """Collect every path listed under a `files:` block in the manifest.
+
+    Tracks indentation to know where each block ends: a line indented deeper
+    than the `files:` key is one of its entries, and the first line at or
+    above that indent closes the block.
+    """
     files: list[str] = []
     in_files_block = False
     file_indent = None
@@ -53,11 +82,20 @@ def extract_manifest_files(lines: list[str]) -> list[str]:
 
 
 def has_frontmatter(path: Path) -> bool:
+    """True if the file opens with a YAML frontmatter block.
+
+    Wants "---" on line 1 and a closing "---" within the next 15 lines.
+    """
     lines = read_lines(path)
     return len(lines) >= 3 and lines[0] == "---" and "---" in lines[1:15]
 
 
 def markdown_lines_without_fences(path: Path) -> list[str]:
+    """Return the file's lines with fenced code blocks removed.
+
+    Stops the link checker flagging example links inside ``` blocks, which
+    are illustrations rather than real references.
+    """
     lines: list[str] = []
     in_fence = False
 
@@ -73,6 +111,11 @@ def markdown_lines_without_fences(path: Path) -> list[str]:
 
 
 def extract_markdown_link_targets(line: str) -> list[str]:
+    """Return the targets of every [text](target) link on one line.
+
+    Walks the string by hand instead of using a regex, and skips a "[...]"
+    not followed by "(" so reference-style brackets are ignored.
+    """
     targets: list[str] = []
     index = 0
 
@@ -101,12 +144,23 @@ def extract_markdown_link_targets(line: str) -> list[str]:
 
 
 def normalize_markdown_target(target: str) -> str:
+    """Strip any #anchor, leaving just the file path.
+
+    "guide.md#setup" becomes "guide.md" — the anchor is not checked, only
+    that the file it points into exists.
+    """
     if "#" in target:
         return target.split("#", 1)[0]
     return target
 
 
 def find_missing_internal_links(path: Path) -> list[str]:
+    """Return this file's links that point at something missing.
+
+    Ignores external URLs, mailto:, absolute paths and bare anchors. Also
+    reports links that resolve outside the repo, which usually means one
+    too many "../".
+    """
     missing: list[str] = []
     source = path.relative_to(ROOT).as_posix()
 
@@ -133,13 +187,17 @@ def find_missing_internal_links(path: Path) -> list[str]:
 
 
 def expected_markdown_files() -> list[Path]:
+    """List every markdown file that must appear in the guide index.
+
+    The README plus all .md files in the content folders. Add a folder here
+    when its guides should be catalogued.
+    """
     folders = [
         ROOT / "core",
         ROOT / "development",
         ROOT / "setup",
         ROOT / "meta",
         ROOT / ".github" / "prompts",
-        ROOT / ".github" / "agents",
     ]
     files = [ROOT / "README.md"]
     for folder in folders:
@@ -148,6 +206,11 @@ def expected_markdown_files() -> list[Path]:
 
 
 def main() -> int:
+    """Run all four checks and report. Returns 0 if clean, 1 if not.
+
+    Collects every problem before printing, so one run shows the full list
+    rather than stopping at the first failure.
+    """
     errors: list[str] = []
 
     if not MANIFEST.exists():

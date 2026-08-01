@@ -17,7 +17,6 @@ packaging_intent:
     - shared-rules
     - task-workflows
     - prompt-routing
-    - specialist-agents
 assets:
   - id: core-rules
     label: Core Rules
@@ -91,20 +90,6 @@ assets:
       - .github/prompts/reasoning-task-template.prompt.md
       - development/model-adapters.md
 
-  - id: specialist-agents
-    label: Specialist Agents
-    purpose: Dedicated workflows for broader audits, rechecks, and prompt design work.
-    load_when:
-      - the job is broader than a single prompt
-      - coordination across multiple steps or artifacts is needed
-    avoid_when:
-      - a focused task can be handled with the router plus one workflow guide
-    files:
-      - .github/agents/fix-and-recheck.agent.md
-      - .github/agents/model-adapter-designer.agent.md
-      - .github/agents/prompt-evaluator.agent.md
-      - .github/agents/public-release-auditor.agent.md
-
   - id: mcp-server
     label: MCP Server
     purpose: Runs this repo as an MCP server so a host can call get_index, select_guides, get_guide, and get_shared_contract directly instead of reading files by hand.
@@ -121,7 +106,7 @@ packaging_rules:
   - Prefer packaging one asset per consumer-facing use case.
   - Preserve original file paths in metadata so the router can point back to source files.
   - Keep shared contract files separate from task workflows when exporting.
-  - Treat prompts and agents as optional layers added after guide selection.
+  - Treat prompts as an optional layer added after guide selection.
 
 suggested_exports:
   - target: claude-skill
