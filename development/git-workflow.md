@@ -71,9 +71,18 @@ When creating a PR:
 - If no suitable label exists, suggest creating a new label and wait for user approval before proceeding
 
 Description must include:
-- Summary: What was changed and why
-- Changes: Bullet list of specific modifications
-- Testing: How the changes were verified
+- Summary: What changed, in a sentence or two
+- Changes: One line per change, grouped by theme or file
+- Testing: What was actually run
+
+State what changed and nothing else. Leave out the reasoning behind the
+change, how the problem was found, why an alternative was rejected, and what a
+tool does. Explaining why is the developer's job, not yours.
+
+Facts a reviewer needs belong in: a corrected value, a count, a removed file.
+Sentences beginning "because", "this means", or "the cause was", and any
+recounting of what you checked and in what order, stay out. A before/after
+table beats a paragraph explaining a discrepancy.
 
 Keep all sections brief and factual.
 ```
