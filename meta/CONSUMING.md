@@ -1,5 +1,5 @@
 ---
-pack: prompt-routing
+pack: task-workflows
 summary: Packaging-oriented entrypoint that explains how to use README.md with the metadata files under meta/.
 tags: [entrypoint, routing, packaging, metadata]
 ---
@@ -19,7 +19,7 @@ For tools and packaging flows, the practical entry point is `README.md` plus the
 
 ## Simple Consumer Flow
 
-1. Read [../README.md](../README.md) or [../.github/prompts/prompt-bootstrap.prompt.md](../.github/prompts/prompt-bootstrap.prompt.md).
+1. Read [../README.md](../README.md).
 2. Decide the task type.
 3. Use [guide-index.yaml](guide-index.yaml) to find the smallest relevant guides.
 4. Use [asset-manifest.yaml](asset-manifest.yaml) to keep related files together when exporting or packaging.
@@ -29,7 +29,7 @@ For tools and packaging flows, the practical entry point is `README.md` plus the
 
 If the task is "debug a regression in a Python service":
 
-1. Start with the router.
+1. Start with README.md to identify the task type.
 2. Load the shared rules from the `core-rules` pack.
 3. Load [../development/debugging.md](../development/debugging.md).
 4. Load [../development/context-management.md](../development/context-management.md) only if memory or large context matters.
@@ -48,10 +48,10 @@ If you are turning this repo into packaged AI context:
 5. Package only the selected files into the final skill, rules file, or context payload.
 
 Good:
-- `core/shared-contract.md` + `development/debugging.md` + one prompt template
+- `core/shared-contract.md` + `development/debugging.md`
 
 Bad:
-- every guide, prompt, and agent in one default bundle
+- every guide in one default bundle
 
 ## Recommended Rule
 

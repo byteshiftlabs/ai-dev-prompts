@@ -1,5 +1,5 @@
 ---
-pack: prompt-routing
+pack: task-workflows
 summary: Describes how prompt structure should vary by model family without changing task rules.
 tags: [routing, adapter, model-family]
 ---
