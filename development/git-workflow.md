@@ -79,10 +79,20 @@ State what changed and nothing else. Leave out the reasoning behind the
 change, how the problem was found, why an alternative was rejected, and what a
 tool does. Explaining why is the developer's job, not yours.
 
-Facts a reviewer needs belong in: a corrected value, a count, a removed file.
+Facts a reviewer needs belong in: a corrected value, a removed file.
 Sentences beginning "because", "this means", or "the cause was", and any
 recounting of what you checked and in what order, stay out. A before/after
 table beats a paragraph explaining a discrepancy.
+
+Leave out numbers that only measure the size of the work. How many lines a
+file went from and to, how many symbols, directives, call sites or files were
+touched, how many warnings a tool printed: these will probably never be of any
+interest to anyone. Write "generated the API reference from the sources", not
+"132 hand-written symbols to 1,085, 1,491 lines to 216".
+
+Write a number when the number is the fact: a value the documentation stated
+wrongly and now states correctly, a version, a size a reader has to match. A
+corrected-figures table is exactly this.
 
 Keep all sections brief and factual.
 
