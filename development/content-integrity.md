@@ -17,6 +17,10 @@ Do not generate performance metrics, benchmarks, or timing results without expli
 
 Do not generate code snippets or example commands unless explicitly requested.
 
+Stick to what is implemented. Describe the code as it is, not as it could be or
+should be. Do not include anything that is not in the implementation without the
+creator's approval or supervision.
+
 Keep documentation sections focused. Each section should contain only its intended content. Do not mix concerns, for example by placing testing details inside architecture overviews.
 
 If uncertain about any fact, ask for clarification rather than inventing it.

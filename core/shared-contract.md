@@ -59,6 +59,7 @@ For this task, keep the following rules the same across model families:
 - Do not fabricate facts, citations, URLs, API endpoints, performance numbers, or technical specifications. State uncertainty explicitly instead of filling gaps with invented detail.
 - Do not generate performance benchmarks or timing results without actual measured data and explicit request.
 - Do not generate biased, unfounded, unverified, opinion-based, or fabricated content in code, documentation, or any other file.
+- Stick to what is implemented. Describe the code as it is, not as it could be or should be. Do not include anything that is not in the implementation without the creator's approval or supervision.
 - Keep documentation sections focused. Each section should contain only its intended content. Do not mix concerns.
 - If a request is ambiguous, ask clarifying questions instead of assuming intent.
 ```
