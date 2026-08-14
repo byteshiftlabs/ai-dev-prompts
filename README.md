@@ -1,6 +1,6 @@
 # Rubric
 
-![License: CC BY 4.0](https://img.shields.io/badge/License-CC_BY_4.0-blue.svg)
+![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)
 ![Validate Metadata](https://github.com/byteshiftlabs/rubric/actions/workflows/validate-metadata.yml/badge.svg)
 
 A set of reusable prompt guides for AI-assisted software work.
@@ -68,18 +68,4 @@ An example MCP client config is in [.vscode/mcp.json](.vscode/mcp.json).
 
 ## License
 
-CC BY 4.0 — use, adapt, and share, including commercially, as long as you give credit.
-
-## Attribution
-
-If you reuse or adapt this repo, credit:
-- `byteshiftlabs`
-- `https://github.com/byteshiftlabs/rubric`
-
-If you changed it, say so. Example:
-
-```text
-Based on Rubric by byteshiftlabs
-https://github.com/byteshiftlabs/rubric
-Used under CC BY 4.0. Changes were made.
-```
+MIT — see [LICENSE](LICENSE).
