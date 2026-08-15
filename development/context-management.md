@@ -129,62 +129,15 @@ Describe the control behavior generically first:
 
 Then map that behavior to the host only if the host capability is known.
 
-## Durable Preference Workflow
+## Memory Note
 
-When managing context, separate session context from user memory.
+Deciding what to persist, how to classify it, and whether the host even
+supports memory is not this file's job. [core/memory-contract.md](../core/memory-contract.md)
+is the source of truth for all of that.
 
-Write to memory only after the information is clear enough to classify:
-
-- store explicit user preferences about tools, communication style, output shape, or recurring workflow constraints
-- store stable cross-task instructions that should still apply later
-- do not store active task state, temporary assumptions, repo-specific facts, or unresolved guesses
-
-Memory decision test:
-
-1. Is this clearly a stable user preference or recurring instruction?
-2. Will it probably matter again in a future task?
-3. Does it belong to user memory rather than repository memory?
-4. Is it explicit enough that storing it will not distort the user's intent?
-
-If the answer to any of these is no, keep it in session context only.
-
-Good times to persist:
-
-- immediately after the user says to remember a preference
-- after a repeated correction reveals a stable preference
-- at the end of a task when a reusable instruction has been confirmed
-
-Good examples of saved user memory:
-
-- "Do not use GitKraken for my repos"
-- "Use plain English in commit messages"
-- "Always assign the PR creator and apply labels when opening a PR"
-- "Keep audit findings files local only"
-
-Do not persist:
-
-- during early exploration when the signal is uncertain
-- for one-off exceptions tied to a single task
-- when the information belongs in repository memory or the current session only
-
-Do not persist examples like:
-
-- "For this task, inspect file X first"
-- "This repository currently uses tool Y"
-- "We are halfway through the release checklist"
-- speculative guesses about what the user might prefer
-
-When in doubt, keep it in session context first and persist only after stability is clear.
-
-## Host Capability Rule
-
-Only use memory if the host actually supports writing it and retrieving it later.
-
-If memory support is unavailable:
-
-- keep the instruction in the current session context
-- mention that cross-session persistence depends on the host runtime
-- do not claim the preference will be remembered later
+This file only covers session context — what stays in the current
+conversation. Once something needs to survive past the session, hand it off
+to the rules in memory-contract.md instead of deciding here.
 
 ## Tips
 
@@ -194,5 +147,5 @@ If memory support is unavailable:
 - For long sessions, periodically confirm shared understanding
 - Interrupt early when drift is obvious; it is cheaper than recovering later
 - Prefer compact checkpoint summaries over carrying full chat history forever
-- Keep persistent constraints (like content-integrity) always active
+- Keep persistent constraints (like the shared contract's default operating rules) always active
 - Use memory for confirmed cross-task preferences, not for temporary task state

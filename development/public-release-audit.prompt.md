@@ -35,7 +35,6 @@ Use these supporting guides where relevant:
 - development/code-review.md
 - development/test-generation.md
 - development/error-handling.md
-- development/content-integrity.md
 
 Create or update OUTPUT_MD_FILE immediately and keep it as the authoritative audit file.
 
