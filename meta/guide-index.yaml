@@ -72,14 +72,6 @@ guides:
     load_when: [designing command workflows or assistant command patterns]
     avoid_when: [the task is not command-oriented]
     tags: [workflow, commands, host]
-  - path: development/content-integrity.md
-    title: Content Integrity
-    kind: guide
-    pack: task-workflows
-    summary: Keeps factual outputs accurate, bounded, and evidence-based.
-    load_when: [producing docs, audits, release notes, or factual explanations]
-    avoid_when: [routine local code edits with no factual output]
-    tags: [workflow, accuracy, documentation]
   - path: development/context-management.md
     title: Context Management
     kind: guide
