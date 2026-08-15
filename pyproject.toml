@@ -14,3 +14,9 @@ dependencies = [
 
 [tool.setuptools]
 py-modules = ["rubric_mcp"]
+
+[project.optional-dependencies]
+dev = ["pytest>=8"]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
