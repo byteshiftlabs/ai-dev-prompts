@@ -71,11 +71,36 @@ When creating a PR:
 - If no suitable label exists, suggest creating a new label and wait for user approval before proceeding
 
 Description must include:
-- Summary: What was changed and why
-- Changes: Bullet list of specific modifications
-- Testing: How the changes were verified
+- Summary: What changed, in a sentence or two
+- Changes: One line per change, grouped by theme or file
+- Testing: What was actually run
+
+State what changed and nothing else. Leave out the reasoning behind the
+change, how the problem was found, why an alternative was rejected, and what a
+tool does. Explaining why is the developer's job, not yours.
+
+Facts a reviewer needs belong in: a corrected value, a removed file.
+Sentences beginning "because", "this means", or "the cause was", and any
+recounting of what you checked and in what order, stay out. A before/after
+table beats a paragraph explaining a discrepancy.
+
+Leave out numbers that only measure the size of the work. How many lines a
+file went from and to, how many symbols, directives, call sites or files were
+touched, how many warnings a tool printed: these will probably never be of any
+interest to anyone. Write "generated the API reference from the sources", not
+"132 hand-written symbols to 1,085, 1,491 lines to 216".
+
+Write a number when the number is the fact: a value the documentation stated
+wrongly and now states correctly, a version, a size a reader has to match. A
+corrected-figures table is exactly this.
 
 Keep all sections brief and factual.
+
+Do not hard-wrap the text. Write each paragraph and each list item as one long
+line and let the browser reflow it. GitHub renders issue, pull request and
+discussion bodies with soft line breaks enabled, so a paragraph wrapped at 76
+columns becomes a stack of 76-column lines and cannot use the full width of the
+page. Tables, code fences and list markers stay on their own lines as normal.
 ```
 
 ## Releases
