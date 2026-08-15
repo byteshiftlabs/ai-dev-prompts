@@ -30,6 +30,11 @@ Good starting combinations:
 - Only change prompt wording per model through [development/model-adapters.md](development/model-adapters.md), not by rewriting task guides.
 - If you're packaging this repo for a tool, search index, or MCP server, see [meta/CONSUMING.md](meta/CONSUMING.md) — don't bundle everything into one payload.
 
+## What this does and doesn't guarantee
+
+- **This standardizes inputs, not outputs.** Loading the same guides for the same task does not make two runs produce the same result — the model's generation is still stochastic. What this repo controls is what rules, scope, and checklist the model sees before it starts, not what it does with them.
+- **There is no measured evidence this improves outcomes.** No controlled before/after evaluation of this repo exists. Its rationale is established prompt-engineering and process-engineering practice (scoped context, explicit non-negotiable rules, checklists with mandatory per-section status) applied consistently, not a benchmarked result specific to this repo.
+
 ## The three layers
 
 1. **Shared rules** — [core/shared-contract.md](core/shared-contract.md) (plus [core/memory-contract.md](core/memory-contract.md) if the host has memory). These don't change by task or model. Release gating lives in [development/repo-integrity-audit.md](development/repo-integrity-audit.md) instead, since it's task-shaped, not a standing rule.

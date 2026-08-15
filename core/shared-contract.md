@@ -123,5 +123,4 @@ Use this file with:
 - `development/repo-integrity-audit.md` for release gating
 - `core/memory-contract.md` when memory is part of the task
 - `development/model-adapters.md` when prompt structure needs model-specific tuning
-- `development/prompt-evaluation.md` when deciding whether guidance should stay shared or split
 - `development/context-management.md` when session context and memory both matter
