@@ -241,14 +241,6 @@ guides:
     load_when: [writing READMEs, module docs, or explanatory documentation]
     avoid_when: [documentation is not part of the task]
     tags: [setup, docs, writing]
-  - path: setup/ml-project-bootstrap.md
-    title: Project Bootstrap
-    kind: guide
-    pack: task-workflows
-    summary: Bootstrap guidance for ML-oriented project setup.
-    load_when: [starting an ML project or shaping ML project scaffolding]
-    avoid_when: [the project is not ML-related]
-    tags: [setup, ml, bootstrap]
   - path: setup/reproducibility.md
     title: Reproducibility
     kind: guide
