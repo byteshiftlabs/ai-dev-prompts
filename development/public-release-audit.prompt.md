@@ -27,11 +27,9 @@ Perform an exhaustive public-release audit of PROJECT_NAME in one structured pas
 Context:
 PROJECT_CONTEXT
 
-Use development/exhaustive-review.md as the canonical audit protocol.
-Follow its workflow, output structure, and evidence rules exactly.
-
-Use core/production-ready-check.md as the public-release gate.
-It defines what must be true before a public release is acceptable.
+Use development/repo-integrity-audit.md as the canonical audit protocol and
+the public-release gate. Follow its workflow, output structure, evidence
+rules, and section 11 (Release preparation) exactly.
 
 Use these supporting guides where relevant:
 - development/code-review.md
@@ -63,5 +61,5 @@ OUTPUT_MD_FILE: docs/audit-findings.md
 
 - One markdown findings file, updated during the audit
 - Explicit coverage accounting
-- Explicit reuse of exhaustive-review.md as the protocol source of truth
-- A release decision grounded in core/production-ready-check.md
+- Explicit reuse of repo-integrity-audit.md as the protocol source of truth
+- A release decision grounded in repo-integrity-audit.md section 11

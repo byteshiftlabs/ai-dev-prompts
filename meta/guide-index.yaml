@@ -3,7 +3,7 @@ entrypoints:
   - path: README.md
     title: Rubric
     kind: readme
-    pack: prompt-routing
+    pack: task-workflows
     summary: Starting point for choosing the smallest useful guide bundle for a task.
     load_when:
       - a user is new to the repo
@@ -14,7 +14,7 @@ entrypoints:
   - path: meta/CONSUMING.md
     title: Consuming This Repo
     kind: guide
-    pack: prompt-routing
+    pack: task-workflows
     summary: Packaging-oriented entrypoint that explains how to use README.md with the metadata files under meta/.
     load_when:
       - a tool or packaging pipeline needs structured routing metadata
@@ -40,15 +40,6 @@ guides:
     load_when: [the host supports memory, the task involves remembered preferences or repo facts]
     avoid_when: [the host has no persistent memory support]
     tags: [core, memory, context]
-  - path: core/production-ready-check.md
-    title: Production Ready Check
-    kind: guide
-    pack: core-rules
-    summary: Release gate guidance for deciding whether work is ready to ship.
-    load_when: [release readiness or final go-no-go judgment matters]
-    avoid_when: [early implementation work with no release decision]
-    tags: [core, release, gate]
-
   - path: development/api-design.md
     title: API Design
     kind: guide
@@ -121,14 +112,14 @@ guides:
     load_when: [improving exceptions, failures, recovery paths, or validation behavior]
     avoid_when: [the task is unrelated to failure handling]
     tags: [workflow, reliability, errors]
-  - path: development/exhaustive-review.md
-    title: Exhaustive Review
+  - path: development/repo-integrity-audit.md
+    title: Repo Integrity Audit
     kind: guide
     pack: task-workflows
-    summary: High-recall audit workflow for thorough coverage and explicit findings accounting.
-    load_when: [release readiness, audit work, or maximum coverage is required]
+    summary: Checklist-driven audit for repo integrity and quality, usable as a repo audit or as a gate while drafting a new repo. Also the release gate.
+    load_when: [release readiness, repo audit work, drafting a new repo, or maximum coverage is required]
     avoid_when: [normal code review is enough]
-    tags: [workflow, audit, exhaustive]
+    tags: [workflow, audit, release, exhaustive]
   - path: development/fix-and-recheck.prompt.md
     title: Fix And Recheck
     kind: prompt
@@ -172,7 +163,7 @@ guides:
   - path: development/model-adapters.md
     title: Model Adapters
     kind: guide
-    pack: prompt-routing
+    pack: task-workflows
     summary: Describes how prompt structure should vary by model family without changing task rules.
     load_when: [the same task prompt must be tuned for GPT, Claude, Gemini, Llama, Mistral, Grok, or reasoning models]
     avoid_when: [one model family is used and no adapter changes are needed]
@@ -282,71 +273,6 @@ guides:
     load_when: [reproducibility, reruns, or environment consistency matter]
     avoid_when: [the task is purely exploratory and no repeatability requirement exists]
     tags: [setup, reproducibility, environment]
-
-  - path: .github/prompts/prompt-bootstrap.prompt.md
-    title: Prompt Bootstrap
-    kind: prompt
-    pack: prompt-routing
-    summary: Main router that classifies the task and selects the smallest useful guide bundle.
-    load_when: [a host needs to choose guides before drafting a task prompt]
-    avoid_when: [guide selection is already complete]
-    tags: [prompt, routing, entrypoint]
-  - path: .github/prompts/gpt-task-template.prompt.md
-    title: GPT Task Template
-    kind: prompt
-    pack: prompt-routing
-    summary: Prompt wrapper for GPT-family task execution once the guide bundle is selected.
-    load_when: [the target model family is GPT]
-    avoid_when: [the target model family is not GPT]
-    tags: [prompt, gpt, template]
-  - path: .github/prompts/claude-task-template.prompt.md
-    title: Claude Task Template
-    kind: prompt
-    pack: prompt-routing
-    summary: Prompt wrapper for Claude-family task execution once the guide bundle is selected.
-    load_when: [the target model family is Claude]
-    avoid_when: [the target model family is not Claude]
-    tags: [prompt, claude, template]
-  - path: .github/prompts/gemini-task-template.prompt.md
-    title: Gemini Task Template
-    kind: prompt
-    pack: prompt-routing
-    summary: Prompt wrapper for Gemini-family task execution once the guide bundle is selected.
-    load_when: [the target model family is Gemini]
-    avoid_when: [the target model family is not Gemini]
-    tags: [prompt, gemini, template]
-  - path: .github/prompts/llama-task-template.prompt.md
-    title: Llama Task Template
-    kind: prompt
-    pack: prompt-routing
-    summary: Prompt wrapper for Llama-family task execution once the guide bundle is selected.
-    load_when: [the target model family is Llama]
-    avoid_when: [the target model family is not Llama]
-    tags: [prompt, llama, template]
-  - path: .github/prompts/mistral-task-template.prompt.md
-    title: Mistral Task Template
-    kind: prompt
-    pack: prompt-routing
-    summary: Prompt wrapper for Mistral-family task execution once the guide bundle is selected.
-    load_when: [the target model family is Mistral]
-    avoid_when: [the target model family is not Mistral]
-    tags: [prompt, mistral, template]
-  - path: .github/prompts/grok-task-template.prompt.md
-    title: Grok Task Template
-    kind: prompt
-    pack: prompt-routing
-    summary: Prompt wrapper for Grok-family task execution once the guide bundle is selected.
-    load_when: [the target model family is Grok]
-    avoid_when: [the target model family is not Grok]
-    tags: [prompt, grok, template]
-  - path: .github/prompts/reasoning-task-template.prompt.md
-    title: Reasoning Model Task Template
-    kind: prompt
-    pack: prompt-routing
-    summary: Prompt wrapper for reasoning models (o1, o3, Claude extended thinking) — minimal instructions, open problem framing, success criteria only.
-    load_when: [the target model is a reasoning model such as o1, o3, or Claude with extended thinking]
-    avoid_when: [the target model is a standard instruction-following model]
-    tags: [prompt, reasoning, template]
 
 # Runnable tooling, not retrievable guide content. get_guide() only reads
 # .md files, so entries here are reference-only and are not picked up by
