@@ -1,4 +1,4 @@
-name: Validate Metadata
+name: CI
 
 on:
   push:
@@ -20,3 +20,21 @@ jobs:
 
       - name: Validate prompt-pack metadata
         run: python3 scripts/validate_metadata.py
+
+  test-mcp-server:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install package with test dependencies
+        run: pip install .[dev]
+
+      - name: Run rubric_mcp.py tests
+        run: python3 -m pytest tests/ -q

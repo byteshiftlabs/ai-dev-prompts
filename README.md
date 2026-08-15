@@ -1,7 +1,7 @@
 # Rubric
 
 ![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)
-![Validate Metadata](https://github.com/byteshiftlabs/rubric/actions/workflows/validate-metadata.yml/badge.svg)
+![CI](https://github.com/byteshiftlabs/rubric/actions/workflows/validate-metadata.yml/badge.svg)
 
 A set of reusable prompt guides for AI-assisted software work.
 
