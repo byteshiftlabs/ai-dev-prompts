@@ -67,6 +67,12 @@ An example MCP client config is in [.vscode/mcp.json](.vscode/mcp.json).
 - [meta](meta) — machine-readable index of every guide, for tools that package or search this repo
 - `rubric_mcp.py`, `pyproject.toml` — the MCP server that exposes this repo as callable tools
 
+## Disclaimer
+
+This repository is provided for reference. byteshiftlabs is not responsible for any actions, decisions, or consequences that result from using it, including anything done by an AI agent following this guidance. Use is at your own risk.
+
+See [LICENSE](LICENSE) for the separate software warranty disclaimer.
+
 ## License
 
 MIT — see [LICENSE](LICENSE).
