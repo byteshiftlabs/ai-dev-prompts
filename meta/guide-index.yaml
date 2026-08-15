@@ -176,14 +176,6 @@ guides:
     load_when: [performance is a primary goal or bottlenecks need review]
     avoid_when: [the task does not touch performance]
     tags: [workflow, performance, optimization]
-  - path: development/prompt-evaluation.md
-    title: Prompt Evaluation
-    kind: guide
-    pack: task-workflows
-    summary: Helps compare prompts and decide whether guidance should stay shared or split.
-    load_when: [evaluating prompt systems or model-specific divergence]
-    avoid_when: [ordinary coding tasks]
-    tags: [workflow, prompts, evaluation]
   - path: development/public-release-audit.prompt.md
     title: Public Release Audit
     kind: prompt

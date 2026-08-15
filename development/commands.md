@@ -155,7 +155,6 @@ Use this guide with:
 
 - [development/host-integration.md](host-integration.md) to verify that the host supports commands
 - [development/task-decomposition.md](task-decomposition.md) when the workflow is multi-stage
-- [development/prompt-evaluation.md](prompt-evaluation.md) when deciding whether a command actually improves reliability
 
 ## Tips
 

@@ -53,7 +53,6 @@ assets:
       - development/incremental-development.md
       - development/model-adapters.md
       - development/performance.md
-      - development/prompt-evaluation.md
       - development/public-release-audit.prompt.md
       - development/refactoring.md
       - development/repo-integrity-audit.md
