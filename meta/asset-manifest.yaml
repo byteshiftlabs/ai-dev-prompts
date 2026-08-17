@@ -41,7 +41,6 @@ assets:
       - development/chain-of-thought.md
       - development/code-review.md
       - development/commands.md
-      - development/content-integrity.md
       - development/context-management.md
       - development/data-structure-design.md
       - development/debugging.md

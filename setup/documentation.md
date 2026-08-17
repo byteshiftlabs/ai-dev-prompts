@@ -86,7 +86,7 @@ Every comment must describe what the code actually does, not what it should do.
 - Mark uncertain or incomplete sections clearly instead of inventing detail
 - Include "why" explanations for non-obvious design choices
 - Always keep documentation adjacent to code when possible
-- Keep sections focused: testing goes in tests, architecture in architecture, etc. — do not mix concerns (see [content-integrity.md](../development/content-integrity.md))
+- Keep sections focused: testing goes in tests, architecture in architecture, etc. — do not mix concerns (see [shared-contract.md](../core/shared-contract.md))
 - **Platform-specific documentation:** Only include installation commands and instructions for platforms where the software has been tested
 
 ## Keeping README.md and ROADMAP.md in Sync
