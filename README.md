@@ -67,6 +67,14 @@ An example MCP client config is in [.vscode/mcp.json](.vscode/mcp.json).
 - [meta](meta) — machine-readable index of every guide, for tools that package or search this repo
 - `rubric_mcp.py`, `pyproject.toml` — the MCP server that exposes this repo as callable tools
 
+## Disclaimer
+
+This repository is prompt guidance for AI-assisted software work. It is not legal, security, or compliance advice, and following it does not guarantee correct, safe, or compliant outcomes.
+
+Several guides instruct an AI agent to take actions with real consequences — merging pull requests, deleting branches, publishing releases, judging license/copyright compliance, issuing release Go/No-Go verdicts, among others. The person or organization operating the agent is solely responsible for reviewing and authorizing any such action before it takes effect. Nothing in this repository substitutes for that review.
+
+Use is at your own risk. See [LICENSE](LICENSE) for the separate software warranty disclaimer.
+
 ## License
 
 MIT — see [LICENSE](LICENSE).
