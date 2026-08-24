@@ -199,7 +199,6 @@ Use this guide with:
 
 - [development/host-integration.md](host-integration.md) to verify that the host actually supports hooks
 - [development/context-management.md](context-management.md) when hook feedback changes the active session flow
-- [development/prompt-evaluation.md](prompt-evaluation.md) when deciding whether a hook meaningfully improves reliability
 
 ## Tips
 
