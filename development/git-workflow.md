@@ -78,6 +78,23 @@ Description must include:
 Keep all sections brief and factual.
 ```
 
+## Branch Cleanup
+
+```
+Delete a branch once its PR is merged:
+
+- Delete the remote branch immediately after merge (GitHub's "Delete branch"
+  button on the PR, or `git push origin --delete [branch]`).
+- Delete the local branch too: `git branch -d [branch]`.
+- Do this for every merge, not just occasionally — a stale branch list makes
+  it harder to tell active work from finished work.
+- Exception: shared long-lived branches the repository documents as
+  permanent (for example a maintenance or release branch), which stay.
+
+If the repository allows it, enable "Automatically delete head branches" in
+GitHub repository settings so this happens without a manual step.
+```
+
 ## Releases
 
 ```
@@ -106,4 +123,5 @@ Release notes must include:
 - Reference issue numbers when applicable (for example, `Fixed #123`)
 - Apply this format consistently across byteshiftlabs repositories unless a repository documents different rules
 - Audit findings files must stay local and must not be pushed to byteshiftlabs repositories
+- Delete a branch as soon as its PR merges — see Branch Cleanup above
 - Before committing, check whether README.md or ROADMAP.md need updating to reflect the change. See [documentation.md](../setup/documentation.md#keeping-readmemd-and-roadmapmd-in-sync).
