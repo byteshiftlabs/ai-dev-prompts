@@ -69,11 +69,9 @@ An example MCP client config is in [.vscode/mcp.json](.vscode/mcp.json).
 
 ## Disclaimer
 
-This repository is prompt guidance for AI-assisted software work. It is not legal, security, or compliance advice, and following it does not guarantee correct, safe, or compliant outcomes.
+This repository is provided for reference. byteshiftlabs is not responsible for any actions, decisions, or consequences that result from using it, including anything done by an AI agent following this guidance. Use is at your own risk.
 
-Several guides instruct an AI agent to take actions with real consequences — merging pull requests, deleting branches, publishing releases, judging license/copyright compliance, issuing release Go/No-Go verdicts, among others. The person or organization operating the agent is solely responsible for reviewing and authorizing any such action before it takes effect. Nothing in this repository substitutes for that review.
-
-Use is at your own risk. See [LICENSE](LICENSE) for the separate software warranty disclaimer.
+See [LICENSE](LICENSE) for the separate software warranty disclaimer.
 
 ## License
 
