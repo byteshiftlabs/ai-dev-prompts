@@ -170,7 +170,6 @@ Use this guide with:
 
 - [development/host-integration.md](host-integration.md) for host capability checks
 - [development/hooks.md](hooks.md) when extensions interact with hook-based enforcement
-- [development/prompt-evaluation.md](prompt-evaluation.md) when comparing extended vs non-extended workflows
 
 ## Tips
 

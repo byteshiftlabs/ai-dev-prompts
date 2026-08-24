@@ -330,4 +330,3 @@ When tuning prompts by model family, use this guide together with:
 - `core/shared-contract.md`
 - `development/context-management.md`
 - `development/task-decomposition.md`
-- `development/prompt-evaluation.md`
