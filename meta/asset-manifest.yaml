@@ -38,7 +38,6 @@ assets:
       - the host only needs a routing entrypoint and will fetch guides later
     files:
       - development/api-design.md
-      - development/chain-of-thought.md
       - development/code-review.md
       - development/commands.md
       - development/context-management.md
@@ -62,6 +61,7 @@ assets:
       - setup/architecture.md
       - setup/dev-principles.md
       - setup/documentation.md
+      - setup/prose-style.md
       - setup/reproducibility.md
 
   - id: mcp-server

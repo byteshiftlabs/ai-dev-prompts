@@ -90,6 +90,12 @@ scenarios, only what you're checking against differs:
 
 - **Duplicated / irrelevant / obsolete content.** Cross-file duplication,
   sections that no longer apply, placeholder text that outlived its purpose.
+- **Unrequested AI additions.** Sections, rules, or files that read as
+  generated on the assistant's own initiative rather than asked for —
+  generic "Core Principle" / "Purpose" / "Why This Matters" boilerplate,
+  invented performance numbers, or filler that restates the obvious. Flag
+  these for the owner to confirm before keeping; do not assume something is
+  wanted just because it already exists in the repo.
 - **Plain English.** Rewrite for a reader with no prior context on the
   project — no jargon, no convoluted wording, no unexplained acronyms.
 - **Dead links.** Check every external/internal link resolves — a link
@@ -296,8 +302,7 @@ template).
   is unclear, a severity/fix-vs-issue call that could go either way, a claim
   that can't be verified from the repo alone — surface it and ask rather
   than guessing silently.
-- For byteshiftlabs repositories, keep the findings file local-only. Do not
-  commit or push it.
+- Keep the findings file local-only. Do not commit or push it.
 
 ## Running This As A Prompt
 
@@ -364,8 +369,7 @@ Rules:
 - If context is too large, state exactly what was not reviewed.
 - If a claim depends on runtime behavior, say how it should be verified.
 - Ask the user for feedback when in doubt rather than guessing silently.
-- For byteshiftlabs repositories, keep [OUTPUT_MD_FILE] local-only. Do not
-  commit or push it.
+- Keep [OUTPUT_MD_FILE] local-only. Do not commit or push it.
 
 [PROJECT_CONTEXT]
 ```

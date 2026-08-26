@@ -48,14 +48,6 @@ guides:
     load_when: [designing interfaces, evaluating API shape, planning breaking changes]
     avoid_when: [debugging runtime failures]
     tags: [workflow, design, api]
-  - path: development/chain-of-thought.md
-    title: Chain of Thought
-    kind: guide
-    pack: task-workflows
-    summary: Adds explicit staged reasoning for ambiguous or high-complexity tasks.
-    load_when: [the task is ambiguous, high-risk, or needs explicit trade-off analysis]
-    avoid_when: [straightforward edits where concise execution matters more]
-    tags: [workflow, reasoning, ambiguity]
   - path: development/code-review.md
     title: Code Review
     kind: guide
@@ -241,6 +233,14 @@ guides:
     load_when: [writing READMEs, module docs, or explanatory documentation]
     avoid_when: [documentation is not part of the task]
     tags: [setup, docs, writing]
+  - path: setup/prose-style.md
+    title: Prose Style
+    kind: guide
+    pack: task-workflows
+    summary: Catalogue of stylistic tropes that mark prose as machine-written, with a grep set for the mechanical ones.
+    load_when: [writing or editing any prose deliverable, reviewing documentation for style, prose reads as AI-generated]
+    avoid_when: [the task produces only code and no prose]
+    tags: [setup, docs, writing, style, review]
   - path: setup/reproducibility.md
     title: Reproducibility
     kind: guide
